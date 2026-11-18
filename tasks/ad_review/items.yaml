@@ -1,0 +1,195 @@
+# Ad review tasks. Brands and products are fictional. Answers were fixed when the items were written.
+# Same item format as the ad review project's test set:
+#   kind: text = caption only; image = caption + a rendered image (image.lines are the words in it,
+#         image.small is small print at the bottom, layout "scene" draws people).
+#   labels: one per violation. span = the exact words that break the rule; visual = the problem is
+#         in the picture; absence = something required is missing.
+#   trap/basis: why an ad that looks risky is compliant, and the clause that says so.
+#   revision: the advertiser's own next version (third turn of an L3 task), with its own labels.
+#   must_keep: facts a corrected version has to keep (second turn of an L3 task).
+# tier: L1 = one turn, text, at most one violation; L2 = one turn, an image, two violations, a missing
+#       statement or a guidance clause; L3 = three turns (review, advice with a corrected version,
+#       review of the advertiser's next version).
+
+# ---------------------------------------------------------------- Chinese ads (Advertising Law, SAMR guide)
+- id: zh-L1-01
+  lang: zh
+  tier: L1
+  kind: text
+  copy: 知更空气炸锅：行业顶级不粘涂层，少油也酥脆。到手价 ¥329。
+  labels:
+    - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 行业顶级不粘涂层}
+- id: zh-L1-02
+  lang: zh
+  tier: L1
+  kind: text
+  copy: 暖岛羽绒被：我们的目标，是做让顾客最放心的家纺品牌。白鹅绒填充，¥899。
+  labels: []
+  trap: “最放心”说的是经营者的目标追求，没有指向商品本身的性能、质量。
+  basis: [CN-SAMR-5]
+- id: zh-L1-03
+  lang: zh
+  tier: L1
+  kind: text
+  copy: 澄心英语：外教一对一，签约保过雅思 7 分，不过全额退款。
+  labels:
+    - {cat: GUARANTEE, clauses: [CN-AL-24], span: 签约保过雅思 7 分}
+- id: zh-L2-01
+  lang: zh
+  tier: L2
+  kind: text
+  copy: 木朴益生菌固体饮料：每天一袋，告别便秘。95% 的用户一周见效。
+  labels:
+    - {cat: MEDICAL, clauses: [CN-AL-17], span: 告别便秘}
+    - {cat: DATA, clauses: [CN-AL-11-2], span: 95% 的用户一周见效}
+- id: zh-L2-02
+  lang: zh
+  tier: L2
+  kind: text
+  copy: 云栖电动牙刷：2026 年 618 期间京东电动牙刷类目销售额第一（数据来源：京东商智，统计期 2026.6.1–6.18）。
+  labels: []
+  trap: “销售额第一”限定了时间、平台和品类，并写明了数据来源和统计期。
+  basis: [CN-SAMR-6, CN-AL-11-2]
+- id: zh-L2-03
+  lang: zh
+  tier: L2
+  kind: image
+  copy: 山屿小青柑普洱，秋季新茶到店。
+  image: {layout: poster, shape: tea, palette: green, brand: 山屿, lines: [山屿 小青柑普洱, 一盒 20 颗 ¥128], small: [常喝可降血压、防治糖尿病]}
+  labels:
+    - {cat: MEDICAL, clauses: [CN-AL-17], span: 常喝可降血压、防治糖尿病}
+- id: zh-L2-04
+  lang: zh
+  tier: L2
+  kind: image
+  copy: 岚川小麦啤酒，周末露营带一箱。
+  image: {layout: scene, scene: drink-beer, palette: amber, brand: 岚川, lines: [岚川小麦啤酒, 330ml 5%vol]}
+  labels:
+    - {cat: ALCOHOL, clauses: [CN-AL-23], visual: 画面中的人物正在喝啤酒}
+- id: zh-L3-01
+  lang: zh
+  tier: L3
+  kind: text
+  copy: 启明考研暑期班：包过国家线，不过全额退费。¥4980。
+  labels:
+    - {cat: GUARANTEE, clauses: [CN-AL-24], span: 包过国家线}
+  must_keep: [启明, ¥4980]
+  revision:
+    copy: 启明考研暑期班：每周 6 次直播课，配套真题讲义，可免费试听一节。¥4980。
+    labels: []
+- id: zh-L3-02
+  lang: zh
+  tier: L3
+  kind: text
+  copy: 醉山河梅子酒：睡前一杯，缓解焦虑、帮助入睡。全网最低价 ¥59。
+  labels:
+    - {cat: ALCOHOL, clauses: [CN-AL-23], span: 睡前一杯，缓解焦虑、帮助入睡}
+    - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 全网最低价}
+  must_keep: [醉山河, ¥59]
+  revision:
+    copy: 醉山河梅子酒：青梅浸泡，酸甜顺口。全网最低价 ¥59。
+    labels:
+      - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 全网最低价}
+- id: zh-L3-03
+  lang: zh
+  tier: L3
+  kind: image
+  copy: 青禾儿童护眼灯，开学季特惠。
+  image: {layout: poster, shape: box, palette: blue, brand: 青禾, lines: [国家级护眼认证, 青禾儿童护眼灯, 开学特惠 ¥269]}
+  labels:
+    - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 国家级护眼认证}
+  must_keep: [青禾, ¥269]
+  revision:
+    image_lines: [三档色温 无可视频闪, 青禾儿童护眼灯, 开学特惠 ¥269]
+    labels: []
+
+# ---------------------------------------------------------------- English ads (TikTok Advertising Policies, global sections)
+- id: en-L1-01
+  lang: en
+  tier: L1
+  kind: text
+  copy: "Norvale Stride: the #1 running shoe in America. Now $89."
+  labels:
+    - {cat: ABSOLUTE, clauses: [TT-MIS-CLAIMS], span: "the #1 running shoe in America"}
+- id: en-L1-02
+  lang: en
+  tier: L1
+  kind: text
+  copy: "Corewell Gym: a 12-week strength programme with a coach. Results vary; pair your training with a balanced diet."
+  labels: []
+  trap: "A fitness programme that makes no weight-loss or muscle-gain promise and points to a healthy lifestyle."
+  basis: [TT-WM-WEIGHT]
+- id: en-L1-03
+  lang: en
+  tier: L1
+  kind: text
+  copy: "Velora Collagen Serum erases wrinkles in 7 days, guaranteed. $32."
+  labels:
+    - {cat: GUARANTEE, clauses: [TT-MIS-CLAIMS], span: "erases wrinkles in 7 days, guaranteed"}
+- id: en-L2-01
+  lang: en
+  tier: L2
+  kind: text
+  copy: "Leanbrew Tea: drop 10 lbs in a week with no diet or exercise. Unlike FitLeaf's useless tea, ours actually works."
+  labels:
+    - {cat: WEIGHT, clauses: [TT-WM-WEIGHT], span: "drop 10 lbs in a week with no diet or exercise"}
+    - {cat: DISPARAGE, clauses: [TT-MIS-COMPARE], span: "Unlike FitLeaf's useless tea"}
+- id: en-L2-02
+  lang: en
+  tier: L2
+  kind: text
+  copy: "Harbor Pale Ale, 5.2% ABV. Brewed with Cascade hops. Please drink responsibly. For adults of legal drinking age only."
+  labels: []
+  trap: "An alcohol ad that states the strength, carries a responsible-drinking line and makes no claim or offer."
+  basis: [TT-ALC]
+- id: en-L2-03
+  lang: en
+  tier: L2
+  kind: text
+  copy: "Copperline Gin: small-batch, distilled with ten botanicals. Order today."
+  labels:
+    - {cat: ALCOHOL, clauses: [TT-ALC], absence: "The ad states no alcohol strength and carries no responsible-drinking statement."}
+- id: en-L2-04
+  lang: en
+  tier: L2
+  kind: image
+  copy: "Verdant Greens: your daily greens, simplified."
+  image: {layout: poster, shape: jar, palette: green, brand: Verdant, lines: ["Daily greens, simplified", Verdant Greens Powder, "$39 for 30 servings"], small: [Proven to prevent type 2 diabetes.]}
+  labels:
+    - {cat: MEDICAL, clauses: [TT-MIS-CLAIMS], span: "Proven to prevent type 2 diabetes"}
+- id: en-L3-01
+  lang: en
+  tier: L3
+  kind: text
+  copy: "Apexa Trading Course: turn $100 into $10,000 in 30 days, guaranteed. Enroll for $49."
+  labels:
+    - {cat: GUARANTEE, clauses: [TT-DEC-FINREP, TT-FIN, TT-MIS-CLAIMS], span: "turn $100 into $10,000 in 30 days, guaranteed"}
+  must_keep: [Apexa, "$49"]
+  revision:
+    copy: "Apexa Trading Course: learn chart reading and risk management in 12 video lessons. Trading involves risk and no returns are promised. Enroll for $49."
+    labels: []
+- id: en-L3-02
+  lang: en
+  tier: L3
+  kind: text
+  copy: "NightOwl Whiskey, 40% ABV: the smoothest whiskey in the world. Win a free bottle every Friday! Please drink responsibly."
+  labels:
+    - {cat: ABSOLUTE, clauses: [TT-MIS-CLAIMS], span: "the smoothest whiskey in the world"}
+    - {cat: ALCOHOL, clauses: [TT-ALC], span: "Win a free bottle every Friday"}
+  must_keep: [NightOwl, 40% ABV]
+  revision:
+    copy: "NightOwl Whiskey, 40% ABV: aged 8 years in oak. Win a free bottle every Friday! Please drink responsibly."
+    labels:
+      - {cat: ALCOHOL, clauses: [TT-ALC], span: "Win a free bottle every Friday"}
+- id: en-L3-03
+  lang: en
+  tier: L3
+  kind: image
+  copy: "Brightfold Aero 14: spring sale now on."
+  image: {layout: poster, shape: laptop, palette: navy, brand: Brightfold, lines: [The best laptop on Earth, Brightfold Aero 14, "From $899"]}
+  labels:
+    - {cat: ABSOLUTE, clauses: [TT-MIS-CLAIMS], span: "The best laptop on Earth"}
+  must_keep: [Brightfold, "$899"]
+  revision:
+    image_lines: ["14-inch OLED, 1.1 kg", Brightfold Aero 14, "From $899"]
+    labels: []

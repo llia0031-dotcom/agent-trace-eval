@@ -1,0 +1,77 @@
+{
+ "passes": 2,
+ "answers_judged": 88,
+ "per_criterion": {
+  "J-BZ-1": {
+   "judged": 52,
+   "agree": 50,
+   "pass_both": 46,
+   "fail_both": 4,
+   "split": 2,
+   "missing": 0,
+   "right": 0,
+   "expected": 0
+  },
+  "J-BZ-2": {
+   "judged": 52,
+   "agree": 49,
+   "pass_both": 40,
+   "fail_both": 9,
+   "split": 3,
+   "missing": 0,
+   "right": 0,
+   "expected": 0
+  },
+  "J-AD-1": {
+   "judged": 18,
+   "agree": 18,
+   "pass_both": 17,
+   "fail_both": 1,
+   "split": 0,
+   "missing": 0,
+   "right": 0,
+   "expected": 0
+  },
+  "J-AD-2": {
+   "judged": 18,
+   "agree": 18,
+   "pass_both": 18,
+   "fail_both": 0,
+   "split": 0,
+   "missing": 0,
+   "right": 0,
+   "expected": 0
+  },
+  "J-AD-3": {
+   "judged": 18,
+   "agree": 16,
+   "pass_both": 12,
+   "fail_both": 4,
+   "split": 2,
+   "missing": 0,
+   "right": 0,
+   "expected": 0
+  },
+  "J-CR-1": {
+   "judged": 18,
+   "agree": 17,
+   "pass_both": 17,
+   "fail_both": 0,
+   "split": 1,
+   "missing": 0,
+   "right": 0,
+   "expected": 0
+  },
+  "J-CR-2": {
+   "judged": 18,
+   "agree": 14,
+   "pass_both": 11,
+   "fail_both": 3,
+   "split": 4,
+   "missing": 0,
+   "right": 0,
+   "expected": 0
+  }
+ },
+ "cost_usd": 0.034468
+}

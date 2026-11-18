@@ -1,0 +1,379 @@
+- id: B01
+  family: traffic_channel
+  seed: 7000
+  week: 2026-W37
+  events:
+  - lever: traffic
+    segment: &id001
+      channel: 门店页
+    size: -0.454
+  truth: &id002
+    causes:
+    - segment: *id001
+      lever: traffic
+      direction: down
+  tier: L1
+  request_kind: weekly
+  request: 请写 2026-W37 这一周的经营分析周报。
+  asked: *id002
+  drafts: 1
+  alerts: 12
+- id: B02
+  family: conversion_city
+  seed: 7001
+  week: 2026-W37
+  events:
+  - lever: conversion
+    segment: &id003
+      city: 北京
+    size: -0.424
+  truth: &id004
+    causes:
+    - segment: *id003
+      lever: conversion
+      direction: down
+  tier: L1
+  request_kind: weekly
+  request: 请写 2026-W37 这一周的经营分析周报。
+  asked: *id004
+  drafts: 1
+  alerts: 13
+- id: B03
+  family: supply_merchant
+  seed: 7002
+  week: 2026-W35
+  events:
+  - lever: supply
+    segment: &id005
+      merchant: 茶饮咖啡连锁A
+    size: -1.0
+  truth: &id006
+    causes:
+    - segment: *id005
+      lever: supply
+      direction: down
+  tier: L1
+  request_kind: weekly
+  request: 请写 2026-W35 这一周的经营分析周报。
+  asked: *id006
+  drafts: 1
+  alerts: 11
+- id: B04
+  family: refund_category
+  seed: 7003
+  week: 2026-W34
+  events:
+  - lever: refund
+    segment: &id007
+      category: 火锅
+    size: 0.186
+  truth: &id008
+    causes:
+    - segment: *id007
+      lever: refund
+      direction: up
+  tier: L1
+  request_kind: weekly
+  request: 请写 2026-W34 这一周的经营分析周报。
+  asked: *id008
+  drafts: 1
+  alerts: 13
+- id: B05
+  family: redemption_category
+  seed: 7004
+  week: 2026-W38
+  events:
+  - lever: redemption
+    segment: &id009
+      category: 美发美甲
+    size: -0.468
+  truth: &id010
+    causes:
+    - segment: *id009
+      lever: redemption
+      direction: down
+  tier: L1
+  request_kind: weekly
+  request: 请写 2026-W38 这一周的经营分析周报。
+  asked: *id010
+  drafts: 1
+  alerts: 5
+- id: B06
+  family: traffic_up_category
+  seed: 7005
+  week: 2026-W36
+  events:
+  - lever: traffic
+    segment: &id011
+      category: 快餐小吃
+    size: 0.82
+  truth: &id012
+    causes:
+    - segment: *id011
+      lever: traffic
+      direction: up
+  tier: L1
+  request_kind: weekly
+  request: 请写 2026-W36 这一周的经营分析周报。
+  asked: *id012
+  drafts: 1
+  alerts: 15
+- id: B07
+  family: traffic_city_channel
+  seed: 7009
+  week: 2026-W38
+  events:
+  - lever: traffic
+    segment: &id013
+      city: 上海
+      channel: 搜索
+    size: -0.703
+  truth: &id014
+    causes:
+    - segment: *id013
+      lever: traffic
+      direction: down
+  tier: L2
+  request_kind: weekly
+  request: 请写 2026-W38 这一周的经营分析周报。
+  asked: *id014
+  drafts: 4
+  alerts: 3
+- id: B08
+  family: conversion_city_category
+  seed: 7013
+  week: 2026-W36
+  events:
+  - lever: conversion
+    segment: &id015
+      city: 北京
+      category: 茶饮咖啡
+    size: -0.626
+  truth: &id016
+    causes:
+    - segment: *id015
+      lever: conversion
+      direction: down
+  tier: L2
+  request_kind: weekly
+  request: 请写 2026-W36 这一周的经营分析周报。
+  asked: *id016
+  drafts: 4
+  alerts: 2
+- id: B09
+  family: refund_city_category
+  seed: 7014
+  week: 2026-W34
+  events:
+  - lever: refund
+    segment: &id017
+      city: 深圳
+      category: 茶饮咖啡
+    size: 0.568
+  truth: &id018
+    causes:
+    - segment: *id017
+      lever: refund
+      direction: up
+  tier: L2
+  request_kind: weekly
+  request: 请写 2026-W34 这一周的经营分析周报。
+  asked: *id018
+  drafts: 1
+  alerts: 1
+- id: B10
+  family: traffic_channel+refund_category
+  seed: 7015
+  week: 2026-W36
+  events:
+  - lever: traffic
+    segment: &id019
+      channel: 搜索
+    size: -0.476
+  - lever: refund
+    segment: &id020
+      category: 烧烤
+    size: 0.223
+  truth: &id021
+    causes:
+    - segment: *id019
+      lever: traffic
+      direction: down
+    - segment: *id020
+      lever: refund
+      direction: up
+  tier: L2
+  request_kind: weekly
+  request: 请写 2026-W36 这一周的经营分析周报。
+  asked: *id021
+  drafts: 1
+  alerts: 45
+- id: B11
+  family: conversion_city+redemption_category
+  seed: 7016
+  week: 2026-W34
+  events:
+  - lever: conversion
+    segment: &id022
+      city: 深圳
+    size: -0.312
+  - lever: redemption
+    segment: &id023
+      category: 自助餐
+    size: -0.513
+  truth: &id024
+    causes:
+    - segment: *id022
+      lever: conversion
+      direction: down
+    - segment: *id023
+      lever: redemption
+      direction: down
+  tier: L2
+  request_kind: weekly
+  request: 请写 2026-W34 这一周的经营分析周报。
+  asked: *id024
+  drafts: 1
+  alerts: 10
+- id: B12
+  family: supply_merchant+traffic_channel
+  seed: 7017
+  week: 2026-W34
+  events:
+  - lever: supply
+    segment: &id025
+      merchant: 火锅连锁A
+    size: -1.0
+  - lever: traffic
+    segment: &id026
+      channel: 门店页
+    size: -0.476
+  truth: &id027
+    causes:
+    - segment: *id025
+      lever: supply
+      direction: down
+    - segment: *id026
+      lever: traffic
+      direction: down
+  tier: L2
+  request_kind: weekly
+  request: 请写 2026-W34 这一周的经营分析周报。
+  asked: *id027
+  drafts: 1
+  alerts: 24
+- id: B13
+  family: none
+  seed: 7018
+  week: 2026-W37
+  events: []
+  truth: &id028
+    causes: []
+  tier: L3
+  request_kind: weekly
+  request: 请写 2026-W37 这一周的经营分析周报。
+  asked: *id028
+  drafts: 1
+  alerts: 0
+- id: B14
+  family: none
+  seed: 7019
+  week: 2026-W35
+  events: []
+  truth: &id029
+    causes: []
+  tier: L3
+  request_kind: weekly
+  request: 请写 2026-W35 这一周的经营分析周报。
+  asked: *id029
+  drafts: 1
+  alerts: 0
+- id: B15
+  family: holiday
+  seed: 7020
+  week: 2026-W40
+  events: []
+  truth: &id030
+    causes:
+    - segment: {}
+      lever: holiday
+      direction: up
+  tier: L3
+  request_kind: weekly
+  request: 请写 2026-W40 这一周的经营分析周报。
+  asked: *id030
+  drafts: 1
+  alerts: 78
+- id: B16
+  family: after_holiday
+  seed: 7021
+  week: 2026-W42
+  events: []
+  truth: &id031
+    causes: []
+  tier: L3
+  request_kind: weekly
+  request: 请写 2026-W42 这一周的经营分析周报。
+  asked: *id031
+  drafts: 1
+  alerts: 5
+- id: B17
+  family: traffic_channel+refund_category
+  seed: 7022
+  week: 2026-W35
+  events:
+  - lever: traffic
+    segment: &id032
+      channel: 门店页
+    size: -0.35
+  - lever: refund
+    segment: &id033
+      category: 火锅
+    size: 0.231
+  truth:
+    causes:
+    - segment: *id032
+      lever: traffic
+      direction: down
+    - &id034
+      segment: *id033
+      lever: refund
+      direction: up
+  tier: L3
+  request_kind: scoped
+  request: 2026-W35 这一周，我只想了解退款方面有没有异动、原因是什么。其他方面的问题这次不用分析，原因清单里也不要列。
+  asked:
+    causes:
+    - *id034
+  drafts: 1
+  alerts: 30
+- id: B18
+  family: conversion_city+redemption_category
+  seed: 7023
+  week: 2026-W38
+  events:
+  - lever: conversion
+    segment: &id035
+      city: 深圳
+    size: -0.429
+  - lever: redemption
+    segment: &id036
+      category: 地方菜
+    size: -0.578
+  truth:
+    causes:
+    - segment: *id035
+      lever: conversion
+      direction: down
+    - &id037
+      segment: *id036
+      lever: redemption
+      direction: down
+  tier: L3
+  request_kind: scoped
+  request: 2026-W38 这一周，我只想了解核销方面有没有异动、原因是什么。其他方面的问题这次不用分析，原因清单里也不要列。
+  asked:
+    causes:
+    - *id037
+  drafts: 1
+  alerts: 13

@@ -1,0 +1,20 @@
+[
+  {
+    "url": "https://library.callow.example/news/extended-hours",
+    "status": 200,
+    "file": "p1.html",
+    "fetched_at": "2026-11-16T08:03:00Z"
+  },
+  {
+    "url": "https://www.callow-courier.example/2026/11/12/library-late-opening",
+    "status": 200,
+    "file": "p2.html",
+    "fetched_at": "2026-11-16T08:06:00Z"
+  },
+  {
+    "url": "https://library.callow.example/news/study-rooms-2025",
+    "status": 200,
+    "file": "p3.html",
+    "fetched_at": "2026-11-16T08:09:00Z"
+  }
+]

@@ -1,0 +1,459 @@
+{
+ "run": "no-skills",
+ "overall": {
+  "trials": 24,
+  "tasks": 8,
+  "success": 8,
+  "success_rate": 0.3333333333333333,
+  "success_ci": [
+   0.17971978688379642,
+   0.5329404050591954
+  ],
+  "pass^1": 0.3333333333333333,
+  "pass^2": 0.20833333333333331,
+  "pass^3": 0.125,
+  "needs_human": 9,
+  "needs_human_rate": 0.375,
+  "silent_failures": 7,
+  "caught_failures": 9,
+  "held_successes": 0,
+  "tool_calls": 0,
+  "tool_calls_correct": 0,
+  "tool_call_correct_rate": null,
+  "tool_calls_repeated": 0,
+  "cost_usd": 0.087497,
+  "cost_per_trial": 0.0036457083333333337,
+  "list_cost_per_trial": 0.007291666666666666,
+  "model_calls_per_trial": 3.0,
+  "latency_trials": 0,
+  "latency_median_s": null,
+  "latency_p90_s": null,
+  "errors": 0,
+  "stages": {
+   "U": {
+    "applies": 24,
+    "passed": 18,
+    "rate": 0.75
+   },
+   "P": {
+    "applies": 0,
+    "passed": 0,
+    "rate": null
+   },
+   "T": {
+    "applies": 0,
+    "passed": 0,
+    "rate": null
+   },
+   "K": {
+    "applies": 24,
+    "passed": 10,
+    "rate": 0.4166666666666667
+   },
+   "R": {
+    "applies": 24,
+    "passed": 8,
+    "rate": 0.3333333333333333
+   }
+  },
+  "failed_trials": 16,
+  "first_failing_stage": {
+   "U": 5,
+   "K": 5,
+   "R": 6
+  }
+ },
+ "by_family": {
+  "creator": {
+   "trials": 24,
+   "tasks": 8,
+   "success": 8,
+   "success_rate": 0.3333333333333333,
+   "success_ci": [
+    0.17971978688379642,
+    0.5329404050591954
+   ],
+   "pass^1": 0.3333333333333333,
+   "pass^2": 0.20833333333333331,
+   "pass^3": 0.125,
+   "needs_human": 9,
+   "needs_human_rate": 0.375,
+   "silent_failures": 7,
+   "caught_failures": 9,
+   "held_successes": 0,
+   "tool_calls": 0,
+   "tool_calls_correct": 0,
+   "tool_call_correct_rate": null,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.087497,
+   "cost_per_trial": 0.0036457083333333337,
+   "list_cost_per_trial": 0.007291666666666666,
+   "model_calls_per_trial": 3.0,
+   "latency_trials": 0,
+   "latency_median_s": null,
+   "latency_p90_s": null,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 24,
+     "passed": 18,
+     "rate": 0.75
+    },
+    "P": {
+     "applies": 0,
+     "passed": 0,
+     "rate": null
+    },
+    "T": {
+     "applies": 0,
+     "passed": 0,
+     "rate": null
+    },
+    "K": {
+     "applies": 24,
+     "passed": 10,
+     "rate": 0.4166666666666667
+    },
+    "R": {
+     "applies": 24,
+     "passed": 8,
+     "rate": 0.3333333333333333
+    }
+   },
+   "failed_trials": 16,
+   "first_failing_stage": {
+    "U": 5,
+    "K": 5,
+    "R": 6
+   }
+  }
+ },
+ "by_family_tier": {
+  "creator/L2": {
+   "trials": 12,
+   "tasks": 4,
+   "success": 3,
+   "success_rate": 0.25,
+   "success_ci": [
+    0.08894003962896138,
+    0.53231033912066
+   ],
+   "pass^1": 0.25,
+   "pass^2": 0.08333333333333333,
+   "pass^3": 0.0,
+   "needs_human": 5,
+   "needs_human_rate": 0.4166666666666667,
+   "silent_failures": 4,
+   "caught_failures": 5,
+   "held_successes": 0,
+   "tool_calls": 0,
+   "tool_calls_correct": 0,
+   "tool_call_correct_rate": null,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.045278,
+   "cost_per_trial": 0.0037731666666666664,
+   "list_cost_per_trial": 0.0075467500000000005,
+   "model_calls_per_trial": 3.0,
+   "latency_trials": 0,
+   "latency_median_s": null,
+   "latency_p90_s": null,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 12,
+     "passed": 10,
+     "rate": 0.8333333333333334
+    },
+    "P": {
+     "applies": 0,
+     "passed": 0,
+     "rate": null
+    },
+    "T": {
+     "applies": 0,
+     "passed": 0,
+     "rate": null
+    },
+    "K": {
+     "applies": 12,
+     "passed": 4,
+     "rate": 0.3333333333333333
+    },
+    "R": {
+     "applies": 12,
+     "passed": 3,
+     "rate": 0.25
+    }
+   },
+   "failed_trials": 9,
+   "first_failing_stage": {
+    "U": 1,
+    "K": 5,
+    "R": 3
+   }
+  },
+  "creator/L3": {
+   "trials": 12,
+   "tasks": 4,
+   "success": 5,
+   "success_rate": 0.4166666666666667,
+   "success_ci": [
+    0.19325746190524656,
+    0.6804926643446272
+   ],
+   "pass^1": 0.41666666666666663,
+   "pass^2": 0.3333333333333333,
+   "pass^3": 0.25,
+   "needs_human": 4,
+   "needs_human_rate": 0.3333333333333333,
+   "silent_failures": 3,
+   "caught_failures": 4,
+   "held_successes": 0,
+   "tool_calls": 0,
+   "tool_calls_correct": 0,
+   "tool_call_correct_rate": null,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.042219,
+   "cost_per_trial": 0.00351825,
+   "list_cost_per_trial": 0.007036583333333333,
+   "model_calls_per_trial": 3.0,
+   "latency_trials": 0,
+   "latency_median_s": null,
+   "latency_p90_s": null,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 12,
+     "passed": 8,
+     "rate": 0.6666666666666666
+    },
+    "P": {
+     "applies": 0,
+     "passed": 0,
+     "rate": null
+    },
+    "T": {
+     "applies": 0,
+     "passed": 0,
+     "rate": null
+    },
+    "K": {
+     "applies": 12,
+     "passed": 6,
+     "rate": 0.5
+    },
+    "R": {
+     "applies": 12,
+     "passed": 5,
+     "rate": 0.4166666666666667
+    }
+   },
+   "failed_trials": 7,
+   "first_failing_stage": {
+    "U": 4,
+    "R": 3
+   }
+  }
+ },
+ "by_family_lang": {
+  "creator/en": {
+   "trials": 12,
+   "tasks": 4,
+   "success": 5,
+   "success_rate": 0.4166666666666667,
+   "success_ci": [
+    0.19325746190524656,
+    0.6804926643446272
+   ],
+   "pass^1": 0.41666666666666663,
+   "pass^2": 0.3333333333333333,
+   "pass^3": 0.25,
+   "needs_human": 1,
+   "needs_human_rate": 0.08333333333333333,
+   "silent_failures": 6,
+   "caught_failures": 1,
+   "held_successes": 0,
+   "tool_calls": 0,
+   "tool_calls_correct": 0,
+   "tool_call_correct_rate": null,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.04235,
+   "cost_per_trial": 0.0035291666666666666,
+   "list_cost_per_trial": 0.0070585,
+   "model_calls_per_trial": 3.0,
+   "latency_trials": 0,
+   "latency_median_s": null,
+   "latency_p90_s": null,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 12,
+     "passed": 8,
+     "rate": 0.6666666666666666
+    },
+    "P": {
+     "applies": 0,
+     "passed": 0,
+     "rate": null
+    },
+    "T": {
+     "applies": 0,
+     "passed": 0,
+     "rate": null
+    },
+    "K": {
+     "applies": 12,
+     "passed": 5,
+     "rate": 0.4166666666666667
+    },
+    "R": {
+     "applies": 12,
+     "passed": 5,
+     "rate": 0.4166666666666667
+    }
+   },
+   "failed_trials": 7,
+   "first_failing_stage": {
+    "K": 4,
+    "U": 3
+   }
+  },
+  "creator/zh": {
+   "trials": 12,
+   "tasks": 4,
+   "success": 3,
+   "success_rate": 0.25,
+   "success_ci": [
+    0.08894003962896138,
+    0.53231033912066
+   ],
+   "pass^1": 0.25,
+   "pass^2": 0.08333333333333333,
+   "pass^3": 0.0,
+   "needs_human": 8,
+   "needs_human_rate": 0.6666666666666666,
+   "silent_failures": 1,
+   "caught_failures": 8,
+   "held_successes": 0,
+   "tool_calls": 0,
+   "tool_calls_correct": 0,
+   "tool_call_correct_rate": null,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.045147,
+   "cost_per_trial": 0.00376225,
+   "list_cost_per_trial": 0.007524833333333334,
+   "model_calls_per_trial": 3.0,
+   "latency_trials": 0,
+   "latency_median_s": null,
+   "latency_p90_s": null,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 12,
+     "passed": 10,
+     "rate": 0.8333333333333334
+    },
+    "P": {
+     "applies": 0,
+     "passed": 0,
+     "rate": null
+    },
+    "T": {
+     "applies": 0,
+     "passed": 0,
+     "rate": null
+    },
+    "K": {
+     "applies": 12,
+     "passed": 5,
+     "rate": 0.4166666666666667
+    },
+    "R": {
+     "applies": 12,
+     "passed": 3,
+     "rate": 0.25
+    }
+   },
+   "failed_trials": 9,
+   "first_failing_stage": {
+    "U": 2,
+    "K": 1,
+    "R": 6
+   }
+  }
+ },
+ "checks": {
+  "creator:K-CR-1": {
+   "stage": "K",
+   "applies": 23,
+   "passed": 20,
+   "core": true
+  },
+  "creator:K-CR-2": {
+   "stage": "K",
+   "applies": 23,
+   "passed": 20,
+   "core": true
+  },
+  "creator:K-CR-3": {
+   "stage": "K",
+   "applies": 24,
+   "passed": 24,
+   "core": true
+  },
+  "creator:K-CR-4": {
+   "stage": "K",
+   "applies": 24,
+   "passed": 11,
+   "core": true
+  },
+  "creator:R-CR-1": {
+   "stage": "R",
+   "applies": 24,
+   "passed": 17,
+   "core": true
+  },
+  "creator:R-CR-2": {
+   "stage": "R",
+   "applies": 24,
+   "passed": 17,
+   "core": true
+  },
+  "creator:R-CR-3": {
+   "stage": "R",
+   "applies": 24,
+   "passed": 11,
+   "core": true
+  },
+  "creator:U-0": {
+   "stage": "U",
+   "applies": 24,
+   "passed": 24,
+   "core": true
+  },
+  "creator:U-CR-1": {
+   "stage": "U",
+   "applies": 18,
+   "passed": 18,
+   "core": true
+  },
+  "creator:U-CR-2": {
+   "stage": "U",
+   "applies": 6,
+   "passed": 2,
+   "core": true
+  },
+  "creator:U-CR-3": {
+   "stage": "U",
+   "applies": 6,
+   "passed": 6,
+   "core": true
+  },
+  "creator:U-CR-4": {
+   "stage": "U",
+   "applies": 24,
+   "passed": 22,
+   "core": true
+  }
+ }
+}

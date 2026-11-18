@@ -1,0 +1,2630 @@
+{
+ "about": "Answers of the creator workflow tasks, fixed when the tasks were built; never shown to a model. trend: each page's true date, titles and role, figures that must not be used as current, reference and trap facts. shot: the allowed length and rates. sub: what every cue should say and which cues carry which planted problem. All content is fictional.",
+ "cases": [
+  {
+   "id": "C01",
+   "lang": "zh",
+   "tier": "L2",
+   "trend": {
+    "id": "C01",
+    "lang": "zh",
+    "dir": "cases/C01",
+    "today": "2026-11-16",
+    "max_age_days": 7,
+    "sensitive": false,
+    "cards_wanted": 2,
+    "pages": [
+     {
+      "url": "https://wlj.qingwu.example/tzgg/2026/1112-coffee-festival.html",
+      "status": 200,
+      "role": "official",
+      "file": "p1.html",
+      "published": "2026-11-12",
+      "titles": [
+       "青梧市首届咖啡生活节 11 月 21 日开幕_青梧市文化和旅游局",
+       "青梧市首届咖啡生活节 11 月 21 日开幕"
+      ]
+     },
+     {
+      "url": "https://www.qingwu-evening.example/life/2026-11-14/coffee-festival-guide.html",
+      "status": 200,
+      "role": "news",
+      "file": "p2.html",
+      "published": "2026-11-14",
+      "titles": [
+       "咖啡生活节怎么逛？这份省钱攻略请收好_青梧晚报",
+       "咖啡生活节怎么逛？这份省钱攻略请收好"
+      ]
+     },
+     {
+      "url": "https://www.qingwu-daily.example/2025/11/08/coffee-market.html",
+      "status": 200,
+      "role": "stale",
+      "file": "p3.html",
+      "published": "2025-11-08",
+      "titles": [
+       "2025 青梧咖啡市集收官 三天售出 2.1 万杯_青梧日报",
+       "2025 青梧咖啡市集收官 三天售出 2.1 万杯"
+      ]
+     }
+    ],
+    "bad_figures": [],
+    "reference_facts": [
+     {
+      "claim": "咖啡生活节 11 月 21 日至 23 日在滨江公园举办，免费入场",
+      "source_url": "https://wlj.qingwu.example/tzgg/2026/1112-coffee-festival.html",
+      "source_title": "青梧市首届咖啡生活节 11 月 21 日开幕",
+      "quote": "青梧市首届咖啡生活节将于 11 月 21 日至 23 日在滨江公园举办，活动免费入场",
+      "published": "2026-11-12"
+     },
+     {
+      "claim": "活动期间所有摊位的美式咖啡统一售价 9 元",
+      "source_url": "https://www.qingwu-evening.example/life/2026-11-14/coffee-festival-guide.html",
+      "source_title": "咖啡生活节怎么逛？这份省钱攻略请收好",
+      "quote": "所有摊位的美式咖啡统一售价 9 元",
+      "published": "2026-11-14"
+     }
+    ],
+    "trap_facts": [
+     {
+      "fact": {
+       "claim": "去年的咖啡市集有 38 家咖啡店参加",
+       "source_url": "https://www.qingwu-daily.example/2025/11/08/coffee-market.html",
+       "source_title": "2025 青梧咖啡市集收官 三天售出 2.1 万杯",
+       "quote": "共有 38 家咖啡店参加",
+       "published": "2025-11-08"
+      },
+      "expect": [
+       "stale_page"
+      ]
+     }
+    ]
+   },
+   "shot": {
+    "id": "C01",
+    "mode": "A",
+    "lang": "zh",
+    "brief": "探店预告：周末去咖啡生活节怎么逛最省钱",
+    "target": 36,
+    "tolerance": 0.1,
+    "allowed": [
+     32.4,
+     39.6
+    ],
+    "speech_rate": 4.5,
+    "read_rate": 9.0,
+    "script_file": "cases/C01/script.txt",
+    "script_units": 151,
+    "script_needs_s": 33.56,
+    "needs_share_of_max": 0.847,
+    "naive_total_s": 40,
+    "kind": "normal"
+   },
+   "sub": {
+    "id": "C01",
+    "lang": "zh",
+    "title": "咖啡生活节省钱攻略",
+    "script": "这个周末，青梧有一场免费的咖啡生活节。\n地点在滨江公园，一共有六十四家咖啡店摆摊。\n每天早上十点开门，晚上八点结束。\n最划算的是美式咖啡，全场统一九元一杯。\n自己带杯子的话，每杯还能再减两元。\n想拿纪念杯的同学要早点去。\n每天只有三百个，记得带上身份证。\n坐地铁一号线到滨江站，走五分钟就到。\n周末没有临时停车位，不要开车去。\n你最想喝哪一家？评论区告诉我。\n",
+    "cues": [
+     {
+      "sentence": 0,
+      "start": 0.5,
+      "end": 1.5,
+      "truth": "这个周末",
+      "category": "clean",
+      "srt": "这个周末",
+      "n": 1
+     },
+     {
+      "sentence": 0,
+      "start": 1.5,
+      "end": 4.75,
+      "truth": "青梧有一场免费的咖啡生活节",
+      "category": "clean",
+      "srt": "青梧有一场免费的咖啡生活节",
+      "n": 2
+     },
+     {
+      "sentence": 1,
+      "start": 5.35,
+      "end": 7.1,
+      "truth": "地点在滨江公园",
+      "category": "clean",
+      "srt": "地点在滨江公园",
+      "n": 3
+     },
+     {
+      "sentence": 1,
+      "start": 7.1,
+      "end": 10.1,
+      "truth": "一共有六十四家咖啡店摆摊",
+      "category": "asr",
+      "wrong": "六十四加",
+      "right": "六十四家",
+      "srt": "一共有六十四加咖啡店摆摊",
+      "n": 4
+     },
+     {
+      "sentence": 2,
+      "start": 10.7,
+      "end": 12.7,
+      "truth": "每天早上十点开门",
+      "category": "clean",
+      "srt": "每天早上十点开门",
+      "n": 5
+     },
+     {
+      "sentence": 2,
+      "start": 12.7,
+      "end": 15.2,
+      "truth": "晚上八点结束",
+      "category": "clean",
+      "srt": "晚上八点结束",
+      "n": 6
+     },
+     {
+      "sentence": 3,
+      "start": 14.8,
+      "end": 17.05,
+      "truth": "最划算的是美式咖啡",
+      "category": "clean",
+      "srt": "最划算的是美式咖啡",
+      "n": 7
+     },
+     {
+      "sentence": 3,
+      "start": 17.05,
+      "end": 19.05,
+      "truth": "全场统一九元一杯",
+      "category": "asr",
+      "wrong": "九元一倍",
+      "right": "九元一杯",
+      "srt": "全场统一九元一倍",
+      "n": 8
+     },
+     {
+      "sentence": 4,
+      "start": 19.65,
+      "end": 21.4,
+      "truth": "自己带杯子的话",
+      "category": "clean",
+      "srt": "自己带杯子的话",
+      "n": 9
+     },
+     {
+      "sentence": 4,
+      "start": 21.4,
+      "end": 23.4,
+      "truth": "每杯还能再减两元",
+      "category": "clean",
+      "srt": "每杯还能再减两元",
+      "n": 10
+     },
+     {
+      "sentence": 5,
+      "start": 24.0,
+      "end": 27.0,
+      "truth": "想拿纪念杯的同学要早点去",
+      "category": "clean",
+      "srt": "想拿纪念杯的同学要早点去",
+      "n": 11
+     },
+     {
+      "sentence": 6,
+      "start": 27.6,
+      "end": 29.35,
+      "truth": "每天只有三百个",
+      "category": "asr",
+      "wrong": "三白个",
+      "right": "三百个",
+      "srt": "每天只有三白个",
+      "n": 12
+     },
+     {
+      "sentence": 6,
+      "start": 29.35,
+      "end": 31.1,
+      "truth": "记得带上身份证",
+      "category": "clean",
+      "srt": "记得带上身份证",
+      "n": 13
+     },
+     {
+      "sentence": 7,
+      "start": 31.7,
+      "end": 32.6,
+      "truth": "坐地铁一号线到滨江站",
+      "category": "clean",
+      "srt": "坐地铁一号线到滨江站",
+      "n": 14
+     },
+     {
+      "sentence": 7,
+      "start": 34.2,
+      "end": 35.7,
+      "truth": "走五分钟就到",
+      "category": "clean",
+      "srt": "走五分钟就到",
+      "n": 15
+     },
+     {
+      "sentence": 8,
+      "start": 36.3,
+      "end": 38.55,
+      "truth": "周末没有临时停车位",
+      "category": "clean",
+      "srt": "周末没有临时停车位",
+      "n": 16
+     },
+     {
+      "sentence": 8,
+      "start": 38.55,
+      "end": 39.8,
+      "truth": "不要开车去",
+      "category": "asr",
+      "wrong": "要开车去",
+      "right": "不要开车去",
+      "srt": "要开车去",
+      "n": 17
+     },
+     {
+      "sentence": 9,
+      "start": 40.4,
+      "end": 42.4,
+      "truth": "你们最想去哪一家",
+      "category": "adlib",
+      "srt": "你们最想去哪一家",
+      "n": 18
+     },
+     {
+      "sentence": 9,
+      "start": 42.4,
+      "end": 44.65,
+      "truth": "可以在评论区跟我说",
+      "category": "adlib",
+      "srt": "可以在评论区跟我说",
+      "n": 19
+     }
+    ],
+    "timing": [
+     {
+      "cue": 6,
+      "kind": "overlap"
+     },
+     {
+      "cue": 14,
+      "kind": "too_fast"
+     }
+    ],
+    "skipped": [],
+    "asr": [
+     {
+      "cue": 4,
+      "wrong": "六十四加",
+      "right": "六十四家"
+     },
+     {
+      "cue": 8,
+      "wrong": "九元一倍",
+      "right": "九元一杯"
+     },
+     {
+      "cue": 12,
+      "wrong": "三白个",
+      "right": "三百个"
+     },
+     {
+      "cue": 17,
+      "wrong": "要开车去",
+      "right": "不要开车去"
+     }
+    ],
+    "adlib": [
+     {
+      "cue": 18,
+      "said": "你们最想去哪一家"
+     },
+     {
+      "cue": 19,
+      "said": "可以在评论区跟我说"
+     }
+    ],
+    "check": {
+     "match_rate": 0.9536,
+     "text_differences": 9
+    },
+    "files": {
+     "subtitles": "sub/C01/subtitles.srt",
+     "script": "sub/C01/script.txt"
+    }
+   }
+  },
+  {
+   "id": "C02",
+   "lang": "zh",
+   "tier": "L2",
+   "trend": {
+    "id": "C02",
+    "lang": "zh",
+    "dir": "cases/C02",
+    "today": "2026-11-15",
+    "max_age_days": 7,
+    "sensitive": false,
+    "cards_wanted": 2,
+    "pages": [
+     {
+      "url": "https://metro.qingwu.example/notice/2026/1110-student-fare.html",
+      "status": 200,
+      "role": "official",
+      "file": "p1.html",
+      "published": "2026-11-10",
+      "titles": [
+       "青梧地铁 12 月 1 日起实行学生票优惠 | 青梧地铁",
+       "青梧地铁 12 月 1 日起实行学生票优惠"
+      ]
+     },
+     {
+      "url": "https://bbs.wutong.example/thread-90417-1-1.html",
+      "status": 200,
+      "role": "rumour",
+      "file": "p2.html",
+      "published": "2026-11-12",
+      "titles": [
+       "地铁学生票听说是 3 折？ - 梧桐论坛",
+       "地铁学生票听说是 3 折？"
+      ]
+     },
+     {
+      "url": "https://metro.qingwu.example/notice/2026/1113-student-fare-faq.html",
+      "status": 200,
+      "role": "correction",
+      "file": "p3.html",
+      "published": "2026-11-13",
+      "titles": [
+       "关于学生票优惠的几点说明 | 青梧地铁",
+       "关于学生票优惠的几点说明"
+      ]
+     }
+    ],
+    "bad_figures": [
+     {
+      "type": "rumour",
+      "old": "(?<![\\d.])3\\s*折|三折",
+      "new": "(?<![\\d.])5\\s*折|五折|半价",
+      "old_url": "https://bbs.wutong.example/thread-90417-1-1.html",
+      "new_url": "https://metro.qingwu.example/notice/2026/1113-student-fare-faq.html",
+      "note": "the forum's 3 折 is denied by the operator: it is 5 折"
+     }
+    ],
+    "reference_facts": [
+     {
+      "claim": "12 月 1 日起，全日制在校学生凭学生卡乘地铁按 5 折计算",
+      "source_url": "https://metro.qingwu.example/notice/2026/1110-student-fare.html",
+      "source_title": "青梧地铁 12 月 1 日起实行学生票优惠",
+      "quote": "自 12 月 1 日起，全日制在校学生凭学生卡乘坐青梧地铁，票价按 5 折计算",
+      "published": "2026-11-10"
+     },
+     {
+      "claim": "12 月 31 日前办卡可免收工本费",
+      "source_url": "https://metro.qingwu.example/notice/2026/1113-student-fare-faq.html",
+      "source_title": "关于学生票优惠的几点说明",
+      "quote": "12 月 31 日前办理的学生可免收工本费",
+      "published": "2026-11-13"
+     }
+    ],
+    "trap_facts": [
+     {
+      "fact": {
+       "claim": "学生票是 3 折",
+       "source_url": "https://metro.qingwu.example/notice/2026/1110-student-fare.html",
+       "source_title": "青梧地铁 12 月 1 日起实行学生票优惠",
+       "quote": "学生票是 3 折",
+       "published": "2026-11-10"
+      },
+      "expect": [
+       "quote_not_on_page"
+      ]
+     }
+    ]
+   },
+   "shot": {
+    "id": "C02",
+    "mode": "A",
+    "lang": "zh",
+    "brief": "省钱攻略：地铁学生票怎么办、能省多少",
+    "target": 34,
+    "tolerance": 0.1,
+    "allowed": [
+     30.6,
+     37.4
+    ],
+    "speech_rate": 4.5,
+    "read_rate": 9.0,
+    "script_file": "cases/C02/script.txt",
+    "script_units": 144,
+    "script_needs_s": 32.0,
+    "needs_share_of_max": 0.856,
+    "naive_total_s": 37,
+    "kind": "normal"
+   },
+   "sub": {
+    "id": "C02",
+    "lang": "zh",
+    "title": "地铁学生票怎么办",
+    "script": "青梧地铁的学生票，十二月一号正式开始。\n全日制在校学生，坐地铁一律五折。\n网上说的三折是假的，官方已经辟谣了。\n办卡要带学生证和身份证原件。\n全线四十二个车站的客服中心都能办。\n工本费十五元，年底前办可以免掉。\n每张卡每个月最多优惠六十次。\n天天坐地铁上课的同学，一个月能省不少。\n记得不要把卡借给别人用。\n还有什么省钱办法？评论区聊聊。\n",
+    "cues": [
+     {
+      "sentence": 0,
+      "start": 0.5,
+      "end": 2.5,
+      "truth": "青梧地铁的学生票",
+      "category": "clean",
+      "srt": "青梧地铁的学生票",
+      "n": 1
+     },
+     {
+      "sentence": 0,
+      "start": 2.5,
+      "end": 4.75,
+      "truth": "十二月一号正式开始",
+      "category": "clean",
+      "srt": "十二月一号正式开始",
+      "n": 2
+     },
+     {
+      "sentence": 1,
+      "start": 5.35,
+      "end": 7.1,
+      "truth": "全日制在校学生",
+      "category": "clean",
+      "srt": "全日制在校学生",
+      "n": 3
+     },
+     {
+      "sentence": 1,
+      "start": 7.1,
+      "end": 8.85,
+      "truth": "坐地铁一律五折",
+      "category": "asr",
+      "wrong": "无折",
+      "right": "五折",
+      "srt": "坐地铁一律无折",
+      "n": 4
+     },
+     {
+      "sentence": 2,
+      "start": 9.45,
+      "end": 11.7,
+      "truth": "网上说的三折是假的",
+      "category": "clean",
+      "srt": "网上说的三折是假的",
+      "n": 5
+     },
+     {
+      "sentence": 2,
+      "start": 11.7,
+      "end": 14.45,
+      "truth": "官方已经辟谣了",
+      "category": "clean",
+      "srt": "官方已经辟谣了",
+      "n": 6
+     },
+     {
+      "sentence": 3,
+      "start": 14.05,
+      "end": 17.3,
+      "truth": "办卡要带学生证和身份证原件",
+      "category": "clean",
+      "srt": "办卡要带学生证和身份证原件",
+      "n": 7
+     },
+     {
+      "sentence": 4,
+      "start": 17.9,
+      "end": 20.9,
+      "truth": "全线四十二个车站的客服中",
+      "category": "asr",
+      "wrong": "十二个",
+      "right": "四十二个",
+      "srt": "全线十二个车站的客服中",
+      "n": 8
+     },
+     {
+      "sentence": 4,
+      "start": 20.9,
+      "end": 21.9,
+      "truth": "心都能办",
+      "category": "clean",
+      "srt": "心都能办",
+      "n": 9
+     },
+     {
+      "sentence": 5,
+      "start": 22.5,
+      "end": 24.0,
+      "truth": "工本费十五元",
+      "category": "asr",
+      "wrong": "十五原",
+      "right": "十五元",
+      "srt": "工本费十五原",
+      "n": 10
+     },
+     {
+      "sentence": 5,
+      "start": 24.0,
+      "end": 26.0,
+      "truth": "年底前办可以免掉",
+      "category": "clean",
+      "srt": "年底前办可以免掉",
+      "n": 11
+     },
+     {
+      "sentence": 6,
+      "start": 26.6,
+      "end": 27.6,
+      "truth": "每张卡每个月最多优惠六十次",
+      "category": "clean",
+      "srt": "每张卡每个月最多优惠六十次",
+      "n": 12
+     },
+     {
+      "sentence": 7,
+      "start": 30.45,
+      "end": 32.95,
+      "truth": "每天都要坐地铁的同学",
+      "category": "adlib",
+      "srt": "每天都要坐地铁的同学",
+      "n": 13
+     },
+     {
+      "sentence": 7,
+      "start": 32.95,
+      "end": 35.2,
+      "truth": "算下来真的能省很多",
+      "category": "adlib",
+      "srt": "算下来真的能省很多",
+      "n": 14
+     },
+     {
+      "sentence": 8,
+      "start": 35.8,
+      "end": 38.55,
+      "truth": "记得不要把卡借给别人用",
+      "category": "asr",
+      "wrong": "要把卡",
+      "right": "不要把卡",
+      "srt": "记得要把卡借给别人用",
+      "n": 15
+     },
+     {
+      "sentence": 9,
+      "start": 39.15,
+      "end": 41.15,
+      "truth": "还有什么省钱办法",
+      "category": "clean",
+      "srt": "还有什么省钱办法",
+      "n": 16
+     },
+     {
+      "sentence": 9,
+      "start": 41.15,
+      "end": 42.4,
+      "truth": "评论区聊聊",
+      "category": "clean",
+      "srt": "评论区聊聊",
+      "n": 17
+     }
+    ],
+    "timing": [
+     {
+      "cue": 6,
+      "kind": "overlap"
+     },
+     {
+      "cue": 12,
+      "kind": "too_fast"
+     }
+    ],
+    "skipped": [],
+    "asr": [
+     {
+      "cue": 4,
+      "wrong": "无折",
+      "right": "五折"
+     },
+     {
+      "cue": 8,
+      "wrong": "十二个",
+      "right": "四十二个"
+     },
+     {
+      "cue": 10,
+      "wrong": "十五原",
+      "right": "十五元"
+     },
+     {
+      "cue": 15,
+      "wrong": "要把卡",
+      "right": "不要把卡"
+     }
+    ],
+    "adlib": [
+     {
+      "cue": 13,
+      "said": "每天都要坐地铁的同学"
+     },
+     {
+      "cue": 14,
+      "said": "算下来真的能省很多"
+     }
+    ],
+    "check": {
+     "match_rate": 0.9167,
+     "text_differences": 9
+    },
+    "files": {
+     "subtitles": "sub/C02/subtitles.srt",
+     "script": "sub/C02/script.txt"
+    }
+   }
+  },
+  {
+   "id": "C03",
+   "lang": "zh",
+   "tier": "L3",
+   "trend": {
+    "id": "C03",
+    "lang": "zh",
+    "dir": "cases/C03",
+    "today": "2026-11-16",
+    "max_age_days": 7,
+    "sensitive": true,
+    "cards_wanted": 2,
+    "pages": [
+     {
+      "url": "https://yjj.luming.example/yjxx/2026/1115-flood-safety.html",
+      "status": 200,
+      "role": "official",
+      "file": "p1.html",
+      "published": "2026-11-15",
+      "titles": [
+       "鹿鸣县应急管理局发布山洪灾害安全提示_鹿鸣县应急管理局",
+       "鹿鸣县应急管理局发布山洪灾害安全提示"
+      ]
+     },
+     {
+      "url": "https://www.luming-news.example/2026/11/15/flash-flood.html",
+      "status": 200,
+      "role": "news",
+      "file": "p2.html",
+      "published": "2026-11-15",
+      "titles": [
+       "鹿鸣县清水溪突发山洪 已致 4 人遇难 2 人失联_鹿鸣新闻网",
+       "鹿鸣县清水溪突发山洪 已致 4 人遇难 2 人失联"
+      ]
+     },
+     {
+      "url": "https://bbs.wutong.example/thread-90533-1-1.html",
+      "status": 200,
+      "role": "rumour",
+      "file": "p3.html",
+      "published": "2026-11-15",
+      "titles": [
+       "听说清水溪那边遇难的不止这些 - 梧桐论坛",
+       "听说清水溪那边遇难的不止这些"
+      ]
+     }
+    ],
+    "bad_figures": [],
+    "reference_facts": [
+     {
+      "claim": "应急管理局提醒：不要在河滩、溪谷和低洼地带露营",
+      "source_url": "https://yjj.luming.example/yjxx/2026/1115-flood-safety.html",
+      "source_title": "鹿鸣县应急管理局发布山洪灾害安全提示",
+      "quote": "请广大群众不要在河滩、溪谷和低洼地带露营",
+      "published": "2026-11-15"
+     },
+     {
+      "claim": "遇到河水突然变浑、水位上涨，要立即向两侧高处撤离",
+      "source_url": "https://yjj.luming.example/yjxx/2026/1115-flood-safety.html",
+      "source_title": "鹿鸣县应急管理局发布山洪灾害安全提示",
+      "quote": "请立即向两侧高处撤离，不要沿河道行走",
+      "published": "2026-11-15"
+     }
+    ],
+    "trap_facts": []
+   },
+   "shot": {
+    "id": "C03",
+    "mode": "A",
+    "lang": "zh",
+    "brief": "装备测评：新手第一顶帐篷怎么选（和上面的热点无关）",
+    "target": 35,
+    "tolerance": 0.1,
+    "allowed": [
+     31.5,
+     38.5
+    ],
+    "speech_rate": 4.5,
+    "read_rate": 9.0,
+    "script_file": "cases/C03/script.txt",
+    "script_units": 157,
+    "script_needs_s": 34.89,
+    "needs_share_of_max": 0.906,
+    "naive_total_s": 40,
+    "kind": "normal"
+   },
+   "sub": {
+    "id": "C03",
+    "lang": "zh",
+    "title": "新手第一顶帐篷怎么选",
+    "script": "第一次买帐篷，记住这三个数字就够了。\n第一个是防水指数，至少要到三千毫米。\n低于这个数，下大雨的时候很容易渗水。\n第二个是重量，两个人用的不要超过三公斤。\n太重的帐篷，背上山你会后悔的。\n第三个是搭建时间，新手选十分钟以内的。\n自动速开的款式，一个人也能搭好。\n颜色尽量选亮一点的，晚上更容易找到。\n不要只看价格，便宜的杆子容易断。\n你的第一顶帐篷是哪个牌子？评论区聊聊。\n",
+    "cues": [
+     {
+      "sentence": 0,
+      "start": 0.5,
+      "end": 2.0,
+      "truth": "第一次买帐篷",
+      "category": "clean",
+      "srt": "第一次买帐篷",
+      "n": 1
+     },
+     {
+      "sentence": 0,
+      "start": 2.0,
+      "end": 4.5,
+      "truth": "记住这三个数字就够了",
+      "category": "clean",
+      "srt": "记住这三个数字就够了",
+      "n": 2
+     },
+     {
+      "sentence": 1,
+      "start": 5.1,
+      "end": 7.1,
+      "truth": "第一个是防水指数",
+      "category": "clean",
+      "srt": "第一个是防水指数",
+      "n": 3
+     },
+     {
+      "sentence": 1,
+      "start": 7.1,
+      "end": 9.1,
+      "truth": "至少要到三千毫米",
+      "category": "asr",
+      "wrong": "三千好米",
+      "right": "三千毫米",
+      "srt": "至少要到三千好米",
+      "n": 4
+     },
+     {
+      "sentence": 2,
+      "start": 9.7,
+      "end": 10.95,
+      "truth": "低于这个数",
+      "category": "clean",
+      "srt": "低于这个数",
+      "n": 5
+     },
+     {
+      "sentence": 2,
+      "start": 10.95,
+      "end": 14.7,
+      "truth": "下大雨的时候很容易渗水",
+      "category": "clean",
+      "srt": "下大雨的时候很容易渗水",
+      "n": 6
+     },
+     {
+      "sentence": 3,
+      "start": 14.3,
+      "end": 15.8,
+      "truth": "第二个是重量",
+      "category": "clean",
+      "srt": "第二个是重量",
+      "n": 7
+     },
+     {
+      "sentence": 3,
+      "start": 15.8,
+      "end": 18.8,
+      "truth": "两个人用的不要超过三公斤",
+      "category": "asr",
+      "wrong": "要超过",
+      "right": "不要超过",
+      "srt": "两个人用的要超过三公斤",
+      "n": 8
+     },
+     {
+      "sentence": 4,
+      "start": 19.4,
+      "end": 20.4,
+      "truth": "太重的话",
+      "category": "adlib",
+      "srt": "太重的话",
+      "n": 9
+     },
+     {
+      "sentence": 4,
+      "start": 20.4,
+      "end": 22.65,
+      "truth": "背上山你一定会后悔",
+      "category": "adlib",
+      "srt": "背上山你一定会后悔",
+      "n": 10
+     },
+     {
+      "sentence": 5,
+      "start": 23.25,
+      "end": 25.25,
+      "truth": "第三个是搭建时间",
+      "category": "clean",
+      "srt": "第三个是搭建时间",
+      "n": 11
+     },
+     {
+      "sentence": 5,
+      "start": 25.25,
+      "end": 27.5,
+      "truth": "新手选十分钟以内的",
+      "category": "asr",
+      "wrong": "四分钟",
+      "right": "十分钟",
+      "srt": "新手选四分钟以内的",
+      "n": 12
+     },
+     {
+      "sentence": 6,
+      "start": 28.1,
+      "end": 29.85,
+      "truth": "自动速开的款式",
+      "category": "clean",
+      "srt": "自动速开的款式",
+      "n": 13
+     },
+     {
+      "sentence": 6,
+      "start": 29.85,
+      "end": 31.6,
+      "truth": "一个人也能搭好",
+      "category": "clean",
+      "srt": "一个人也能搭好",
+      "n": 14
+     },
+     {
+      "sentence": 7,
+      "start": 32.2,
+      "end": 33.1,
+      "truth": "颜色尽量选亮一点的",
+      "category": "clean",
+      "srt": "颜色尽量选亮一点的",
+      "n": 15
+     },
+     {
+      "sentence": 7,
+      "start": 34.45,
+      "end": 36.2,
+      "truth": "晚上更容易找到",
+      "category": "clean",
+      "srt": "晚上更容易找到",
+      "n": 16
+     },
+     {
+      "sentence": 8,
+      "start": 36.8,
+      "end": 38.3,
+      "truth": "不要只看价格",
+      "category": "clean",
+      "srt": "不要只看价格",
+      "n": 17
+     },
+     {
+      "sentence": 8,
+      "start": 38.3,
+      "end": 40.3,
+      "truth": "便宜的杆子容易断",
+      "category": "asr",
+      "wrong": "竿子",
+      "right": "杆子",
+      "srt": "便宜的竿子容易断",
+      "n": 18
+     },
+     {
+      "sentence": 9,
+      "start": 40.9,
+      "end": 43.9,
+      "truth": "你的第一顶帐篷是哪个牌子",
+      "category": "clean",
+      "srt": "你的第一顶帐篷是哪个牌子",
+      "n": 19
+     },
+     {
+      "sentence": 9,
+      "start": 43.9,
+      "end": 45.15,
+      "truth": "评论区聊聊",
+      "category": "clean",
+      "srt": "评论区聊聊",
+      "n": 20
+     }
+    ],
+    "timing": [
+     {
+      "cue": 6,
+      "kind": "overlap"
+     },
+     {
+      "cue": 15,
+      "kind": "too_fast"
+     }
+    ],
+    "skipped": [],
+    "asr": [
+     {
+      "cue": 4,
+      "wrong": "三千好米",
+      "right": "三千毫米"
+     },
+     {
+      "cue": 8,
+      "wrong": "要超过",
+      "right": "不要超过"
+     },
+     {
+      "cue": 12,
+      "wrong": "四分钟",
+      "right": "十分钟"
+     },
+     {
+      "cue": 18,
+      "wrong": "竿子",
+      "right": "杆子"
+     }
+    ],
+    "adlib": [
+     {
+      "cue": 9,
+      "said": "太重的话"
+     },
+     {
+      "cue": 10,
+      "said": "背上山你一定会后悔"
+     }
+    ],
+    "check": {
+     "match_rate": 0.9554,
+     "text_differences": 7
+    },
+    "files": {
+     "subtitles": "sub/C03/subtitles.srt",
+     "script": "sub/C03/script.txt"
+    }
+   }
+  },
+  {
+   "id": "C04",
+   "lang": "zh",
+   "tier": "L3",
+   "trend": {
+    "id": "C04",
+    "lang": "zh",
+    "dir": "cases/C04",
+    "today": "2026-11-16",
+    "max_age_days": 7,
+    "sensitive": false,
+    "cards_wanted": 2,
+    "pages": [
+     {
+      "url": "https://museum.qingwu.example/news/2026/1111-night-opening.html",
+      "status": 200,
+      "role": "official",
+      "file": "p1.html",
+      "published": "2026-11-11",
+      "titles": [
+       "青梧博物馆 11 月 20 日起开放夜场 | 青梧博物馆",
+       "青梧博物馆 11 月 20 日起开放夜场"
+      ]
+     },
+     {
+      "url": "https://www.qingwu-daily.example/2026/11/13/museum-night.html",
+      "status": 200,
+      "role": "news",
+      "file": "p2.html",
+      "published": "2026-11-13",
+      "titles": [
+       "博物馆夜场来了：下班后也能看展_青梧日报",
+       "博物馆夜场来了：下班后也能看展"
+      ]
+     },
+     {
+      "url": "https://museum.qingwu.example/news/2026/1109-night-opening-trial.html",
+      "status": 200,
+      "role": "official",
+      "file": "p3.html",
+      "published": "2026-11-09",
+      "titles": [
+       "青梧博物馆夜场开放（试行）公告 | 青梧博物馆",
+       "青梧博物馆夜场开放（试行）公告"
+      ]
+     }
+    ],
+    "bad_figures": [
+     {
+      "type": "superseded",
+      "old": "(?<![\\d.])1,?000\\s*人",
+      "new": "(?<![\\d.])1,?500\\s*人",
+      "old_url": "https://museum.qingwu.example/news/2026/1109-night-opening-trial.html",
+      "new_url": "https://museum.qingwu.example/news/2026/1111-night-opening.html",
+      "note": "the trial notice's 1000 became 1500 in the formal notice"
+     }
+    ],
+    "reference_facts": [
+     {
+      "claim": "11 月 20 日起，博物馆每周五、周六延长开放至 21:00",
+      "source_url": "https://museum.qingwu.example/news/2026/1111-night-opening.html",
+      "source_title": "青梧博物馆 11 月 20 日起开放夜场",
+      "quote": "自 11 月 20 日起，青梧博物馆每周五、周六延长开放至 21:00",
+      "published": "2026-11-11"
+     },
+     {
+      "claim": "夜场每晚预约名额 1500 人",
+      "source_url": "https://museum.qingwu.example/news/2026/1111-night-opening.html",
+      "source_title": "青梧博物馆 11 月 20 日起开放夜场",
+      "quote": "夜场不另收门票，每晚预约名额 1500 人",
+      "published": "2026-11-11"
+     }
+    ],
+    "trap_facts": []
+   },
+   "shot": {
+    "id": "C04",
+    "mode": "A",
+    "lang": "zh",
+    "brief": "周末去处：下班后去博物馆夜场（时间卡得很紧）",
+    "target": 32,
+    "tolerance": 0.1,
+    "allowed": [
+     28.8,
+     35.2
+    ],
+    "speech_rate": 4.5,
+    "read_rate": 9.0,
+    "script_file": "cases/C04/script.txt",
+    "script_units": 151,
+    "script_needs_s": 33.56,
+    "needs_share_of_max": 0.953,
+    "naive_total_s": 38,
+    "kind": "tight"
+   },
+   "sub": {
+    "id": "C04",
+    "lang": "zh",
+    "title": "下班后去博物馆夜场",
+    "script": "下班以后没地方去？青梧博物馆开夜场了。\n从十一月二十号开始，每周五和周六开到晚上九点。\n夜场不用另外买票，但是要提前预约。\n每晚只有一千五百个名额，可以提前三天约。\n我最推荐二楼的青铜器展厅。\n晚上七点和八点各有一场免费讲解。\n一楼的咖啡厅开到八点四十五。\n坐地铁三号线，出站走四分钟就到。\n馆里不能用闪光灯，也不能带三脚架。\n这个周五，你想跟谁一起去？\n",
+    "cues": [
+     {
+      "sentence": 0,
+      "start": 0.5,
+      "end": 2.5,
+      "truth": "下班以后没地方去",
+      "category": "clean",
+      "srt": "下班以后没地方去",
+      "n": 1
+     },
+     {
+      "sentence": 0,
+      "start": 2.5,
+      "end": 4.75,
+      "truth": "青梧博物馆开夜场了",
+      "category": "clean",
+      "srt": "青梧博物馆开夜场了",
+      "n": 2
+     },
+     {
+      "sentence": 1,
+      "start": 5.35,
+      "end": 7.6,
+      "truth": "从十一月二十号开始",
+      "category": "asr",
+      "wrong": "二是号",
+      "right": "二十号",
+      "srt": "从十一月二是号开始",
+      "n": 3
+     },
+     {
+      "sentence": 1,
+      "start": 7.6,
+      "end": 10.6,
+      "truth": "每周五和周六开到晚上九点",
+      "category": "clean",
+      "srt": "每周五和周六开到晚上九点",
+      "n": 4
+     },
+     {
+      "sentence": 2,
+      "start": 11.2,
+      "end": 13.6,
+      "truth": "夜场不用另外买票",
+      "category": "clean",
+      "srt": "夜场不用另外买票",
+      "n": 5
+     },
+     {
+      "sentence": 2,
+      "start": 13.2,
+      "end": 14.95,
+      "truth": "但是要提前预约",
+      "category": "clean",
+      "srt": "但是要提前预约",
+      "n": 6
+     },
+     {
+      "sentence": 3,
+      "start": 15.55,
+      "end": 18.3,
+      "truth": "每晚只有一千五百个名额",
+      "category": "asr",
+      "wrong": "一千五白个",
+      "right": "一千五百个",
+      "srt": "每晚只有一千五白个名额",
+      "n": 7
+     },
+     {
+      "sentence": 3,
+      "start": 18.3,
+      "end": 20.05,
+      "truth": "可以提前三天约",
+      "category": "clean",
+      "srt": "可以提前三天约",
+      "n": 8
+     },
+     {
+      "sentence": 4,
+      "start": 20.65,
+      "end": 23.65,
+      "truth": "我最推荐二楼的青铜器展厅",
+      "category": "clean",
+      "srt": "我最推荐二楼的青铜器展厅",
+      "n": 9
+     },
+     {
+      "sentence": 6,
+      "start": 24.25,
+      "end": 25.25,
+      "truth": "一楼的咖啡厅开到八点四十五",
+      "category": "asr",
+      "wrong": "八点十五",
+      "right": "八点四十五",
+      "srt": "一楼的咖啡厅开到八点十五",
+      "n": 10
+     },
+     {
+      "sentence": 7,
+      "start": 28.1,
+      "end": 29.6,
+      "truth": "坐地铁三号线",
+      "category": "clean",
+      "srt": "坐地铁三号线",
+      "n": 11
+     },
+     {
+      "sentence": 7,
+      "start": 29.6,
+      "end": 31.6,
+      "truth": "出站走四分钟就到",
+      "category": "clean",
+      "srt": "出站走四分钟就到",
+      "n": 12
+     },
+     {
+      "sentence": 8,
+      "start": 32.2,
+      "end": 34.2,
+      "truth": "馆里不能用闪光灯",
+      "category": "asr",
+      "wrong": "能用闪光灯",
+      "right": "不能用闪光灯",
+      "srt": "馆里能用闪光灯",
+      "n": 13
+     },
+     {
+      "sentence": 8,
+      "start": 34.2,
+      "end": 35.95,
+      "truth": "也不能带三脚架",
+      "category": "clean",
+      "srt": "也不能带三脚架",
+      "n": 14
+     },
+     {
+      "sentence": 9,
+      "start": 36.55,
+      "end": 39.3,
+      "truth": "这个周五你想跟谁一起去",
+      "category": "clean",
+      "srt": "这个周五你想跟谁一起去",
+      "n": 15
+     }
+    ],
+    "timing": [
+     {
+      "cue": 5,
+      "kind": "overlap"
+     },
+     {
+      "cue": 10,
+      "kind": "too_fast"
+     }
+    ],
+    "skipped": [
+     {
+      "sentence": 5,
+      "text": "晚上七点和八点各有一场免费讲解。"
+     }
+    ],
+    "asr": [
+     {
+      "cue": 3,
+      "wrong": "二是号",
+      "right": "二十号"
+     },
+     {
+      "cue": 7,
+      "wrong": "一千五白个",
+      "right": "一千五百个"
+     },
+     {
+      "cue": 10,
+      "wrong": "八点十五",
+      "right": "八点四十五"
+     },
+     {
+      "cue": 13,
+      "wrong": "能用闪光灯",
+      "right": "不能用闪光灯"
+     }
+    ],
+    "adlib": [],
+    "check": {
+     "match_rate": 0.8742,
+     "text_differences": 5
+    },
+    "files": {
+     "subtitles": "sub/C04/subtitles.srt",
+     "script": "sub/C04/script.txt"
+    }
+   }
+  },
+  {
+   "id": "C05",
+   "lang": "en",
+   "tier": "L2",
+   "trend": {
+    "id": "C05",
+    "lang": "en",
+    "dir": "cases/C05",
+    "today": "2026-11-16",
+    "max_age_days": 7,
+    "sensitive": false,
+    "cards_wanted": 2,
+    "pages": [
+     {
+      "url": "https://www.callow-council.example/news/2026/winter-food-fair",
+      "status": 200,
+      "role": "official",
+      "file": "p1.html",
+      "published": "2026-11-11",
+      "titles": [
+       "Winter Food Fair returns to Market Square | Callow Council",
+       "Winter Food Fair returns to Market Square"
+      ]
+     },
+     {
+      "url": "https://www.callow-courier.example/2026/11/13/food-fair-stalls",
+      "status": 200,
+      "role": "news",
+      "file": "p2.html",
+      "published": "2026-11-13",
+      "titles": [
+       "Food fair traders agree a £5 meal deal - Callow Courier",
+       "Food fair traders agree a £5 meal deal"
+      ]
+     },
+     {
+      "url": "https://www.callow-courier.example/2025/11/21/food-fair-review",
+      "status": 200,
+      "role": "stale",
+      "file": "p3.html",
+      "published": "2025-11-21",
+      "titles": [
+       "Food fair drew 30 traders and record crowds - Callow Courier",
+       "Food fair drew 30 traders and record crowds"
+      ]
+     }
+    ],
+    "bad_figures": [],
+    "reference_facts": [
+     {
+      "claim": "The fair runs from Friday 20 November to Sunday 22 November in Market Square, and entry is free.",
+      "source_url": "https://www.callow-council.example/news/2026/winter-food-fair",
+      "source_title": "Winter Food Fair returns to Market Square",
+      "quote": "runs from Friday 20 November to Sunday 22 November in Market Square. Entry is free",
+      "published": "2026-11-11"
+     },
+     {
+      "claim": "Every hot-food stall will offer at least one main dish for £5.",
+      "source_url": "https://www.callow-courier.example/2026/11/13/food-fair-stalls",
+      "source_title": "Food fair traders agree a £5 meal deal",
+      "quote": "Every hot-food stall at this year's fair will offer at least one main dish for £5",
+      "published": "2026-11-13"
+     }
+    ],
+    "trap_facts": [
+     {
+      "fact": {
+       "claim": "Last year's fair had 30 traders.",
+       "source_url": "https://www.callow-courier.example/2025/11/21/food-fair-review",
+       "source_title": "Food fair drew 30 traders and record crowds",
+       "quote": "drew 30 traders and about 9,000 visitors",
+       "published": "2025-11-21"
+      },
+      "expect": [
+       "stale_page"
+      ]
+     }
+    ]
+   },
+   "shot": {
+    "id": "C05",
+    "mode": "A",
+    "lang": "en",
+    "brief": "Cheap eats: how to do the winter food fair on a small budget",
+    "target": 46,
+    "tolerance": 0.1,
+    "allowed": [
+     41.4,
+     50.6
+    ],
+    "speech_rate": 2.6,
+    "read_rate": 20.0,
+    "script_file": "cases/C05/script.txt",
+    "script_units": 108,
+    "script_needs_s": 41.54,
+    "needs_share_of_max": 0.821,
+    "naive_total_s": 45,
+    "kind": "normal"
+   },
+   "sub": {
+    "id": "C05",
+    "lang": "en",
+    "title": "Food fair on a budget",
+    "script": "The Callow Winter Food Fair is back this weekend, and entry is free.\nThere are forty-eight traders in Market Square this year.\nEvery hot food stall has at least one main dish for five pounds.\nBring your own container and you get fifty pence off.\nStalls open at eleven in the morning and close at eight.\nDo not miss the free cooking demo at two in the Corn Hall.\nIf you drive, the Mill Lane car park costs two pounds an hour.\nI would walk, because parking fills up fast.\nMy plan is three dishes for under fifteen pounds.\nTell me which stall I should try first.\n",
+    "cues": [
+     {
+      "sentence": 0,
+      "start": 0.5,
+      "end": 2.81,
+      "truth": "The Callow Winter Food Fair is",
+      "category": "clean",
+      "srt": "The Callow Winter Food Fair is",
+      "n": 1
+     },
+     {
+      "sentence": 0,
+      "start": 2.81,
+      "end": 3.96,
+      "truth": "back this weekend",
+      "category": "clean",
+      "srt": "back this weekend",
+      "n": 2
+     },
+     {
+      "sentence": 0,
+      "start": 3.96,
+      "end": 5.5,
+      "truth": "and entry is free",
+      "category": "clean",
+      "srt": "and entry is free",
+      "n": 3
+     },
+     {
+      "sentence": 1,
+      "start": 6.1,
+      "end": 8.02,
+      "truth": "There are forty-eight traders in",
+      "category": "asr",
+      "wrong": "fourteen",
+      "right": "forty-eight",
+      "srt": "There are fourteen traders in",
+      "n": 4
+     },
+     {
+      "sentence": 1,
+      "start": 8.02,
+      "end": 9.56,
+      "truth": "Market Square this year",
+      "category": "clean",
+      "srt": "Market Square this year",
+      "n": 5
+     },
+     {
+      "sentence": 2,
+      "start": 10.16,
+      "end": 12.47,
+      "truth": "Every hot food stall has at",
+      "category": "clean",
+      "srt": "Every hot food stall has at",
+      "n": 6
+     },
+     {
+      "sentence": 2,
+      "start": 12.47,
+      "end": 16.16,
+      "truth": "least one main dish for five pounds",
+      "category": "clean",
+      "srt": "least one main dish for five pounds",
+      "n": 7
+     },
+     {
+      "sentence": 3,
+      "start": 15.76,
+      "end": 18.07,
+      "truth": "Bring your own container and you",
+      "category": "clean",
+      "srt": "Bring your own container and you",
+      "n": 8
+     },
+     {
+      "sentence": 3,
+      "start": 18.07,
+      "end": 19.61,
+      "truth": "get fifty pence off",
+      "category": "asr",
+      "wrong": "fifteen pence",
+      "right": "fifty pence",
+      "srt": "get fifteen pence off",
+      "n": 9
+     },
+     {
+      "sentence": 4,
+      "start": 20.21,
+      "end": 22.52,
+      "truth": "Stalls open at eleven in the",
+      "category": "clean",
+      "srt": "Stalls open at eleven in the",
+      "n": 10
+     },
+     {
+      "sentence": 4,
+      "start": 22.52,
+      "end": 24.44,
+      "truth": "morning and close at eight",
+      "category": "clean",
+      "srt": "morning and close at eight",
+      "n": 11
+     },
+     {
+      "sentence": 5,
+      "start": 25.04,
+      "end": 27.35,
+      "truth": "Do not miss the free cooking",
+      "category": "asr",
+      "wrong": "Do miss",
+      "right": "Do not miss",
+      "srt": "Do miss the free cooking",
+      "n": 12
+     },
+     {
+      "sentence": 5,
+      "start": 27.35,
+      "end": 30.04,
+      "truth": "demo at two in the Corn Hall",
+      "category": "clean",
+      "srt": "demo at two in the Corn Hall",
+      "n": 13
+     },
+     {
+      "sentence": 6,
+      "start": 30.64,
+      "end": 31.79,
+      "truth": "If you drive",
+      "category": "clean",
+      "srt": "If you drive",
+      "n": 14
+     },
+     {
+      "sentence": 6,
+      "start": 31.79,
+      "end": 33.021,
+      "truth": "the Mill Lane car park costs two",
+      "category": "asr",
+      "wrong": "Mill Lame",
+      "right": "Mill Lane",
+      "srt": "the Mill Lame car park costs two",
+      "n": 15
+     },
+     {
+      "sentence": 6,
+      "start": 34.48,
+      "end": 35.63,
+      "truth": "pounds an hour",
+      "category": "clean",
+      "srt": "pounds an hour",
+      "n": 16
+     },
+     {
+      "sentence": 7,
+      "start": 36.23,
+      "end": 38.15,
+      "truth": "Honestly I would just walk",
+      "category": "adlib",
+      "srt": "Honestly I would just walk",
+      "n": 17
+     },
+     {
+      "sentence": 7,
+      "start": 38.15,
+      "end": 40.46,
+      "truth": "parking there fills up really fast",
+      "category": "adlib",
+      "srt": "parking there fills up really fast",
+      "n": 18
+     },
+     {
+      "sentence": 8,
+      "start": 41.06,
+      "end": 43.37,
+      "truth": "My plan is three dishes for",
+      "category": "clean",
+      "srt": "My plan is three dishes for",
+      "n": 19
+     },
+     {
+      "sentence": 8,
+      "start": 43.37,
+      "end": 44.52,
+      "truth": "under fifteen pounds",
+      "category": "clean",
+      "srt": "under fifteen pounds",
+      "n": 20
+     },
+     {
+      "sentence": 9,
+      "start": 45.12,
+      "end": 48.2,
+      "truth": "Tell me which stall I should try first",
+      "category": "clean",
+      "srt": "Tell me which stall I should try first",
+      "n": 21
+     }
+    ],
+    "timing": [
+     {
+      "cue": 7,
+      "kind": "overlap"
+     },
+     {
+      "cue": 15,
+      "kind": "too_fast"
+     }
+    ],
+    "skipped": [],
+    "asr": [
+     {
+      "cue": 4,
+      "wrong": "fourteen",
+      "right": "forty-eight"
+     },
+     {
+      "cue": 9,
+      "wrong": "fifteen pence",
+      "right": "fifty pence"
+     },
+     {
+      "cue": 12,
+      "wrong": "Do miss",
+      "right": "Do not miss"
+     },
+     {
+      "cue": 15,
+      "wrong": "Mill Lame",
+      "right": "Mill Lane"
+     }
+    ],
+    "adlib": [
+     {
+      "cue": 17,
+      "said": "Honestly I would just walk"
+     },
+     {
+      "cue": 18,
+      "said": "parking there fills up really fast"
+     }
+    ],
+    "check": {
+     "match_rate": 0.9444,
+     "text_differences": 9
+    },
+    "files": {
+     "subtitles": "sub/C05/subtitles.srt",
+     "script": "sub/C05/script.txt"
+    }
+   }
+  },
+  {
+   "id": "C06",
+   "lang": "en",
+   "tier": "L2",
+   "trend": {
+    "id": "C06",
+    "lang": "en",
+    "dir": "cases/C06",
+    "today": "2026-11-15",
+    "max_age_days": 7,
+    "sensitive": false,
+    "cards_wanted": 2,
+    "pages": [
+     {
+      "url": "https://www.eastbrook-transit.example/news/n7-night-bus",
+      "status": 200,
+      "role": "official",
+      "file": "p1.html",
+      "published": "2026-11-09",
+      "titles": [
+       "N7 night bus starts on 23 November | Eastbrook Transit",
+       "N7 night bus starts on 23 November"
+      ]
+     },
+     {
+      "url": "https://forum.eastbrook-students.example/t/41877",
+      "status": 200,
+      "role": "rumour",
+      "file": "p2.html",
+      "published": "2026-11-12",
+      "titles": [
+       "N7 is going to be free for students? - Eastbrook Students Forum",
+       "N7 is going to be free for students?"
+      ]
+     },
+     {
+      "url": "https://www.eastbrook-transit.example/news/n7-timetable-update",
+      "status": 200,
+      "role": "correction",
+      "file": "p3.html",
+      "published": "2026-11-13",
+      "titles": [
+       "N7 night bus: timetable update | Eastbrook Transit",
+       "N7 night bus: timetable update"
+      ]
+     }
+    ],
+    "bad_figures": [
+     {
+      "type": "superseded",
+      "old": "every\\s+30\\s+minutes|every\\s+half\\s+hour",
+      "new": "every\\s+20\\s+minutes",
+      "old_url": "https://www.eastbrook-transit.example/news/n7-night-bus",
+      "new_url": "https://www.eastbrook-transit.example/news/n7-timetable-update",
+      "note": "the frequency became every 20 minutes"
+     },
+     {
+      "type": "rumour",
+      "old": "free for students",
+      "new": "not free|isn.t free|1\\.10",
+      "old_url": "https://forum.eastbrook-students.example/t/41877",
+      "new_url": "https://www.eastbrook-transit.example/news/n7-timetable-update",
+      "note": "the forum's free travel is denied by the operator"
+     }
+    ],
+    "reference_facts": [
+     {
+      "claim": "The N7 night bus starts on Monday 23 November between University Campus and Central Station.",
+      "source_url": "https://www.eastbrook-transit.example/news/n7-night-bus",
+      "source_title": "N7 night bus starts on 23 November",
+      "quote": "The new N7 night bus will run between University Campus and Central Station from Monday 23 November",
+      "published": "2026-11-09"
+     },
+     {
+      "claim": "N7 buses will run every 20 minutes.",
+      "source_url": "https://www.eastbrook-transit.example/news/n7-timetable-update",
+      "source_title": "N7 night bus: timetable update",
+      "quote": "N7 buses will run every 20 minutes",
+      "published": "2026-11-13"
+     }
+    ],
+    "trap_facts": []
+   },
+   "shot": {
+    "id": "C06",
+    "mode": "A",
+    "lang": "en",
+    "brief": "Student tip: getting home on the new N7 night bus",
+    "target": 38,
+    "tolerance": 0.1,
+    "allowed": [
+     34.2,
+     41.8
+    ],
+    "speech_rate": 2.6,
+    "read_rate": 20.0,
+    "script_file": "cases/C06/script.txt",
+    "script_units": 97,
+    "script_needs_s": 37.31,
+    "needs_share_of_max": 0.893,
+    "naive_total_s": 43,
+    "kind": "normal"
+   },
+   "sub": {
+    "id": "C06",
+    "lang": "en",
+    "title": "The new N7 night bus",
+    "script": "Eastbrook finally has a night bus from campus to the city centre.\nIt starts on the twenty-third of this month.\nIt runs every twenty minutes from eleven at night until four.\nA single ticket costs two pounds twenty.\nWith a valid student card you pay one pound ten.\nThe rumour that it is free for students is not true.\nThe last bus leaves Central Station at four in the morning.\nThat beats a twelve pound taxi after a late shift.\nDo not forget to carry your student card.\nWould you use it? Let me know below.\n",
+    "cues": [
+     {
+      "sentence": 0,
+      "start": 0.5,
+      "end": 2.42,
+      "truth": "Eastbrook finally has a night",
+      "category": "clean",
+      "srt": "Eastbrook finally has a night",
+      "n": 1
+     },
+     {
+      "sentence": 0,
+      "start": 2.42,
+      "end": 5.11,
+      "truth": "bus from campus to the city centre",
+      "category": "clean",
+      "srt": "bus from campus to the city centre",
+      "n": 2
+     },
+     {
+      "sentence": 1,
+      "start": 5.71,
+      "end": 8.02,
+      "truth": "It starts on the twenty-third of",
+      "category": "asr",
+      "wrong": "twenty-first",
+      "right": "twenty-third",
+      "srt": "It starts on the twenty-first of",
+      "n": 3
+     },
+     {
+      "sentence": 1,
+      "start": 8.02,
+      "end": 9.02,
+      "truth": "this month",
+      "category": "clean",
+      "srt": "this month",
+      "n": 4
+     },
+     {
+      "sentence": 2,
+      "start": 9.62,
+      "end": 11.54,
+      "truth": "It runs every twenty minutes",
+      "category": "clean",
+      "srt": "It runs every twenty minutes",
+      "n": 5
+     },
+     {
+      "sentence": 2,
+      "start": 11.54,
+      "end": 13.85,
+      "truth": "from eleven at night until four",
+      "category": "clean",
+      "srt": "from eleven at night until four",
+      "n": 6
+     },
+     {
+      "sentence": 3,
+      "start": 14.45,
+      "end": 18.14,
+      "truth": "A single ticket costs two pounds twenty",
+      "category": "clean",
+      "srt": "A single ticket costs two pounds twenty",
+      "n": 7
+     },
+     {
+      "sentence": 4,
+      "start": 17.74,
+      "end": 20.05,
+      "truth": "With a valid student card you",
+      "category": "clean",
+      "srt": "With a valid student card you",
+      "n": 8
+     },
+     {
+      "sentence": 4,
+      "start": 20.05,
+      "end": 21.59,
+      "truth": "pay one pound ten",
+      "category": "asr",
+      "wrong": "tin",
+      "right": "ten",
+      "srt": "pay one pound tin",
+      "n": 9
+     },
+     {
+      "sentence": 5,
+      "start": 22.19,
+      "end": 24.88,
+      "truth": "The rumour that it is free for",
+      "category": "clean",
+      "srt": "The rumour that it is free for",
+      "n": 10
+     },
+     {
+      "sentence": 5,
+      "start": 24.88,
+      "end": 26.42,
+      "truth": "students is not true",
+      "category": "asr",
+      "wrong": "is true",
+      "right": "is not true",
+      "srt": "students is true",
+      "n": 11
+     },
+     {
+      "sentence": 6,
+      "start": 27.02,
+      "end": 28.94,
+      "truth": "The last bus leaves Central",
+      "category": "clean",
+      "srt": "The last bus leaves Central",
+      "n": 12
+     },
+     {
+      "sentence": 6,
+      "start": 28.94,
+      "end": 30.094,
+      "truth": "Station at four in the morning",
+      "category": "asr",
+      "wrong": "Nation",
+      "right": "Station",
+      "srt": "Nation at four in the morning",
+      "n": 13
+     },
+     {
+      "sentence": 7,
+      "start": 31.85,
+      "end": 34.16,
+      "truth": "That is so much better than",
+      "category": "adlib",
+      "srt": "That is so much better than",
+      "n": 14
+     },
+     {
+      "sentence": 7,
+      "start": 34.16,
+      "end": 36.47,
+      "truth": "paying twelve pounds for a taxi",
+      "category": "adlib",
+      "srt": "paying twelve pounds for a taxi",
+      "n": 15
+     },
+     {
+      "sentence": 8,
+      "start": 37.07,
+      "end": 40.15,
+      "truth": "Do not forget to carry your student card",
+      "category": "clean",
+      "srt": "Do not forget to carry your student card",
+      "n": 16
+     },
+     {
+      "sentence": 9,
+      "start": 40.75,
+      "end": 42.29,
+      "truth": "Would you use it",
+      "category": "clean",
+      "srt": "Would you use it",
+      "n": 17
+     },
+     {
+      "sentence": 9,
+      "start": 42.29,
+      "end": 43.83,
+      "truth": "Let me know below",
+      "category": "clean",
+      "srt": "Let me know below",
+      "n": 18
+     }
+    ],
+    "timing": [
+     {
+      "cue": 7,
+      "kind": "overlap"
+     },
+     {
+      "cue": 13,
+      "kind": "too_fast"
+     }
+    ],
+    "skipped": [],
+    "asr": [
+     {
+      "cue": 3,
+      "wrong": "twenty-first",
+      "right": "twenty-third"
+     },
+     {
+      "cue": 9,
+      "wrong": "tin",
+      "right": "ten"
+     },
+     {
+      "cue": 11,
+      "wrong": "is true",
+      "right": "is not true"
+     },
+     {
+      "cue": 13,
+      "wrong": "Nation",
+      "right": "Station"
+     }
+    ],
+    "adlib": [
+     {
+      "cue": 14,
+      "said": "That is so much better than"
+     },
+     {
+      "cue": 15,
+      "said": "paying twelve pounds for a taxi"
+     }
+    ],
+    "check": {
+     "match_rate": 0.8866,
+     "text_differences": 7
+    },
+    "files": {
+     "subtitles": "sub/C06/subtitles.srt",
+     "script": "sub/C06/script.txt"
+    }
+   }
+  },
+  {
+   "id": "C07",
+   "lang": "en",
+   "tier": "L3",
+   "trend": {
+    "id": "C07",
+    "lang": "en",
+    "dir": "cases/C07",
+    "today": "2026-11-16",
+    "max_age_days": 7,
+    "sensitive": true,
+    "cards_wanted": 2,
+    "pages": [
+     {
+      "url": "https://www.eastbrook-fire.example/incidents/2026/mill-road-statement",
+      "status": 200,
+      "role": "official",
+      "file": "p1.html",
+      "published": "2026-11-15",
+      "titles": [
+       "Statement on the Mill Road fire | Eastbrook Fire and Rescue Service",
+       "Statement on the Mill Road fire"
+      ]
+     },
+     {
+      "url": "https://www.eastbrook-herald.example/2026/11/15/mill-road-fire",
+      "status": 200,
+      "role": "news",
+      "file": "p2.html",
+      "published": "2026-11-15",
+      "titles": [
+       "Three dead and five injured in Mill Road flat fire - Eastbrook Herald",
+       "Three dead and five injured in Mill Road flat fire"
+      ]
+     },
+     {
+      "url": "https://forum.eastbrook-students.example/t/41902",
+      "status": 200,
+      "role": "rumour",
+      "file": "p3.html",
+      "published": "2026-11-15",
+      "titles": [
+       "Mill Road fire was a cheap e-bike charger? - Eastbrook Students Forum",
+       "Mill Road fire was a cheap e-bike charger?"
+      ]
+     }
+    ],
+    "bad_figures": [],
+    "reference_facts": [
+     {
+      "claim": "The fire service asks residents to test their smoke alarms once a week and keep escape routes clear.",
+      "source_url": "https://www.eastbrook-fire.example/incidents/2026/mill-road-statement",
+      "source_title": "Statement on the Mill Road fire",
+      "quote": "We ask residents to test their smoke alarms once a week and to keep escape routes clear",
+      "published": "2026-11-15"
+     },
+     {
+      "claim": "Free home fire safety visits can be booked through the fire service's website.",
+      "source_url": "https://www.eastbrook-fire.example/incidents/2026/mill-road-statement",
+      "source_title": "Statement on the Mill Road fire",
+      "quote": "Free home fire safety visits can be booked through our website",
+      "published": "2026-11-15"
+     }
+    ],
+    "trap_facts": []
+   },
+   "shot": {
+    "id": "C07",
+    "mode": "A",
+    "lang": "en",
+    "brief": "Gadget review: a desk lamp for small flats (not related to the trend above)",
+    "target": 40,
+    "tolerance": 0.1,
+    "allowed": [
+     36.0,
+     44.0
+    ],
+    "speech_rate": 2.6,
+    "read_rate": 20.0,
+    "script_file": "cases/C07/script.txt",
+    "script_units": 99,
+    "script_needs_s": 38.08,
+    "needs_share_of_max": 0.865,
+    "naive_total_s": 42,
+    "kind": "normal"
+   },
+   "sub": {
+    "id": "C07",
+    "lang": "en",
+    "title": "A desk lamp for small flats",
+    "script": "I have used the Halden desk lamp for thirty days.\nIt costs forty-five pounds, which is not cheap.\nThe arm folds flat, so it fits on a narrow shelf.\nYou get five brightness levels and three colour modes.\nThe warm mode is easy on the eyes at night.\nIt charges by cable and lasts about eight hours.\nThe base is heavy, so it does not tip over.\nMy one complaint is the touch button, which is too sensitive.\nDo not buy it if you need a lamp for a big desk.\nShould I review the cheaper one next?\n",
+    "cues": [
+     {
+      "sentence": 0,
+      "start": 0.5,
+      "end": 3.19,
+      "truth": "I have used the Halden desk lamp",
+      "category": "clean",
+      "srt": "I have used the Halden desk lamp",
+      "n": 1
+     },
+     {
+      "sentence": 0,
+      "start": 3.19,
+      "end": 4.34,
+      "truth": "for thirty days",
+      "category": "clean",
+      "srt": "for thirty days",
+      "n": 2
+     },
+     {
+      "sentence": 1,
+      "start": 4.94,
+      "end": 6.48,
+      "truth": "It costs forty-five pounds",
+      "category": "asr",
+      "wrong": "forty-nine pounds",
+      "right": "forty-five pounds",
+      "srt": "It costs forty-nine pounds",
+      "n": 3
+     },
+     {
+      "sentence": 1,
+      "start": 6.48,
+      "end": 8.02,
+      "truth": "which is not cheap",
+      "category": "clean",
+      "srt": "which is not cheap",
+      "n": 4
+     },
+     {
+      "sentence": 2,
+      "start": 8.62,
+      "end": 10.56,
+      "truth": "The arm folds flat",
+      "category": "clean",
+      "srt": "The arm folds flat",
+      "n": 5
+     },
+     {
+      "sentence": 2,
+      "start": 10.16,
+      "end": 12.85,
+      "truth": "so it fits on a narrow shelf",
+      "category": "clean",
+      "srt": "so it fits on a narrow shelf",
+      "n": 6
+     },
+     {
+      "sentence": 3,
+      "start": 13.45,
+      "end": 15.37,
+      "truth": "You get five brightness levels",
+      "category": "asr",
+      "wrong": "fine brightness",
+      "right": "five brightness",
+      "srt": "You get fine brightness levels",
+      "n": 7
+     },
+     {
+      "sentence": 3,
+      "start": 15.37,
+      "end": 16.91,
+      "truth": "and three colour modes",
+      "category": "clean",
+      "srt": "and three colour modes",
+      "n": 8
+     },
+     {
+      "sentence": 4,
+      "start": 17.51,
+      "end": 20.59,
+      "truth": "I really like the warm mode at night",
+      "category": "adlib",
+      "srt": "I really like the warm mode at night",
+      "n": 9
+     },
+     {
+      "sentence": 4,
+      "start": 20.59,
+      "end": 23.28,
+      "truth": "it is so easy on the eyes",
+      "category": "adlib",
+      "srt": "it is so easy on the eyes",
+      "n": 10
+     },
+     {
+      "sentence": 5,
+      "start": 23.88,
+      "end": 26.19,
+      "truth": "It charges by cable and lasts",
+      "category": "clean",
+      "srt": "It charges by cable and lasts",
+      "n": 11
+     },
+     {
+      "sentence": 5,
+      "start": 26.19,
+      "end": 27.34,
+      "truth": "about eight hours",
+      "category": "clean",
+      "srt": "about eight hours",
+      "n": 12
+     },
+     {
+      "sentence": 6,
+      "start": 27.94,
+      "end": 29.48,
+      "truth": "The base is heavy",
+      "category": "clean",
+      "srt": "The base is heavy",
+      "n": 13
+     },
+     {
+      "sentence": 6,
+      "start": 29.48,
+      "end": 30.38,
+      "truth": "so it does not tip over",
+      "category": "asr",
+      "wrong": "does tip",
+      "right": "does not tip",
+      "srt": "so it does tip over",
+      "n": 14
+     },
+     {
+      "sentence": 7,
+      "start": 32.39,
+      "end": 35.08,
+      "truth": "My one complaint is the touch button",
+      "category": "clean",
+      "srt": "My one complaint is the touch button",
+      "n": 15
+     },
+     {
+      "sentence": 7,
+      "start": 35.08,
+      "end": 36.62,
+      "truth": "which is too sensitive",
+      "category": "clean",
+      "srt": "which is too sensitive",
+      "n": 16
+     },
+     {
+      "sentence": 8,
+      "start": 37.22,
+      "end": 40.68,
+      "truth": "Do not buy it if you need a lamp",
+      "category": "asr",
+      "wrong": "Do buy",
+      "right": "Do not buy",
+      "srt": "Do buy it if you need a lamp",
+      "n": 17
+     },
+     {
+      "sentence": 8,
+      "start": 40.68,
+      "end": 42.22,
+      "truth": "for a big desk",
+      "category": "clean",
+      "srt": "for a big desk",
+      "n": 18
+     },
+     {
+      "sentence": 9,
+      "start": 42.82,
+      "end": 45.51,
+      "truth": "Should I review the cheaper one next",
+      "category": "clean",
+      "srt": "Should I review the cheaper one next",
+      "n": 19
+     }
+    ],
+    "timing": [
+     {
+      "cue": 5,
+      "kind": "overlap"
+     },
+     {
+      "cue": 14,
+      "kind": "too_fast"
+     }
+    ],
+    "skipped": [],
+    "asr": [
+     {
+      "cue": 3,
+      "wrong": "forty-nine pounds",
+      "right": "forty-five pounds"
+     },
+     {
+      "cue": 7,
+      "wrong": "fine brightness",
+      "right": "five brightness"
+     },
+     {
+      "cue": 14,
+      "wrong": "does tip",
+      "right": "does not tip"
+     },
+     {
+      "cue": 17,
+      "wrong": "Do buy",
+      "right": "Do not buy"
+     }
+    ],
+    "adlib": [
+     {
+      "cue": 9,
+      "said": "I really like the warm mode at night"
+     },
+     {
+      "cue": 10,
+      "said": "it is so easy on the eyes"
+     }
+    ],
+    "check": {
+     "match_rate": 0.9394,
+     "text_differences": 8
+    },
+    "files": {
+     "subtitles": "sub/C07/subtitles.srt",
+     "script": "sub/C07/script.txt"
+    }
+   }
+  },
+  {
+   "id": "C08",
+   "lang": "en",
+   "tier": "L3",
+   "trend": {
+    "id": "C08",
+    "lang": "en",
+    "dir": "cases/C08",
+    "today": "2026-11-16",
+    "max_age_days": 7,
+    "sensitive": false,
+    "cards_wanted": 2,
+    "pages": [
+     {
+      "url": "https://library.callow.example/news/extended-hours",
+      "status": 200,
+      "role": "official",
+      "file": "p1.html",
+      "published": "2026-11-10",
+      "titles": [
+       "Central Library to open until midnight for exam season | Callow Libraries",
+       "Central Library to open until midnight for exam season"
+      ]
+     },
+     {
+      "url": "https://www.callow-courier.example/2026/11/12/library-late-opening",
+      "status": 200,
+      "role": "news",
+      "file": "p2.html",
+      "published": "2026-11-12",
+      "titles": [
+       "Library late opening: what students need to know - Callow Courier",
+       "Library late opening: what students need to know"
+      ]
+     },
+     {
+      "url": "https://library.callow.example/news/study-rooms-2025",
+      "status": 200,
+      "role": "stale",
+      "file": "p3.html",
+      "published": "2025-09-01",
+      "titles": [
+       "Study rooms: how to book | Callow Libraries",
+       "Study rooms: how to book"
+      ]
+     }
+    ],
+    "bad_figures": [],
+    "reference_facts": [
+     {
+      "claim": "From Monday 23 November to Friday 18 December the library stays open until midnight on weekdays.",
+      "source_url": "https://library.callow.example/news/extended-hours",
+      "source_title": "Central Library to open until midnight for exam season",
+      "quote": "From Monday 23 November to Friday 18 December, Callow Central Library will stay open until midnight on weekdays",
+      "published": "2026-11-10"
+     },
+     {
+      "claim": "The second floor will be a silent study area with 120 seats.",
+      "source_url": "https://library.callow.example/news/extended-hours",
+      "source_title": "Central Library to open until midnight for exam season",
+      "quote": "The second floor will be a silent study area with 120 seats",
+      "published": "2026-11-10"
+     }
+    ],
+    "trap_facts": [
+     {
+      "fact": {
+       "claim": "Study rooms can be booked for 1 hour at a time.",
+       "source_url": "https://library.callow.example/news/study-rooms-2025",
+       "source_title": "Study rooms: how to book",
+       "quote": "can be booked for 1 hour at a time",
+       "published": "2025-09-01"
+      },
+      "expect": [
+       "stale_page"
+      ]
+     }
+    ]
+   },
+   "shot": {
+    "id": "C08",
+    "mode": "A",
+    "lang": "en",
+    "brief": "Study routine: a late-night library session (the timing is tight)",
+    "target": 33,
+    "tolerance": 0.1,
+    "allowed": [
+     29.7,
+     36.3
+    ],
+    "speech_rate": 2.6,
+    "read_rate": 20.0,
+    "script_file": "cases/C08/script.txt",
+    "script_units": 92,
+    "script_needs_s": 35.38,
+    "needs_share_of_max": 0.975,
+    "naive_total_s": 40,
+    "kind": "tight"
+   },
+   "sub": {
+    "id": "C08",
+    "lang": "en",
+    "title": "A late-night library session",
+    "script": "Exam season is here, and the library is open until midnight.\nIt all starts on the twenty-third of this month.\nGo to the second floor for the silent study area.\nThere are one hundred and twenty seats up there.\nGroups can book a study room for two hours.\nThe café serves hot drinks until ten at night.\nFill your bottle for free on any floor.\nThe last number four bus leaves at quarter past twelve.\nDo not stay past midnight, because the doors lock.\nSave this for your next study night.\n",
+    "cues": [
+     {
+      "sentence": 0,
+      "start": 0.5,
+      "end": 2.04,
+      "truth": "Exam season is here",
+      "category": "clean",
+      "srt": "Exam season is here",
+      "n": 1
+     },
+     {
+      "sentence": 0,
+      "start": 2.04,
+      "end": 4.73,
+      "truth": "and the library is open until midnight",
+      "category": "clean",
+      "srt": "and the library is open until midnight",
+      "n": 2
+     },
+     {
+      "sentence": 1,
+      "start": 5.33,
+      "end": 7.25,
+      "truth": "It all starts on the",
+      "category": "clean",
+      "srt": "It all starts on the",
+      "n": 3
+     },
+     {
+      "sentence": 1,
+      "start": 7.25,
+      "end": 8.79,
+      "truth": "twenty-third of this month",
+      "category": "asr",
+      "wrong": "twenty-first",
+      "right": "twenty-third",
+      "srt": "twenty-first of this month",
+      "n": 4
+     },
+     {
+      "sentence": 2,
+      "start": 9.39,
+      "end": 12.48,
+      "truth": "Go to the second floor for the",
+      "category": "clean",
+      "srt": "Go to the second floor for the",
+      "n": 5
+     },
+     {
+      "sentence": 2,
+      "start": 12.08,
+      "end": 13.23,
+      "truth": "silent study area",
+      "category": "clean",
+      "srt": "silent study area",
+      "n": 6
+     },
+     {
+      "sentence": 3,
+      "start": 13.83,
+      "end": 16.14,
+      "truth": "There are one hundred and twenty",
+      "category": "asr",
+      "wrong": "twelve",
+      "right": "twenty",
+      "srt": "There are one hundred and twelve",
+      "n": 7
+     },
+     {
+      "sentence": 3,
+      "start": 16.14,
+      "end": 17.29,
+      "truth": "seats up there",
+      "category": "clean",
+      "srt": "seats up there",
+      "n": 8
+     },
+     {
+      "sentence": 4,
+      "start": 17.89,
+      "end": 20.58,
+      "truth": "Groups can book a study room for",
+      "category": "clean",
+      "srt": "Groups can book a study room for",
+      "n": 9
+     },
+     {
+      "sentence": 4,
+      "start": 20.58,
+      "end": 21.58,
+      "truth": "two hours",
+      "category": "asr",
+      "wrong": "too hours",
+      "right": "two hours",
+      "srt": "too hours",
+      "n": 10
+     },
+     {
+      "sentence": 5,
+      "start": 22.18,
+      "end": 23.411,
+      "truth": "The café serves hot drinks until",
+      "category": "clean",
+      "srt": "The café serves hot drinks until",
+      "n": 11
+     },
+     {
+      "sentence": 5,
+      "start": 24.49,
+      "end": 25.64,
+      "truth": "ten at night",
+      "category": "clean",
+      "srt": "ten at night",
+      "n": 12
+     },
+     {
+      "sentence": 7,
+      "start": 26.24,
+      "end": 28.55,
+      "truth": "The last number four bus leaves",
+      "category": "clean",
+      "srt": "The last number four bus leaves",
+      "n": 13
+     },
+     {
+      "sentence": 7,
+      "start": 28.55,
+      "end": 30.09,
+      "truth": "at quarter past twelve",
+      "category": "clean",
+      "srt": "at quarter past twelve",
+      "n": 14
+     },
+     {
+      "sentence": 8,
+      "start": 30.69,
+      "end": 32.61,
+      "truth": "Do not stay past midnight",
+      "category": "asr",
+      "wrong": "Do stay",
+      "right": "Do not stay",
+      "srt": "Do stay past midnight",
+      "n": 15
+     },
+     {
+      "sentence": 8,
+      "start": 32.61,
+      "end": 34.15,
+      "truth": "because the doors lock",
+      "category": "clean",
+      "srt": "because the doors lock",
+      "n": 16
+     },
+     {
+      "sentence": 9,
+      "start": 34.75,
+      "end": 37.44,
+      "truth": "Save this for your next study night",
+      "category": "clean",
+      "srt": "Save this for your next study night",
+      "n": 17
+     }
+    ],
+    "timing": [
+     {
+      "cue": 5,
+      "kind": "overlap"
+     },
+     {
+      "cue": 11,
+      "kind": "too_fast"
+     }
+    ],
+    "skipped": [
+     {
+      "sentence": 6,
+      "text": "Fill your bottle for free on any floor."
+     }
+    ],
+    "asr": [
+     {
+      "cue": 4,
+      "wrong": "twenty-first",
+      "right": "twenty-third"
+     },
+     {
+      "cue": 7,
+      "wrong": "twelve",
+      "right": "twenty"
+     },
+     {
+      "cue": 10,
+      "wrong": "too hours",
+      "right": "two hours"
+     },
+     {
+      "cue": 15,
+      "wrong": "Do stay",
+      "right": "Do not stay"
+     }
+    ],
+    "adlib": [],
+    "check": {
+     "match_rate": 0.8696,
+     "text_differences": 5
+    },
+    "files": {
+     "subtitles": "sub/C08/subtitles.srt",
+     "script": "sub/C08/script.txt"
+    }
+   }
+  }
+ ]
+}

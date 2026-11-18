@@ -1,0 +1,37 @@
+{
+ "zh-L2-03": {
+  "text": "山屿小青柑普洱\n一盒 20 颗 ¥128\n山屿\n常喝可降血压、防治糖尿病",
+  "seconds": 3.983,
+  "cer": 0.1429
+ },
+ "zh-L2-04": {
+  "text": "岚川小麦啤酒\n330ml 5%vol",
+  "seconds": 3.293,
+  "cer": 0.0
+ },
+ "zh-L3-03": {
+  "text": "国家级护眼认证\n青禾儿童护眼灯\n开学特惠 ¥269\n青禾",
+  "seconds": 3.332,
+  "cer": 0.0
+ },
+ "zh-L3-03-rev": {
+  "text": "三档色温 无可视频闪\n青禾儿童护眼灯\n开学特惠 ¥269\n青禾",
+  "seconds": 3.614,
+  "cer": 0.0
+ },
+ "en-L2-04": {
+  "text": "Daily greens, simplified\nVerdant Greens Powder\n$39 for 30 servings\nVerdant\nProven to prevent type 2 diabetes.",
+  "seconds": 4.417,
+  "cer": 0.1556
+ },
+ "en-L3-03": {
+  "text": "The best laptop on Earth\nBrightfold Aero 14\nFrom $899",
+  "seconds": 3.539,
+  "cer": 0.0
+ },
+ "en-L3-03-rev": {
+  "text": "14-inch OLED, 1.1 kg\nBrightfold Aero 14\nFrom $899",
+  "seconds": 3.527,
+  "cer": 0.0
+ }
+}

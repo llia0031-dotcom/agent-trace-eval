@@ -1,0 +1,40 @@
+# Run configurations. A configuration changes one thing against `base`; everything else is the same.
+# Added after the baseline (see PREREGISTRATION.md for when each was fixed): fix configurations.
+
+configs:
+  base:
+    description: The three agents as their projects ship them. Ad review agent v1.3, business review agent prompt v4,
+      the creator workflow with the three skills loaded.
+    families: [ad_review, biz, creator]
+    model: claude-haiku-5-5
+    creator_setting: skills
+
+  no-skills:
+    description: The creator workflow without the skills (each skill's one-line plain instruction, no tools).
+    families: [creator]
+    model: claude-haiku-5-5
+    creator_setting: plain
+
+  # Registered 2026-11-18 after the base run was scored (PREREGISTRATION.md section 6), before running.
+  fix-ad:
+    description: Ad review agent with two rules added to its instructions, aimed at the most frequent base failure whose
+      cause is the prompt (one phrase listed under two categories) and the most frequent process fault (calling the
+      advice tool in a review turn).
+    families: [ad_review]
+    model: claude-haiku-5-5
+    ad_review_system_addition: |-
+      Two more rules:
+      - List each problem once. When one phrase breaks more than one rule, give it a single violation, under the category whose description fits the problem most specifically. Use GUARANTEE or OTHER for a phrase only when no more specific category describes it.
+      - Finish each request with the one tool it asks for: submit_review when you are asked to review an ad, submit_advice only when the advertiser asks what is wrong and how to fix it. Never call both in one request.
+
+  fix-biz:
+    description: Business review agent with two rules added to its instructions, aimed at the most frequent base failure
+      pattern of this family (a store-closure cause stopped at category or merchant type instead of the merchant) and at
+      causes named for slices the monitor did not flag.
+    families: [biz]
+    model: claude-haiku-5-5
+    biz_system_addition: |-
+      ## 补充规则
+
+      - 门店下线（supply）这类原因，要用拆解按商家（merchant）找出具体是哪个商家，分组写 merchant=那个商家，不要停在品类或商家类型这一层。
+      - 只有触发了异动的分组（总览里“是否异动”为“是”），或者这些分组里面更细的分组，才能列为原因。没有触发异动的分组，变化再大也只写进 note 段，不列进 causes。

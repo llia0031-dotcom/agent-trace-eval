@@ -1,0 +1,1344 @@
+{
+ "run": "base",
+ "overall": {
+  "trials": 138,
+  "tasks": 46,
+  "success": 121,
+  "success_rate": 0.8768115942028986,
+  "success_ci": [
+   0.8115648056280408,
+   0.9216474536809348
+  ],
+  "pass^1": 0.8768115942028986,
+  "pass^2": 0.8188405797101449,
+  "pass^3": 0.782608695652174,
+  "needs_human": 9,
+  "needs_human_rate": 0.06521739130434782,
+  "silent_failures": 16,
+  "caught_failures": 1,
+  "held_successes": 8,
+  "tool_calls": 1050,
+  "tool_calls_correct": 1003,
+  "tool_call_correct_rate": 0.9552380952380952,
+  "tool_calls_repeated": 0,
+  "cost_usd": 0.844837,
+  "cost_per_trial": 0.006122007246376811,
+  "list_cost_per_trial": 0.009465673913043478,
+  "model_calls_per_trial": 5.550724637681159,
+  "latency_trials": 46,
+  "latency_median_s": 32.49,
+  "latency_p90_s": 66.32,
+  "errors": 0,
+  "stages": {
+   "U": {
+    "applies": 138,
+    "passed": 138,
+    "rate": 1.0
+   },
+   "P": {
+    "applies": 138,
+    "passed": 135,
+    "rate": 0.9782608695652174
+   },
+   "T": {
+    "applies": 138,
+    "passed": 138,
+    "rate": 1.0
+   },
+   "K": {
+    "applies": 126,
+    "passed": 114,
+    "rate": 0.9047619047619048
+   },
+   "R": {
+    "applies": 138,
+    "passed": 121,
+    "rate": 0.8768115942028986
+   }
+  },
+  "failed_trials": 17,
+  "first_failing_stage": {
+   "R": 13,
+   "K": 4
+  }
+ },
+ "by_family": {
+  "ad_review": {
+   "trials": 60,
+   "tasks": 20,
+   "success": 53,
+   "success_rate": 0.8833333333333333,
+   "success_ci": [
+    0.7782097940014187,
+    0.9423235259654995
+   ],
+   "pass^1": 0.8833333333333334,
+   "pass^2": 0.8333333333333334,
+   "pass^3": 0.8,
+   "needs_human": 0,
+   "needs_human_rate": 0.0,
+   "silent_failures": 7,
+   "caught_failures": 0,
+   "held_successes": 0,
+   "tool_calls": 387,
+   "tool_calls_correct": 351,
+   "tool_call_correct_rate": 0.9069767441860465,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.155187,
+   "cost_per_trial": 0.0025864499999999997,
+   "list_cost_per_trial": 0.0038735166666666668,
+   "model_calls_per_trial": 4.316666666666666,
+   "latency_trials": 20,
+   "latency_median_s": 13.025,
+   "latency_p90_s": 22.514000000000003,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 60,
+     "passed": 60,
+     "rate": 1.0
+    },
+    "P": {
+     "applies": 60,
+     "passed": 58,
+     "rate": 0.9666666666666667
+    },
+    "T": {
+     "applies": 60,
+     "passed": 60,
+     "rate": 1.0
+    },
+    "K": {
+     "applies": 48,
+     "passed": 48,
+     "rate": 1.0
+    },
+    "R": {
+     "applies": 60,
+     "passed": 53,
+     "rate": 0.8833333333333333
+    }
+   },
+   "failed_trials": 7,
+   "first_failing_stage": {
+    "R": 7
+   }
+  },
+  "biz": {
+   "trials": 54,
+   "tasks": 18,
+   "success": 47,
+   "success_rate": 0.8703703703703703,
+   "success_ci": [
+    0.7557801946793228,
+    0.9357636077051201
+   ],
+   "pass^1": 0.8703703703703703,
+   "pass^2": 0.7777777777777778,
+   "pass^3": 0.7222222222222222,
+   "needs_human": 9,
+   "needs_human_rate": 0.16666666666666666,
+   "silent_failures": 6,
+   "caught_failures": 1,
+   "held_successes": 8,
+   "tool_calls": 557,
+   "tool_calls_correct": 546,
+   "tool_call_correct_rate": 0.9802513464991023,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.364445,
+   "cost_per_trial": 0.006748981481481482,
+   "list_cost_per_trial": 0.010892462962962963,
+   "model_calls_per_trial": 6.314814814814815,
+   "latency_trials": 18,
+   "latency_median_s": 47.44,
+   "latency_p90_s": 69.065,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 54,
+     "passed": 54,
+     "rate": 1.0
+    },
+    "P": {
+     "applies": 54,
+     "passed": 54,
+     "rate": 1.0
+    },
+    "T": {
+     "applies": 54,
+     "passed": 54,
+     "rate": 1.0
+    },
+    "K": {
+     "applies": 54,
+     "passed": 45,
+     "rate": 0.8333333333333334
+    },
+    "R": {
+     "applies": 54,
+     "passed": 47,
+     "rate": 0.8703703703703703
+    }
+   },
+   "failed_trials": 7,
+   "first_failing_stage": {
+    "R": 6,
+    "K": 1
+   }
+  },
+  "creator": {
+   "trials": 24,
+   "tasks": 8,
+   "success": 21,
+   "success_rate": 0.875,
+   "success_ci": [
+    0.6899571185214243,
+    0.9565574496068442
+   ],
+   "pass^1": 0.875,
+   "pass^2": 0.875,
+   "pass^3": 0.875,
+   "needs_human": 0,
+   "needs_human_rate": 0.0,
+   "silent_failures": 3,
+   "caught_failures": 0,
+   "held_successes": 0,
+   "tool_calls": 106,
+   "tool_calls_correct": 106,
+   "tool_call_correct_rate": 1.0,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.325205,
+   "cost_per_trial": 0.013550208333333334,
+   "list_cost_per_trial": 0.020235791666666666,
+   "model_calls_per_trial": 6.916666666666667,
+   "latency_trials": 8,
+   "latency_median_s": 62.989999999999995,
+   "latency_p90_s": 66.899,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 24,
+     "passed": 24,
+     "rate": 1.0
+    },
+    "P": {
+     "applies": 24,
+     "passed": 23,
+     "rate": 0.9583333333333334
+    },
+    "T": {
+     "applies": 24,
+     "passed": 24,
+     "rate": 1.0
+    },
+    "K": {
+     "applies": 24,
+     "passed": 21,
+     "rate": 0.875
+    },
+    "R": {
+     "applies": 24,
+     "passed": 21,
+     "rate": 0.875
+    }
+   },
+   "failed_trials": 3,
+   "first_failing_stage": {
+    "K": 3
+   }
+  }
+ },
+ "by_family_tier": {
+  "ad_review/L1": {
+   "trials": 18,
+   "tasks": 6,
+   "success": 18,
+   "success_rate": 1.0,
+   "success_ci": [
+    0.8241154494176252,
+    1.0
+   ],
+   "pass^1": 1.0,
+   "pass^2": 1.0,
+   "pass^3": 1.0,
+   "needs_human": 0,
+   "needs_human_rate": 0.0,
+   "silent_failures": 0,
+   "caught_failures": 0,
+   "held_successes": 0,
+   "tool_calls": 82,
+   "tool_calls_correct": 72,
+   "tool_call_correct_rate": 0.8780487804878049,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.022451,
+   "cost_per_trial": 0.0012472777777777777,
+   "list_cost_per_trial": 0.0018850555555555556,
+   "model_calls_per_trial": 2.7222222222222223,
+   "latency_trials": 6,
+   "latency_median_s": 8.865,
+   "latency_p90_s": 11.16,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 18,
+     "passed": 18,
+     "rate": 1.0
+    },
+    "P": {
+     "applies": 18,
+     "passed": 18,
+     "rate": 1.0
+    },
+    "T": {
+     "applies": 18,
+     "passed": 18,
+     "rate": 1.0
+    },
+    "K": {
+     "applies": 12,
+     "passed": 12,
+     "rate": 1.0
+    },
+    "R": {
+     "applies": 18,
+     "passed": 18,
+     "rate": 1.0
+    }
+   },
+   "failed_trials": 0,
+   "first_failing_stage": {}
+  },
+  "ad_review/L2": {
+   "trials": 24,
+   "tasks": 8,
+   "success": 20,
+   "success_rate": 0.8333333333333334,
+   "success_ci": [
+    0.6414652961213058,
+    0.9332143199927109
+   ],
+   "pass^1": 0.8333333333333334,
+   "pass^2": 0.7916666666666666,
+   "pass^3": 0.75,
+   "needs_human": 0,
+   "needs_human_rate": 0.0,
+   "silent_failures": 4,
+   "caught_failures": 0,
+   "held_successes": 0,
+   "tool_calls": 124,
+   "tool_calls_correct": 113,
+   "tool_call_correct_rate": 0.9112903225806451,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.040365,
+   "cost_per_trial": 0.001681875,
+   "list_cost_per_trial": 0.002528125,
+   "model_calls_per_trial": 3.1666666666666665,
+   "latency_trials": 8,
+   "latency_median_s": 12.39,
+   "latency_p90_s": 16.796,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 24,
+     "passed": 24,
+     "rate": 1.0
+    },
+    "P": {
+     "applies": 24,
+     "passed": 23,
+     "rate": 0.9583333333333334
+    },
+    "T": {
+     "applies": 24,
+     "passed": 24,
+     "rate": 1.0
+    },
+    "K": {
+     "applies": 18,
+     "passed": 18,
+     "rate": 1.0
+    },
+    "R": {
+     "applies": 24,
+     "passed": 20,
+     "rate": 0.8333333333333334
+    }
+   },
+   "failed_trials": 4,
+   "first_failing_stage": {
+    "R": 4
+   }
+  },
+  "ad_review/L3": {
+   "trials": 18,
+   "tasks": 6,
+   "success": 15,
+   "success_rate": 0.8333333333333334,
+   "success_ci": [
+    0.6077750036164076,
+    0.9416352959953425
+   ],
+   "pass^1": 0.8333333333333334,
+   "pass^2": 0.7222222222222222,
+   "pass^3": 0.6666666666666666,
+   "needs_human": 0,
+   "needs_human_rate": 0.0,
+   "silent_failures": 3,
+   "caught_failures": 0,
+   "held_successes": 0,
+   "tool_calls": 181,
+   "tool_calls_correct": 166,
+   "tool_call_correct_rate": 0.9171270718232044,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.092371,
+   "cost_per_trial": 0.0051317222222222215,
+   "list_cost_per_trial": 0.007655833333333334,
+   "model_calls_per_trial": 7.444444444444445,
+   "latency_trials": 6,
+   "latency_median_s": 21.605,
+   "latency_p90_s": 29.36,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 18,
+     "passed": 18,
+     "rate": 1.0
+    },
+    "P": {
+     "applies": 18,
+     "passed": 17,
+     "rate": 0.9444444444444444
+    },
+    "T": {
+     "applies": 18,
+     "passed": 18,
+     "rate": 1.0
+    },
+    "K": {
+     "applies": 18,
+     "passed": 18,
+     "rate": 1.0
+    },
+    "R": {
+     "applies": 18,
+     "passed": 15,
+     "rate": 0.8333333333333334
+    }
+   },
+   "failed_trials": 3,
+   "first_failing_stage": {
+    "R": 3
+   }
+  },
+  "biz/L1": {
+   "trials": 18,
+   "tasks": 6,
+   "success": 14,
+   "success_rate": 0.7777777777777778,
+   "success_ci": [
+    0.5478497354769452,
+    0.90999218086618
+   ],
+   "pass^1": 0.7777777777777778,
+   "pass^2": 0.6666666666666666,
+   "pass^3": 0.6666666666666666,
+   "needs_human": 2,
+   "needs_human_rate": 0.1111111111111111,
+   "silent_failures": 4,
+   "caught_failures": 0,
+   "held_successes": 2,
+   "tool_calls": 206,
+   "tool_calls_correct": 203,
+   "tool_call_correct_rate": 0.9854368932038835,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.133011,
+   "cost_per_trial": 0.007389499999999999,
+   "list_cost_per_trial": 0.012041555555555555,
+   "model_calls_per_trial": 6.777777777777778,
+   "latency_trials": 6,
+   "latency_median_s": 43.900000000000006,
+   "latency_p90_s": 70.265,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 18,
+     "passed": 18,
+     "rate": 1.0
+    },
+    "P": {
+     "applies": 18,
+     "passed": 18,
+     "rate": 1.0
+    },
+    "T": {
+     "applies": 18,
+     "passed": 18,
+     "rate": 1.0
+    },
+    "K": {
+     "applies": 18,
+     "passed": 16,
+     "rate": 0.8888888888888888
+    },
+    "R": {
+     "applies": 18,
+     "passed": 14,
+     "rate": 0.7777777777777778
+    }
+   },
+   "failed_trials": 4,
+   "first_failing_stage": {
+    "R": 4
+   }
+  },
+  "biz/L2": {
+   "trials": 18,
+   "tasks": 6,
+   "success": 15,
+   "success_rate": 0.8333333333333334,
+   "success_ci": [
+    0.6077750036164076,
+    0.9416352959953425
+   ],
+   "pass^1": 0.8333333333333334,
+   "pass^2": 0.6666666666666666,
+   "pass^3": 0.5,
+   "needs_human": 5,
+   "needs_human_rate": 0.2777777777777778,
+   "silent_failures": 2,
+   "caught_failures": 1,
+   "held_successes": 4,
+   "tool_calls": 242,
+   "tool_calls_correct": 234,
+   "tool_call_correct_rate": 0.9669421487603306,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.144289,
+   "cost_per_trial": 0.008016055555555556,
+   "list_cost_per_trial": 0.012948277777777777,
+   "model_calls_per_trial": 7.388888888888889,
+   "latency_trials": 6,
+   "latency_median_s": 57.474999999999994,
+   "latency_p90_s": 68.03999999999999,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 18,
+     "passed": 18,
+     "rate": 1.0
+    },
+    "P": {
+     "applies": 18,
+     "passed": 18,
+     "rate": 1.0
+    },
+    "T": {
+     "applies": 18,
+     "passed": 18,
+     "rate": 1.0
+    },
+    "K": {
+     "applies": 18,
+     "passed": 13,
+     "rate": 0.7222222222222222
+    },
+    "R": {
+     "applies": 18,
+     "passed": 15,
+     "rate": 0.8333333333333334
+    }
+   },
+   "failed_trials": 3,
+   "first_failing_stage": {
+    "R": 2,
+    "K": 1
+   }
+  },
+  "biz/L3": {
+   "trials": 18,
+   "tasks": 6,
+   "success": 18,
+   "success_rate": 1.0,
+   "success_ci": [
+    0.8241154494176252,
+    1.0
+   ],
+   "pass^1": 1.0,
+   "pass^2": 1.0,
+   "pass^3": 1.0,
+   "needs_human": 2,
+   "needs_human_rate": 0.1111111111111111,
+   "silent_failures": 0,
+   "caught_failures": 0,
+   "held_successes": 2,
+   "tool_calls": 109,
+   "tool_calls_correct": 109,
+   "tool_call_correct_rate": 1.0,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.087145,
+   "cost_per_trial": 0.004841388888888889,
+   "list_cost_per_trial": 0.007687555555555555,
+   "model_calls_per_trial": 4.777777777777778,
+   "latency_trials": 6,
+   "latency_median_s": 34.1,
+   "latency_p90_s": 59.324999999999996,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 18,
+     "passed": 18,
+     "rate": 1.0
+    },
+    "P": {
+     "applies": 18,
+     "passed": 18,
+     "rate": 1.0
+    },
+    "T": {
+     "applies": 18,
+     "passed": 18,
+     "rate": 1.0
+    },
+    "K": {
+     "applies": 18,
+     "passed": 16,
+     "rate": 0.8888888888888888
+    },
+    "R": {
+     "applies": 18,
+     "passed": 18,
+     "rate": 1.0
+    }
+   },
+   "failed_trials": 0,
+   "first_failing_stage": {}
+  },
+  "creator/L2": {
+   "trials": 12,
+   "tasks": 4,
+   "success": 9,
+   "success_rate": 0.75,
+   "success_ci": [
+    0.46768966087934005,
+    0.9110599603710386
+   ],
+   "pass^1": 0.75,
+   "pass^2": 0.75,
+   "pass^3": 0.75,
+   "needs_human": 0,
+   "needs_human_rate": 0.0,
+   "silent_failures": 3,
+   "caught_failures": 0,
+   "held_successes": 0,
+   "tool_calls": 54,
+   "tool_calls_correct": 54,
+   "tool_call_correct_rate": 1.0,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.166294,
+   "cost_per_trial": 0.013857833333333333,
+   "list_cost_per_trial": 0.020764833333333333,
+   "model_calls_per_trial": 7.0,
+   "latency_trials": 4,
+   "latency_median_s": 62.989999999999995,
+   "latency_p90_s": 65.15299999999999,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 12,
+     "passed": 12,
+     "rate": 1.0
+    },
+    "P": {
+     "applies": 12,
+     "passed": 12,
+     "rate": 1.0
+    },
+    "T": {
+     "applies": 12,
+     "passed": 12,
+     "rate": 1.0
+    },
+    "K": {
+     "applies": 12,
+     "passed": 9,
+     "rate": 0.75
+    },
+    "R": {
+     "applies": 12,
+     "passed": 9,
+     "rate": 0.75
+    }
+   },
+   "failed_trials": 3,
+   "first_failing_stage": {
+    "K": 3
+   }
+  },
+  "creator/L3": {
+   "trials": 12,
+   "tasks": 4,
+   "success": 12,
+   "success_rate": 1.0,
+   "success_ci": [
+    0.7574992425007574,
+    1.0
+   ],
+   "pass^1": 1.0,
+   "pass^2": 1.0,
+   "pass^3": 1.0,
+   "needs_human": 0,
+   "needs_human_rate": 0.0,
+   "silent_failures": 0,
+   "caught_failures": 0,
+   "held_successes": 0,
+   "tool_calls": 52,
+   "tool_calls_correct": 52,
+   "tool_call_correct_rate": 1.0,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.158911,
+   "cost_per_trial": 0.013242583333333334,
+   "list_cost_per_trial": 0.01970675,
+   "model_calls_per_trial": 6.833333333333333,
+   "latency_trials": 4,
+   "latency_median_s": 62.269999999999996,
+   "latency_p90_s": 68.871,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 12,
+     "passed": 12,
+     "rate": 1.0
+    },
+    "P": {
+     "applies": 12,
+     "passed": 11,
+     "rate": 0.9166666666666666
+    },
+    "T": {
+     "applies": 12,
+     "passed": 12,
+     "rate": 1.0
+    },
+    "K": {
+     "applies": 12,
+     "passed": 12,
+     "rate": 1.0
+    },
+    "R": {
+     "applies": 12,
+     "passed": 12,
+     "rate": 1.0
+    }
+   },
+   "failed_trials": 0,
+   "first_failing_stage": {}
+  }
+ },
+ "by_family_lang": {
+  "ad_review/en": {
+   "trials": 30,
+   "tasks": 10,
+   "success": 26,
+   "success_rate": 0.8666666666666667,
+   "success_ci": [
+    0.7031831605558306,
+    0.9469043057578189
+   ],
+   "pass^1": 0.8666666666666666,
+   "pass^2": 0.8333333333333334,
+   "pass^3": 0.8,
+   "needs_human": 0,
+   "needs_human_rate": 0.0,
+   "silent_failures": 4,
+   "caught_failures": 0,
+   "held_successes": 0,
+   "tool_calls": 200,
+   "tool_calls_correct": 180,
+   "tool_call_correct_rate": 0.9,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.082462,
+   "cost_per_trial": 0.0027487333333333333,
+   "list_cost_per_trial": 0.0041377666666666665,
+   "model_calls_per_trial": 4.5,
+   "latency_trials": 10,
+   "latency_median_s": 9.2,
+   "latency_p90_s": 22.514,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 30,
+     "passed": 30,
+     "rate": 1.0
+    },
+    "P": {
+     "applies": 30,
+     "passed": 28,
+     "rate": 0.9333333333333333
+    },
+    "T": {
+     "applies": 30,
+     "passed": 30,
+     "rate": 1.0
+    },
+    "K": {
+     "applies": 24,
+     "passed": 24,
+     "rate": 1.0
+    },
+    "R": {
+     "applies": 30,
+     "passed": 26,
+     "rate": 0.8666666666666667
+    }
+   },
+   "failed_trials": 4,
+   "first_failing_stage": {
+    "R": 4
+   }
+  },
+  "ad_review/zh": {
+   "trials": 30,
+   "tasks": 10,
+   "success": 27,
+   "success_rate": 0.9,
+   "success_ci": [
+    0.7437855868473339,
+    0.9654007400402839
+   ],
+   "pass^1": 0.9,
+   "pass^2": 0.8333333333333334,
+   "pass^3": 0.8,
+   "needs_human": 0,
+   "needs_human_rate": 0.0,
+   "silent_failures": 3,
+   "caught_failures": 0,
+   "held_successes": 0,
+   "tool_calls": 187,
+   "tool_calls_correct": 171,
+   "tool_call_correct_rate": 0.9144385026737968,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.072725,
+   "cost_per_trial": 0.0024241666666666665,
+   "list_cost_per_trial": 0.0036092666666666666,
+   "model_calls_per_trial": 4.133333333333334,
+   "latency_trials": 10,
+   "latency_median_s": 16.135,
+   "latency_p90_s": 22.246999999999996,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 30,
+     "passed": 30,
+     "rate": 1.0
+    },
+    "P": {
+     "applies": 30,
+     "passed": 30,
+     "rate": 1.0
+    },
+    "T": {
+     "applies": 30,
+     "passed": 30,
+     "rate": 1.0
+    },
+    "K": {
+     "applies": 24,
+     "passed": 24,
+     "rate": 1.0
+    },
+    "R": {
+     "applies": 30,
+     "passed": 27,
+     "rate": 0.9
+    }
+   },
+   "failed_trials": 3,
+   "first_failing_stage": {
+    "R": 3
+   }
+  },
+  "biz/zh": {
+   "trials": 54,
+   "tasks": 18,
+   "success": 47,
+   "success_rate": 0.8703703703703703,
+   "success_ci": [
+    0.7557801946793228,
+    0.9357636077051201
+   ],
+   "pass^1": 0.8703703703703703,
+   "pass^2": 0.7777777777777778,
+   "pass^3": 0.7222222222222222,
+   "needs_human": 9,
+   "needs_human_rate": 0.16666666666666666,
+   "silent_failures": 6,
+   "caught_failures": 1,
+   "held_successes": 8,
+   "tool_calls": 557,
+   "tool_calls_correct": 546,
+   "tool_call_correct_rate": 0.9802513464991023,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.364445,
+   "cost_per_trial": 0.006748981481481482,
+   "list_cost_per_trial": 0.010892462962962963,
+   "model_calls_per_trial": 6.314814814814815,
+   "latency_trials": 18,
+   "latency_median_s": 47.44,
+   "latency_p90_s": 69.065,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 54,
+     "passed": 54,
+     "rate": 1.0
+    },
+    "P": {
+     "applies": 54,
+     "passed": 54,
+     "rate": 1.0
+    },
+    "T": {
+     "applies": 54,
+     "passed": 54,
+     "rate": 1.0
+    },
+    "K": {
+     "applies": 54,
+     "passed": 45,
+     "rate": 0.8333333333333334
+    },
+    "R": {
+     "applies": 54,
+     "passed": 47,
+     "rate": 0.8703703703703703
+    }
+   },
+   "failed_trials": 7,
+   "first_failing_stage": {
+    "R": 6,
+    "K": 1
+   }
+  },
+  "creator/en": {
+   "trials": 12,
+   "tasks": 4,
+   "success": 9,
+   "success_rate": 0.75,
+   "success_ci": [
+    0.46768966087934005,
+    0.9110599603710386
+   ],
+   "pass^1": 0.75,
+   "pass^2": 0.75,
+   "pass^3": 0.75,
+   "needs_human": 0,
+   "needs_human_rate": 0.0,
+   "silent_failures": 3,
+   "caught_failures": 0,
+   "held_successes": 0,
+   "tool_calls": 51,
+   "tool_calls_correct": 51,
+   "tool_call_correct_rate": 1.0,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.143477,
+   "cost_per_trial": 0.011956416666666666,
+   "list_cost_per_trial": 0.017933416666666667,
+   "model_calls_per_trial": 6.666666666666667,
+   "latency_trials": 4,
+   "latency_median_s": 59.635,
+   "latency_p90_s": 60.717,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 12,
+     "passed": 12,
+     "rate": 1.0
+    },
+    "P": {
+     "applies": 12,
+     "passed": 11,
+     "rate": 0.9166666666666666
+    },
+    "T": {
+     "applies": 12,
+     "passed": 12,
+     "rate": 1.0
+    },
+    "K": {
+     "applies": 12,
+     "passed": 9,
+     "rate": 0.75
+    },
+    "R": {
+     "applies": 12,
+     "passed": 9,
+     "rate": 0.75
+    }
+   },
+   "failed_trials": 3,
+   "first_failing_stage": {
+    "K": 3
+   }
+  },
+  "creator/zh": {
+   "trials": 12,
+   "tasks": 4,
+   "success": 12,
+   "success_rate": 1.0,
+   "success_ci": [
+    0.7574992425007574,
+    1.0
+   ],
+   "pass^1": 1.0,
+   "pass^2": 1.0,
+   "pass^3": 1.0,
+   "needs_human": 0,
+   "needs_human_rate": 0.0,
+   "silent_failures": 0,
+   "caught_failures": 0,
+   "held_successes": 0,
+   "tool_calls": 55,
+   "tool_calls_correct": 55,
+   "tool_call_correct_rate": 1.0,
+   "tool_calls_repeated": 0,
+   "cost_usd": 0.181728,
+   "cost_per_trial": 0.015144,
+   "list_cost_per_trial": 0.022538166666666665,
+   "model_calls_per_trial": 7.166666666666667,
+   "latency_trials": 4,
+   "latency_median_s": 65.315,
+   "latency_p90_s": 68.871,
+   "errors": 0,
+   "stages": {
+    "U": {
+     "applies": 12,
+     "passed": 12,
+     "rate": 1.0
+    },
+    "P": {
+     "applies": 12,
+     "passed": 12,
+     "rate": 1.0
+    },
+    "T": {
+     "applies": 12,
+     "passed": 12,
+     "rate": 1.0
+    },
+    "K": {
+     "applies": 12,
+     "passed": 12,
+     "rate": 1.0
+    },
+    "R": {
+     "applies": 12,
+     "passed": 12,
+     "rate": 1.0
+    }
+   },
+   "failed_trials": 0,
+   "first_failing_stage": {}
+  }
+ },
+ "checks": {
+  "ad_review:K-AD-1": {
+   "stage": "K",
+   "applies": 53,
+   "passed": 53,
+   "core": true
+  },
+  "ad_review:K-AD-2": {
+   "stage": "K",
+   "applies": 56,
+   "passed": 56,
+   "core": true
+  },
+  "ad_review:K-AD-3": {
+   "stage": "K",
+   "applies": 53,
+   "passed": 53,
+   "core": true
+  },
+  "ad_review:P-0": {
+   "stage": "P",
+   "applies": 96,
+   "passed": 96,
+   "core": true
+  },
+  "ad_review:P-AD-1": {
+   "stage": "P",
+   "applies": 21,
+   "passed": 20,
+   "core": true
+  },
+  "ad_review:P-AD-2": {
+   "stage": "P",
+   "applies": 60,
+   "passed": 60,
+   "core": true
+  },
+  "ad_review:P-AD-3": {
+   "stage": "P",
+   "applies": 56,
+   "passed": 55,
+   "core": true
+  },
+  "ad_review:P-AD-4": {
+   "stage": "P",
+   "applies": 18,
+   "passed": 18,
+   "core": true
+  },
+  "ad_review:R-AD-1": {
+   "stage": "R",
+   "applies": 78,
+   "passed": 76,
+   "core": true
+  },
+  "ad_review:R-AD-2": {
+   "stage": "R",
+   "applies": 78,
+   "passed": 71,
+   "core": true
+  },
+  "ad_review:R-AD-3": {
+   "stage": "R",
+   "applies": 18,
+   "passed": 18,
+   "core": true
+  },
+  "ad_review:R-AD-4": {
+   "stage": "R",
+   "applies": 18,
+   "passed": 18,
+   "core": true
+  },
+  "ad_review:R-AD-5": {
+   "stage": "R",
+   "applies": 18,
+   "passed": 18,
+   "core": true
+  },
+  "ad_review:T-1": {
+   "stage": "T",
+   "applies": 96,
+   "passed": 96,
+   "core": true
+  },
+  "ad_review:T-2": {
+   "stage": "T",
+   "applies": 96,
+   "passed": 60,
+   "core": false
+  },
+  "ad_review:T-3": {
+   "stage": "T",
+   "applies": 96,
+   "passed": 96,
+   "core": false
+  },
+  "ad_review:T-4": {
+   "stage": "T",
+   "applies": 96,
+   "passed": 60,
+   "core": false
+  },
+  "ad_review:U-0": {
+   "stage": "U",
+   "applies": 60,
+   "passed": 60,
+   "core": true
+  },
+  "ad_review:U-AD-2": {
+   "stage": "U",
+   "applies": 74,
+   "passed": 74,
+   "core": true
+  },
+  "biz:K-BZ-1": {
+   "stage": "K",
+   "applies": 54,
+   "passed": 45,
+   "core": true
+  },
+  "biz:K-BZ-2": {
+   "stage": "K",
+   "applies": 54,
+   "passed": 15,
+   "core": false
+  },
+  "biz:P-0": {
+   "stage": "P",
+   "applies": 54,
+   "passed": 54,
+   "core": true
+  },
+  "biz:P-BZ-1": {
+   "stage": "P",
+   "applies": 54,
+   "passed": 54,
+   "core": true
+  },
+  "biz:P-BZ-2": {
+   "stage": "P",
+   "applies": 42,
+   "passed": 42,
+   "core": true
+  },
+  "biz:R-BZ-1": {
+   "stage": "R",
+   "applies": 54,
+   "passed": 54,
+   "core": true
+  },
+  "biz:R-BZ-2": {
+   "stage": "R",
+   "applies": 54,
+   "passed": 47,
+   "core": true
+  },
+  "biz:R-BZ-3": {
+   "stage": "R",
+   "applies": 47,
+   "passed": 47,
+   "core": true
+  },
+  "biz:T-1": {
+   "stage": "T",
+   "applies": 54,
+   "passed": 54,
+   "core": true
+  },
+  "biz:T-2": {
+   "stage": "T",
+   "applies": 54,
+   "passed": 45,
+   "core": false
+  },
+  "biz:T-3": {
+   "stage": "T",
+   "applies": 54,
+   "passed": 54,
+   "core": false
+  },
+  "biz:U-0": {
+   "stage": "U",
+   "applies": 54,
+   "passed": 54,
+   "core": true
+  },
+  "biz:U-BZ-2": {
+   "stage": "U",
+   "applies": 6,
+   "passed": 6,
+   "core": true
+  },
+  "creator:K-CR-1": {
+   "stage": "K",
+   "applies": 24,
+   "passed": 21,
+   "core": true
+  },
+  "creator:K-CR-2": {
+   "stage": "K",
+   "applies": 24,
+   "passed": 24,
+   "core": true
+  },
+  "creator:K-CR-3": {
+   "stage": "K",
+   "applies": 24,
+   "passed": 24,
+   "core": true
+  },
+  "creator:K-CR-4": {
+   "stage": "K",
+   "applies": 24,
+   "passed": 24,
+   "core": true
+  },
+  "creator:P-0": {
+   "stage": "P",
+   "applies": 72,
+   "passed": 72,
+   "core": true
+  },
+  "creator:P-CR-1": {
+   "stage": "P",
+   "applies": 72,
+   "passed": 72,
+   "core": true
+  },
+  "creator:P-CR-2": {
+   "stage": "P",
+   "applies": 72,
+   "passed": 71,
+   "core": true
+  },
+  "creator:R-CR-1": {
+   "stage": "R",
+   "applies": 24,
+   "passed": 21,
+   "core": true
+  },
+  "creator:R-CR-2": {
+   "stage": "R",
+   "applies": 24,
+   "passed": 24,
+   "core": true
+  },
+  "creator:R-CR-3": {
+   "stage": "R",
+   "applies": 24,
+   "passed": 24,
+   "core": true
+  },
+  "creator:T-1": {
+   "stage": "T",
+   "applies": 72,
+   "passed": 72,
+   "core": true
+  },
+  "creator:T-2": {
+   "stage": "T",
+   "applies": 72,
+   "passed": 72,
+   "core": false
+  },
+  "creator:T-3": {
+   "stage": "T",
+   "applies": 72,
+   "passed": 72,
+   "core": false
+  },
+  "creator:U-0": {
+   "stage": "U",
+   "applies": 24,
+   "passed": 24,
+   "core": true
+  },
+  "creator:U-CR-1": {
+   "stage": "U",
+   "applies": 18,
+   "passed": 18,
+   "core": true
+  },
+  "creator:U-CR-2": {
+   "stage": "U",
+   "applies": 6,
+   "passed": 6,
+   "core": true
+  },
+  "creator:U-CR-3": {
+   "stage": "U",
+   "applies": 6,
+   "passed": 6,
+   "core": true
+  },
+  "creator:U-CR-4": {
+   "stage": "U",
+   "applies": 24,
+   "passed": 24,
+   "core": true
+  }
+ }
+}

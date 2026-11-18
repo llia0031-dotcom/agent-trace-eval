@@ -1,0 +1,403 @@
+{
+ "report": "README.zh-CN.md",
+ "checked": 27,
+ "supported": 19,
+ "problems": [
+  {
+   "line": 5,
+   "text": "评分表是对每一步记录的规则检查，分成五个阶段（理解意图、规划、工具调用、知识引用、结果质量）；",
+   "status": "no_evidence",
+   "missing": [
+    "5"
+   ],
+   "evidence": []
+  },
+  {
+   "line": 29,
+   "text": "** 大多在结果这一步：同一句话贴了两个类别、门店下线定位得太粗、把普通的产品参数判成违规。",
+   "status": "no_evidence",
+   "missing": [
+    "2"
+   ],
+   "evidence": []
+  },
+  {
+   "line": 29,
+   "text": "**装和不装 Skill**（创作流程）：成功率 88% 对 33%，差 54 个百分点。",
+   "status": "no_evidence",
+   "missing": [
+    "100",
+    "33",
+    "54",
+    "88"
+   ],
+   "evidence": []
+  },
+  {
+   "line": 29,
+   "text": "**两个修复：跑之前先写下预测，再做回归重测。",
+   "status": "no_evidence",
+   "missing": [
+    "2"
+   ],
+   "evidence": []
+  },
+  {
+   "line": 29,
+   "text": "** 广告审核：审核那一轮误调建议工具的试验从 36/60 降到 0/60，每次输出 token 从 1,756 降到 1,492（-15%）。",
+   "status": "no_evidence",
+   "missing": [
+    "0",
+    "1492",
+    "15",
+    "1756",
+    "36",
+    "60"
+   ],
+   "evidence": []
+  },
+  {
+   "line": 29,
+   "text": "全部花费（所有运行、判官和试跑）：US$1.48。",
+   "status": "no_evidence",
+   "missing": [
+    "1.48"
+   ],
+   "evidence": []
+  },
+  {
+   "line": 37,
+   "text": "**题目**：为这套评测新写，校验和生成都用三个 Agent 项目自己的代码：广告题的违规原文必须逐字在广告里、条款必须存在；",
+   "status": "no_evidence",
+   "missing": [
+    "3"
+   ],
+   "evidence": []
+  },
+  {
+   "line": 37,
+   "text": "**评分表**：五个阶段的规则检查，共 40 条，其中 36 条决定阶段成败、4 条只报告（[rubric/RUBRIC.md]）。",
+   "status": "no_evidence",
+   "missing": [
+    "36",
+    "4",
+    "40",
+    "5"
+   ],
+   "evidence": []
+  }
+ ],
+ "claims": [
+  {
+   "line": 5,
+   "text": "评分表是对每一步记录的规则检查，分成五个阶段（理解意图、规划、工具调用、知识引用、结果质量）；",
+   "status": "no_evidence",
+   "missing": [
+    "5"
+   ],
+   "evidence": []
+  },
+  {
+   "line": 7,
+   "text": "用在已有的 Agent 上（不改它们的代码），共 46 道新题（广告审核 20、经营分析 18、创作流程 8）：",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__results__facts.md",
+     "quote": "- Tasks: 46 in all; ad review 20, business review 18, creator workflow 8"
+    }
+   ]
+  },
+  {
+   "line": 11,
+   "text": "| [grounded-review] | 对照政策库审广告，自己核对引文，给广告主修改建议，再审广告主的新版本 | 20（中英各半，其中 6 道是三轮对话） |",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__PREREGISTRATION.md",
+     "quote": "| Ad review | grounded-review, agent v1.3: reads the image, searches the policy library, checks its quotes with evidence-check, writes advice and a corrected version | 20 (10 Chinese, 10 English; L1 6, L2 8, L3 6) | 1, or 3 for L3 (review, advice, review of the advertiser's next version) |"
+    }
+   ]
+  },
+  {
+   "line": 12,
+   "text": "| [grounded-business-review] | 用 SQL 工具给合成的本地生活平台写经营周报，每个数字都对回查询结果 | 18（一处或两处埋好的原因、平静的周、节假日，以及“只问一件事”的请求） |",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__PREREGISTRATION.md",
+     "quote": "| Business review | grounded-business-review, prompt v4: overview, breakdown, funnel and SQL tools over a synthetic local-services database; every number is checked against query rows | 18 (L1 6, L2 6, L3 6) | 1 |"
+    }
+   ]
+  },
+  {
+   "line": 13,
+   "text": "| [creator-skills] | 同一段对话里三件事：热点选题、按定稿口播稿拆分镜、对自动字幕 | 8（中英各半，每题三个请求） |",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__PREREGISTRATION.md",
+     "quote": "| Creator workflow | creator-skills: trend-topic-check, shotlist-check and subtitle-check loaded together, with their checking tools | 8 (4 Chinese, 4 English; L2 4, L3 4) | 3 (topic cards, shot list, captions) |"
+    }
+   ]
+  },
+  {
+   "line": 21,
+   "text": "| 任务成功率（pass^1） | 53/60 (88%)，95% 区间 78%–94% | 47/54 (87%)，95% 区间 76%–94% | 21/24 (88%)，95% 区间 69%–96% |",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__results__summary.md",
+     "quote": "| Task success (pass^1) | 53/60 (88%), 95% CI 78%–94% | 47/54 (87%), 95% CI 76%–94% | 21/24 (88%), 95% CI 69%–96% |"
+    }
+   ]
+  },
+  {
+   "line": 22,
+   "text": "| pass^3（三次都成功） | 80% | 72% | 88% |",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__results__summary.md",
+     "quote": "| pass^3 (all three trials succeed) | 80% | 72% | 88% |"
+    }
+   ]
+  },
+  {
+   "line": 23,
+   "text": "| 需要人工确认（被自动关卡拦下） | 0/60 (0%) | 9/54 (17%) | 0/24 (0%) |",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__results__summary.md",
+     "quote": "| Needs human confirmation (an automatic gate held it) | 0/60 (0%) | 9/54 (17%) | 0/24 (0%) |"
+    }
+   ]
+  },
+  {
+   "line": 24,
+   "text": "| 关卡放过去的失败 | 7 | 6 | 3 |",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__results__summary.md",
+     "quote": "| Failures the gates let through | 7 | 6 | 3 |"
+    }
+   ]
+  },
+  {
+   "line": 25,
+   "text": "| 工具调用正确 | 351/387 (91%) | 546/557 (98%) | 106/106 (100%) |",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__results__summary.md",
+     "quote": "| Tool calls correct | 351/387 (91%) | 546/557 (98%) | 106/106 (100%) |"
+    }
+   ]
+  },
+  {
+   "line": 26,
+   "text": "| 每次试验费用（实付） | $0.0026 | $0.0067 | $0.0136 |",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__results__summary.md",
+     "quote": "| Cost per trial (as paid) | $0.0026 | $0.0067 | $0.0136 |"
+    }
+   ]
+  },
+  {
+   "line": 27,
+   "text": "| 每次试验时延中位数（普通接口） | 13.0 s (n = 20) | 47.4 s (n = 18) | 63.0 s (n = 8) |",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__results__summary.md",
+     "quote": "| Latency per trial, median (standard API trials) | 13.0 s (n = 20) | 47.4 s (n = 18) | 63.0 s (n = 8) |"
+    }
+   ]
+  },
+  {
+   "line": 29,
+   "text": "** 基线失败 17 次，关卡拦下 1 次、放过 16 次。",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__results__facts.md",
+     "quote": "- Base failed trials 17: caught by a gate 1, let through 16; cause task (problems of the tasks or the answer key) 5"
+    }
+   ]
+  },
+  {
+   "line": 29,
+   "text": "** 大多在结果这一步：同一句话贴了两个类别、门店下线定位得太粗、把普通的产品参数判成违规。",
+   "status": "no_evidence",
+   "missing": [
+    "2"
+   ],
+   "evidence": []
+  },
+  {
+   "line": 29,
+   "text": "17 次失败里有 5 次是题目或答案本身的问题，留在分数里并写明原因。",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__results__facts.md",
+     "quote": "- Base failed trials 17: caught by a gate 1, let through 16; cause task (problems of the tasks or the answer key) 5"
+    }
+   ]
+  },
+  {
+   "line": 29,
+   "text": "**装和不装 Skill**（创作流程）：成功率 88% 对 33%，差 54 个百分点。",
+   "status": "no_evidence",
+   "missing": [
+    "100",
+    "33",
+    "54",
+    "88"
+   ],
+   "evidence": []
+  },
+  {
+   "line": 29,
+   "text": "不装 Skill 时，Agent 给一场致死火灾出了营销选题，来源核对也放过了。",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__results__attribution.md",
+     "quote": "| Creator workflow | C03 | U-CR-2 (Understanding) | 1 | knowledge (知识缺失) | casualty event: declined or public-service cards only | Add the missing rule or fact to the agent's knowledge base or skill, with its source. | rule |"
+    }
+   ]
+  },
+  {
+   "line": 29,
+   "text": "**两个修复：跑之前先写下预测，再做回归重测。",
+   "status": "no_evidence",
+   "missing": [
+    "2"
+   ],
+   "evidence": []
+  },
+  {
+   "line": 29,
+   "text": "** 广告审核：审核那一轮误调建议工具的试验从 36/60 降到 0/60，每次输出 token 从 1,756 降到 1,492（-15%）。",
+   "status": "no_evidence",
+   "missing": [
+    "0",
+    "1492",
+    "15",
+    "1756",
+    "36",
+    "60"
+   ],
+   "evidence": []
+  },
+  {
+   "line": 29,
+   "text": "经营分析：门店下线定位到具体商家 6/6（原来 3/6），但有一道题变差了，回归重测把它查了出来。",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__results__checks.md",
+     "quote": "| creator | U-CR-3 | U | yes | 6/6 (100%) |"
+    }
+   ]
+  },
+  {
+   "line": 29,
+   "text": "全部花费（所有运行、判官和试跑）：US$1.48。",
+   "status": "no_evidence",
+   "missing": [
+    "1.48"
+   ],
+   "evidence": []
+  },
+  {
+   "line": 37,
+   "text": "**题目**：为这套评测新写，校验和生成都用三个 Agent 项目自己的代码：广告题的违规原文必须逐字在广告里、条款必须存在；",
+   "status": "no_evidence",
+   "missing": [
+    "3"
+   ],
+   "evidence": []
+  },
+  {
+   "line": 37,
+   "text": "**评分表**：五个阶段的规则检查，共 40 条，其中 36 条决定阶段成败、4 条只报告（[rubric/RUBRIC.md]）。",
+   "status": "no_evidence",
+   "missing": [
+    "36",
+    "4",
+    "40",
+    "5"
+   ],
+   "evidence": []
+  },
+  {
+   "line": 37,
+   "text": "**模型判的三项**：规则查不了的三件事（给广告主的建议是否讲清、经营建议是否从原因出发、选题是否贴合账号），由模型按写好的评分表判，每条判两遍，报两遍的一致率和在校准题上的准确率。",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__results__attribution.md",
+     "quote": "| Business review | B03 | R-BZ-2 (Result quality) | 2 | model (模型能力) | A chain's stores went offline. The agent locates it at 茶饮咖啡 × 连锁 and stops, although the breakdown by merchant was one call away and the prompt says to go to th | State that a store-closure cause is located at the merchant (tested as fix-biz). | note |"
+    }
+   ]
+  },
+  {
+   "line": 37,
+   "text": "原因分六类（知识缺失、工具调用、提示词、模型能力、交互设计、评测题本身），来自每条检查的规则，或读完过程后写的说明（[eval/attribution_notes.yaml]）。",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__results__attribution.md",
+     "quote": "| Creator workflow | C06 | K-CR-1 (Knowledge and citation) | 3 | task (评测题本身) | Every fact is right, and the skill's own checking script passes the cards. The scorer used as the answer key reads the bus route name 'N7' in the claim as a num | Rename the route in the task (or have the scorer skip digits inside names) and re-run C06; until then C06 is counted as failed and reported as a task problem. | note |"
+    }
+   ]
+  },
+  {
+   "line": 54,
+   "text": "真跑试验要把三个 Agent 仓库放在本仓库旁边（或用 `APE_AD_REVIEW_DIR`、`APE_BIZ_DIR`、`APE_CREATOR_DIR` 指定），并在 `eval/.env` 里写 `ANTHROPIC_API_KEY=...`（或用 `EVAL_ENV_FILE` 指向别的文件）：",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__results__attribution.md",
+     "quote": "| Creator workflow | C03 | U-CR-2 (Understanding) | 1 | knowledge (知识缺失) | casualty event: declined or public-service cards only | Add the missing rule or fact to the agent's knowledge base or skill, with its source. | rule |"
+    }
+   ]
+  },
+  {
+   "line": 66,
+   "text": "它评的三个 Agent 各自都有针对最终答案的预注册评测： [grounded-review]、 [grounded-business-review]、 [creator-skills]。",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__PREREGISTRATION.md",
+     "quote": "| Ad review | grounded-review, agent v1.3: reads the image, searches the policy library, checks its quotes with evidence-check, writes advice and a corrected version | 20 (10 Chinese, 10 English; L1 6, L2 8, L3 6) | 1, or 3 for L3 (review, advice, review of the advertiser's next version) |"
+    }
+   ]
+  }
+ ]
+}

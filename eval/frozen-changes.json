@@ -1,0 +1,22 @@
+{
+ "bench/checks.py": {
+  "sha": "b2481f8488ec",
+  "was": "689a07969399",
+  "change_log": "PREREGISTRATION change log 2026-11-18 18:45 (U-CR-3 reads the video only) and 21:05 (T-4)"
+ },
+ "bench/adapters/biz.py": {
+  "sha": "b3a026979f0c",
+  "was": "ee2ee5ffb128",
+  "change_log": "PREREGISTRATION change log 2026-11-18 18:55 (each business trial reads a copy of its database)"
+ },
+ "bench/adapters/creator.py": {
+  "sha": "56d137efa9a8",
+  "was": "c6e7a0696530",
+  "change_log": "PREREGISTRATION change log 2026-11-18 18:45 (U-CR-3 no longer computed here)"
+ },
+ "eval/configs.yaml": {
+  "sha": "31eddf4cf6e9",
+  "was": "22635b893190",
+  "change_log": "PREREGISTRATION change log 2026-11-18 20:48 (fix-ad and fix-biz registered)"
+ }
+}

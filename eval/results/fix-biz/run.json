@@ -1,0 +1,278 @@
+{
+ "config": {
+  "description": "Business review agent with two rules added to its instructions, aimed at the most frequent base failure pattern of this family (a store-closure cause stopped at category or merchant type instead of the merchant) and at causes named for slices the monitor did not flag.",
+  "families": [
+   "biz"
+  ],
+  "model": "claude-haiku-5-5",
+  "biz_system_addition": "## 补充规则\n\n- 门店下线（supply）这类原因，要用拆解按商家（merchant）找出具体是哪个商家，分组写 merchant=那个商家，不要停在品类或商家类型这一层。\n- 只有触发了异动的分组（总览里“是否异动”为“是”），或者这些分组里面更细的分组，才能列为原因。没有触发异动的分组，变化再大也只写进 note 段，不列进 causes。",
+  "name": "fix-biz"
+ },
+ "sessions": [
+  {
+   "trials": "1-3",
+   "families": [
+    "biz"
+   ],
+   "batch": true,
+   "jobs": 54,
+   "batches": [
+    {
+     "requests": 54,
+     "minutes": 6.5,
+     "succeeded": 54,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 54,
+     "minutes": 7.8,
+     "succeeded": 54,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 53,
+     "minutes": 6.7,
+     "succeeded": 53,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 45,
+     "minutes": 6.7,
+     "succeeded": 45,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 44,
+     "minutes": 6.7,
+     "succeeded": 44,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 37,
+     "minutes": 6.5,
+     "succeeded": 37,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 28,
+     "minutes": 5.7,
+     "succeeded": 28,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 13,
+     "minutes": 6.5,
+     "succeeded": 13,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 6,
+     "minutes": 5.4,
+     "succeeded": 6,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 1,
+     "minutes": 2.3,
+     "succeeded": 1,
+     "errored": 0,
+     "expired": 0
+    }
+   ],
+   "answers_reused": 0,
+   "spent_after_usd": 0.355706,
+   "ended": "2026-11-18T21:51:12+0800"
+  }
+ ],
+ "families": {
+  "biz": {
+   "prompt_version": "v4",
+   "tools": [
+    {
+     "name": "overview",
+     "strict": true,
+     "description": "本周全部指标（总量）对比上周和基线，以及触发异动的分组。每次分析先调用它。",
+     "input_schema": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+     }
+    },
+    {
+     "name": "breakdown",
+     "strict": true,
+     "description": "把一个指标本周相对对比期的变化，按一个维度拆到每个分组：加法指标给贡献度，比率指标给率效应和结构效应。用 filters 可以先限定在某个分组里再拆，用来下钻。指标不支持的维度会报错。",
+     "input_schema": {
+      "type": "object",
+      "properties": {
+       "metric": {
+        "type": "string",
+        "enum": [
+         "visits",
+         "buyers",
+         "new_buyers",
+         "new_buyer_share",
+         "orders",
+         "gmv",
+         "conversion_rate",
+         "aov",
+         "redeem_gmv",
+         "redeem_rate",
+         "online_stores",
+         "active_stores",
+         "active_store_rate",
+         "gmv_per_active_store",
+         "new_stores",
+         "commission",
+         "take_rate",
+         "subsidy",
+         "subsidy_rate",
+         "refund_amt",
+         "refund_rate",
+         "net_revenue"
+        ]
+       },
+       "dimension": {
+        "type": "string",
+        "enum": [
+         "city",
+         "category",
+         "channel",
+         "merchant_type",
+         "merchant"
+        ]
+       },
+       "filters": {
+        "type": "array",
+        "description": "分组条件，每项一个维度；留空表示全部。",
+        "items": {
+         "type": "object",
+         "properties": {
+          "dimension": {
+           "type": "string",
+           "enum": [
+            "city",
+            "category",
+            "channel",
+            "merchant_type",
+            "merchant"
+           ]
+          },
+          "value": {
+           "type": "string"
+          }
+         },
+         "required": [
+          "dimension",
+          "value"
+         ],
+         "additionalProperties": false
+        }
+       },
+       "compare": {
+        "type": "string",
+        "enum": [
+         "baseline",
+         "last_week"
+        ],
+        "description": "和谁比：baseline（前 8 个非节假日周）或 last_week（上周）"
+       }
+      },
+      "required": [
+       "metric",
+       "dimension",
+       "filters",
+       "compare"
+      ],
+      "additionalProperties": false
+     }
+    },
+    {
+     "name": "funnel",
+     "strict": true,
+     "description": "一个分组的体检表：访问次数、转化率、订单、GMV、客单价、补贴率、在线和动销门店、核销GMV、核销率、退款金额、退款率，本周对比对比期。filters 留空就是全部业务。",
+     "input_schema": {
+      "type": "object",
+      "properties": {
+       "filters": {
+        "type": "array",
+        "description": "分组条件，每项一个维度；留空表示全部。",
+        "items": {
+         "type": "object",
+         "properties": {
+          "dimension": {
+           "type": "string",
+           "enum": [
+            "city",
+            "category",
+            "channel",
+            "merchant_type",
+            "merchant"
+           ]
+          },
+          "value": {
+           "type": "string"
+          }
+         },
+         "required": [
+          "dimension",
+          "value"
+         ],
+         "additionalProperties": false
+        }
+       },
+       "compare": {
+        "type": "string",
+        "enum": [
+         "baseline",
+         "last_week"
+        ],
+        "description": "和谁比：baseline（前 8 个非节假日周）或 last_week（上周）"
+       }
+      },
+      "required": [
+       "filters",
+       "compare"
+      ],
+      "additionalProperties": false
+     }
+    },
+    {
+     "name": "run_sql",
+     "strict": true,
+     "description": "对数据库执行一条只读的 SELECT（DuckDB 语法），最多显示 60 行。只在前三个工具查不到时使用。",
+     "input_schema": {
+      "type": "object",
+      "properties": {
+       "sql": {
+        "type": "string"
+       },
+       "purpose": {
+        "type": "string",
+        "description": "这条查询要看什么，一句话"
+       }
+      },
+      "required": [
+       "sql",
+       "purpose"
+      ],
+      "additionalProperties": false
+     }
+    }
+   ],
+   "system_sha": "527c0ff2cf8d",
+   "system_addition": "## 补充规则\n\n- 门店下线（supply）这类原因，要用拆解按商家（merchant）找出具体是哪个商家，分组写 merchant=那个商家，不要停在品类或商家类型这一层。\n- 只有触发了异动的分组（总览里“是否异动”为“是”），或者这些分组里面更细的分组，才能列为原因。没有触发异动的分组，变化再大也只写进 note 段，不列进 causes。",
+   "max_calls": 16
+  }
+ }
+}

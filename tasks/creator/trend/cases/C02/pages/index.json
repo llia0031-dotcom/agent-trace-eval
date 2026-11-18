@@ -1,0 +1,20 @@
+[
+  {
+    "url": "https://metro.qingwu.example/notice/2026/1110-student-fare.html",
+    "status": 200,
+    "file": "p1.html",
+    "fetched_at": "2026-11-15T08:03:00+08:00"
+  },
+  {
+    "url": "https://bbs.wutong.example/thread-90417-1-1.html",
+    "status": 200,
+    "file": "p2.html",
+    "fetched_at": "2026-11-15T08:06:00+08:00"
+  },
+  {
+    "url": "https://metro.qingwu.example/notice/2026/1113-student-fare-faq.html",
+    "status": 200,
+    "file": "p3.html",
+    "fetched_at": "2026-11-15T08:09:00+08:00"
+  }
+]

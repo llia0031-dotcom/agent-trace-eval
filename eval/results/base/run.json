@@ -1,0 +1,932 @@
+{
+ "config": {
+  "description": "The three agents as their projects ship them. Ad review agent v1.3, business review agent prompt v4, the creator workflow with the three skills loaded.",
+  "families": [
+   "ad_review",
+   "biz",
+   "creator"
+  ],
+  "model": "claude-haiku-5-5",
+  "creator_setting": "skills",
+  "name": "base"
+ },
+ "sessions": [
+  {
+   "trials": "1",
+   "families": [
+    "ad_review",
+    "biz",
+    "creator"
+   ],
+   "batch": false,
+   "jobs": 46,
+   "batches": [],
+   "answers_reused": 0,
+   "spent_after_usd": 0.38341,
+   "ended": "2026-11-18T18:42:06+0800"
+  },
+  {
+   "trials": "2-3",
+   "families": [
+    "ad_review",
+    "biz",
+    "creator"
+   ],
+   "batch": true,
+   "jobs": 92,
+   "batches": [
+    {
+     "requests": 74,
+     "minutes": 6.5,
+     "succeeded": 74,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 74,
+     "minutes": 6.5,
+     "succeeded": 74,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 63,
+     "minutes": 8.0,
+     "succeeded": 63,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 50,
+     "minutes": 6.7,
+     "succeeded": 50,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 45,
+     "minutes": 5.4,
+     "succeeded": 45,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 41,
+     "minutes": 5.4,
+     "succeeded": 41,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 31,
+     "minutes": 5.4,
+     "succeeded": 31,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 9,
+     "minutes": 5.4,
+     "succeeded": 9,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 3,
+     "minutes": 5.4,
+     "succeeded": 3,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 1,
+     "minutes": 2.4,
+     "succeeded": 1,
+     "errored": 0,
+     "expired": 0
+    }
+   ],
+   "answers_reused": 0,
+   "spent_after_usd": 0.729003,
+   "ended": "2026-11-18T19:40:59+0800"
+  },
+  {
+   "trials": "2-3",
+   "families": [
+    "biz"
+   ],
+   "batch": true,
+   "jobs": 18,
+   "batches": [
+    {
+     "requests": 18,
+     "minutes": 6.2,
+     "succeeded": 18,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 18,
+     "minutes": 5.3,
+     "succeeded": 18,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 17,
+     "minutes": 5.7,
+     "succeeded": 17,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 15,
+     "minutes": 6.3,
+     "succeeded": 15,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 15,
+     "minutes": 7.2,
+     "succeeded": 15,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 15,
+     "minutes": 6.5,
+     "succeeded": 15,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 10,
+     "minutes": 6.0,
+     "succeeded": 10,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 6,
+     "minutes": 6.5,
+     "succeeded": 6,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 4,
+     "minutes": 6.7,
+     "succeeded": 4,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 2,
+     "minutes": 5.7,
+     "succeeded": 2,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 1,
+     "minutes": 2.9,
+     "succeeded": 1,
+     "errored": 0,
+     "expired": 0
+    }
+   ],
+   "answers_reused": 0,
+   "spent_after_usd": 0.844837,
+   "ended": "2026-11-18T20:46:55+0800"
+  }
+ ],
+ "families": {
+  "ad_review": {
+   "agent_version": "v1.3",
+   "tools": {
+    "image": [
+     {
+      "name": "read_image_text",
+      "description": "OCR of the ad image: its words, line by line, top to bottom.",
+      "input_schema": {
+       "type": "object",
+       "properties": {},
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "search_policy",
+      "description": "Search the policy library of this ad's jurisdiction. Returns up to 4 clauses with id, title, kind and full text.",
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "query": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "query"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "get_clause",
+      "description": "Get the full text of one clause by id.",
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "clause_id": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "clause_id"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "check_quotes",
+      "description": "Check quotes character for character. source is \"ad\" for words of the ad (caption or image text) or a clause id for words of that clause. Returns supported / quote_not_found / quote_too_short per quote.",
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "quotes": {
+         "type": "array",
+         "items": {
+          "type": "object",
+          "properties": {
+           "source": {
+            "type": "string"
+           },
+           "quote": {
+            "type": "string"
+           }
+          },
+          "required": [
+           "source",
+           "quote"
+          ],
+          "additionalProperties": false
+         }
+        }
+       },
+       "required": [
+        "quotes"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "check_revision",
+      "description": "Check a corrected version before you give it: lists unfilled template text (brackets, blanks, XX) and any words from your review's ad quotes that are still in it.",
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "caption": {
+         "type": "string"
+        },
+        "image_lines": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        }
+       },
+       "required": [
+        "caption",
+        "image_lines"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "submit_review",
+      "description": "Submit the final review of the ad.",
+      "strict": true,
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "decision": {
+         "type": "string",
+         "enum": [
+          "approve",
+          "reject"
+         ]
+        },
+        "violations": {
+         "type": "array",
+         "items": {
+          "type": "object",
+          "properties": {
+           "category": {
+            "type": "string",
+            "enum": [
+             "ABSOLUTE",
+             "MEDICAL",
+             "GUARANTEE",
+             "DISPARAGE",
+             "DATA",
+             "ALCOHOL",
+             "WEIGHT",
+             "BEFORE_AFTER",
+             "FLAG",
+             "OTHER"
+            ]
+           },
+           "clause_id": {
+            "type": "string",
+            "description": "id of the clause broken, e.g. CN-AL-9-3 or TT-MIS-CLAIMS"
+           },
+           "ad_quote": {
+            "type": "string",
+            "description": "the exact words of the ad that break the rule, copied character for character; empty if the problem is only in the picture or is something missing"
+           },
+           "visual_evidence": {
+            "type": "string",
+            "description": "what in the picture, or what missing element, breaks the rule; empty if ad_quote covers it"
+           },
+           "policy_quote": {
+            "type": "string",
+            "description": "the exact words of the clause that the ad breaks, copied character for character from the clause text"
+           },
+           "explanation": {
+            "type": "string",
+            "description": "one or two sentences, in the language of the ad"
+           }
+          },
+          "required": [
+           "category",
+           "clause_id",
+           "ad_quote",
+           "visual_evidence",
+           "policy_quote",
+           "explanation"
+          ],
+          "additionalProperties": false
+         }
+        },
+        "notes": {
+         "type": "string",
+         "description": "optional: words that look risky but are allowed, and why"
+        }
+       },
+       "required": [
+        "decision",
+        "violations",
+        "notes"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "submit_advice",
+      "description": "Answer the advertiser's question about what is wrong and how to fix it, with a corrected version.",
+      "strict": true,
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "revised_caption": {
+         "type": "string",
+         "description": "a corrected caption that keeps the product facts"
+        },
+        "revised_image_lines": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         },
+         "description": "corrected words for the image, one line per item, in the same order as now; empty if the ad has no image"
+        },
+        "answer": {
+         "type": "string",
+         "description": "to the advertiser, in the language of the ad: what breaks which clause, and how to fix it"
+        }
+       },
+       "required": [
+        "revised_caption",
+        "revised_image_lines",
+        "answer"
+       ],
+       "additionalProperties": false
+      }
+     }
+    ],
+    "text": [
+     {
+      "name": "search_policy",
+      "description": "Search the policy library of this ad's jurisdiction. Returns up to 4 clauses with id, title, kind and full text.",
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "query": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "query"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "get_clause",
+      "description": "Get the full text of one clause by id.",
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "clause_id": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "clause_id"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "check_quotes",
+      "description": "Check quotes character for character. source is \"ad\" for words of the ad (caption or image text) or a clause id for words of that clause. Returns supported / quote_not_found / quote_too_short per quote.",
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "quotes": {
+         "type": "array",
+         "items": {
+          "type": "object",
+          "properties": {
+           "source": {
+            "type": "string"
+           },
+           "quote": {
+            "type": "string"
+           }
+          },
+          "required": [
+           "source",
+           "quote"
+          ],
+          "additionalProperties": false
+         }
+        }
+       },
+       "required": [
+        "quotes"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "check_revision",
+      "description": "Check a corrected version before you give it: lists unfilled template text (brackets, blanks, XX) and any words from your review's ad quotes that are still in it.",
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "caption": {
+         "type": "string"
+        },
+        "image_lines": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        }
+       },
+       "required": [
+        "caption",
+        "image_lines"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "submit_review",
+      "description": "Submit the final review of the ad.",
+      "strict": true,
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "decision": {
+         "type": "string",
+         "enum": [
+          "approve",
+          "reject"
+         ]
+        },
+        "violations": {
+         "type": "array",
+         "items": {
+          "type": "object",
+          "properties": {
+           "category": {
+            "type": "string",
+            "enum": [
+             "ABSOLUTE",
+             "MEDICAL",
+             "GUARANTEE",
+             "DISPARAGE",
+             "DATA",
+             "ALCOHOL",
+             "WEIGHT",
+             "BEFORE_AFTER",
+             "FLAG",
+             "OTHER"
+            ]
+           },
+           "clause_id": {
+            "type": "string",
+            "description": "id of the clause broken, e.g. CN-AL-9-3 or TT-MIS-CLAIMS"
+           },
+           "ad_quote": {
+            "type": "string",
+            "description": "the exact words of the ad that break the rule, copied character for character; empty if the problem is only in the picture or is something missing"
+           },
+           "visual_evidence": {
+            "type": "string",
+            "description": "what in the picture, or what missing element, breaks the rule; empty if ad_quote covers it"
+           },
+           "policy_quote": {
+            "type": "string",
+            "description": "the exact words of the clause that the ad breaks, copied character for character from the clause text"
+           },
+           "explanation": {
+            "type": "string",
+            "description": "one or two sentences, in the language of the ad"
+           }
+          },
+          "required": [
+           "category",
+           "clause_id",
+           "ad_quote",
+           "visual_evidence",
+           "policy_quote",
+           "explanation"
+          ],
+          "additionalProperties": false
+         }
+        },
+        "notes": {
+         "type": "string",
+         "description": "optional: words that look risky but are allowed, and why"
+        }
+       },
+       "required": [
+        "decision",
+        "violations",
+        "notes"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "submit_advice",
+      "description": "Answer the advertiser's question about what is wrong and how to fix it, with a corrected version.",
+      "strict": true,
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "revised_caption": {
+         "type": "string",
+         "description": "a corrected caption that keeps the product facts"
+        },
+        "revised_image_lines": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         },
+         "description": "corrected words for the image, one line per item, in the same order as now; empty if the ad has no image"
+        },
+        "answer": {
+         "type": "string",
+         "description": "to the advertiser, in the language of the ad: what breaks which clause, and how to fix it"
+        }
+       },
+       "required": [
+        "revised_caption",
+        "revised_image_lines",
+        "answer"
+       ],
+       "additionalProperties": false
+      }
+     }
+    ]
+   },
+   "system_template_sha": "c40e00adebe3",
+   "system_addition": ""
+  },
+  "biz": {
+   "prompt_version": "v4",
+   "tools": [
+    {
+     "name": "overview",
+     "strict": true,
+     "description": "本周全部指标（总量）对比上周和基线，以及触发异动的分组。每次分析先调用它。",
+     "input_schema": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+     }
+    },
+    {
+     "name": "breakdown",
+     "strict": true,
+     "description": "把一个指标本周相对对比期的变化，按一个维度拆到每个分组：加法指标给贡献度，比率指标给率效应和结构效应。用 filters 可以先限定在某个分组里再拆，用来下钻。指标不支持的维度会报错。",
+     "input_schema": {
+      "type": "object",
+      "properties": {
+       "metric": {
+        "type": "string",
+        "enum": [
+         "visits",
+         "buyers",
+         "new_buyers",
+         "new_buyer_share",
+         "orders",
+         "gmv",
+         "conversion_rate",
+         "aov",
+         "redeem_gmv",
+         "redeem_rate",
+         "online_stores",
+         "active_stores",
+         "active_store_rate",
+         "gmv_per_active_store",
+         "new_stores",
+         "commission",
+         "take_rate",
+         "subsidy",
+         "subsidy_rate",
+         "refund_amt",
+         "refund_rate",
+         "net_revenue"
+        ]
+       },
+       "dimension": {
+        "type": "string",
+        "enum": [
+         "city",
+         "category",
+         "channel",
+         "merchant_type",
+         "merchant"
+        ]
+       },
+       "filters": {
+        "type": "array",
+        "description": "分组条件，每项一个维度；留空表示全部。",
+        "items": {
+         "type": "object",
+         "properties": {
+          "dimension": {
+           "type": "string",
+           "enum": [
+            "city",
+            "category",
+            "channel",
+            "merchant_type",
+            "merchant"
+           ]
+          },
+          "value": {
+           "type": "string"
+          }
+         },
+         "required": [
+          "dimension",
+          "value"
+         ],
+         "additionalProperties": false
+        }
+       },
+       "compare": {
+        "type": "string",
+        "enum": [
+         "baseline",
+         "last_week"
+        ],
+        "description": "和谁比：baseline（前 8 个非节假日周）或 last_week（上周）"
+       }
+      },
+      "required": [
+       "metric",
+       "dimension",
+       "filters",
+       "compare"
+      ],
+      "additionalProperties": false
+     }
+    },
+    {
+     "name": "funnel",
+     "strict": true,
+     "description": "一个分组的体检表：访问次数、转化率、订单、GMV、客单价、补贴率、在线和动销门店、核销GMV、核销率、退款金额、退款率，本周对比对比期。filters 留空就是全部业务。",
+     "input_schema": {
+      "type": "object",
+      "properties": {
+       "filters": {
+        "type": "array",
+        "description": "分组条件，每项一个维度；留空表示全部。",
+        "items": {
+         "type": "object",
+         "properties": {
+          "dimension": {
+           "type": "string",
+           "enum": [
+            "city",
+            "category",
+            "channel",
+            "merchant_type",
+            "merchant"
+           ]
+          },
+          "value": {
+           "type": "string"
+          }
+         },
+         "required": [
+          "dimension",
+          "value"
+         ],
+         "additionalProperties": false
+        }
+       },
+       "compare": {
+        "type": "string",
+        "enum": [
+         "baseline",
+         "last_week"
+        ],
+        "description": "和谁比：baseline（前 8 个非节假日周）或 last_week（上周）"
+       }
+      },
+      "required": [
+       "filters",
+       "compare"
+      ],
+      "additionalProperties": false
+     }
+    },
+    {
+     "name": "run_sql",
+     "strict": true,
+     "description": "对数据库执行一条只读的 SELECT（DuckDB 语法），最多显示 60 行。只在前三个工具查不到时使用。",
+     "input_schema": {
+      "type": "object",
+      "properties": {
+       "sql": {
+        "type": "string"
+       },
+       "purpose": {
+        "type": "string",
+        "description": "这条查询要看什么，一句话"
+       }
+      },
+      "required": [
+       "sql",
+       "purpose"
+      ],
+      "additionalProperties": false
+     }
+    }
+   ],
+   "system_sha": "fe836477e584",
+   "system_addition": "",
+   "max_calls": 16
+  },
+  "creator": {
+   "setting": "skills",
+   "tools": [
+    {
+     "name": "check_sources",
+     "description": "Runs scripts/check_sources.py on the cards you pass, against the pages in the user's message (--pages), with --today set to today's date. Returns the exit code (0: every card passed, 1: at least one problem, 2: unreadable input) and the script's report.",
+     "strict": true,
+     "input_schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "declined",
+       "decline_reason",
+       "cards"
+      ],
+      "properties": {
+       "declined": {
+        "type": "boolean"
+       },
+       "decline_reason": {
+        "type": "string"
+       },
+       "cards": {
+        "type": "array",
+        "items": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+          "kind",
+          "title",
+          "hook",
+          "angle",
+          "fit",
+          "facts",
+          "risk_notes"
+         ],
+         "properties": {
+          "kind": {
+           "type": "string",
+           "enum": [
+            "content",
+            "public_service"
+           ]
+          },
+          "title": {
+           "type": "string"
+          },
+          "hook": {
+           "type": "string"
+          },
+          "angle": {
+           "type": "string"
+          },
+          "fit": {
+           "type": "string"
+          },
+          "facts": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+             "claim",
+             "source_url",
+             "source_title",
+             "quote",
+             "published"
+            ],
+            "properties": {
+             "claim": {
+              "type": "string"
+             },
+             "source_url": {
+              "type": "string"
+             },
+             "source_title": {
+              "type": "string"
+             },
+             "quote": {
+              "type": "string"
+             },
+             "published": {
+              "type": "string"
+             }
+            }
+           }
+          },
+          "risk_notes": {
+           "type": "string"
+          }
+         }
+        }
+       }
+      }
+     }
+    },
+    {
+     "name": "check_shotlist",
+     "description": "Runs scripts/check_shotlist.py from the shotlist-check skill on a shot list, against the script and the settings in the user's message. Returns the exit code and the Markdown report.",
+     "input_schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "shotlist"
+      ],
+      "properties": {
+       "shotlist": {
+        "type": "string",
+        "description": "The shot list: a Markdown table with a header row (for example shot, duration, visual, voiceover, on-screen text), or CSV text."
+       }
+      }
+     }
+    },
+    {
+     "name": "check_subtitles",
+     "description": "Runs scripts/check_subtitles.py. Without srt it checks the user's subtitle file against the script. With srt set to a corrected SRT it checks that file against the script and against the user's original file (--original), so a changed timing or cue count is reported.",
+     "input_schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+       "srt": {
+        "type": "string",
+        "description": "A corrected SRT to check. Leave out to check the user's original file."
+       }
+      }
+     }
+    }
+   ],
+   "system_sha": "0906457aee45",
+   "system_addition": "",
+   "max_tool_rounds": 6
+  }
+ }
+}

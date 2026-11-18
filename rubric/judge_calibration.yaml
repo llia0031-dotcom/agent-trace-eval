@@ -1,0 +1,150 @@
+# Calibration set for the judged rubric items: answers written with a known verdict per criterion, so the
+# judge's accuracy can be measured before its verdicts on the runs are reported. Brands are fictional.
+# Each example fails at most the criteria listed as fail; the rest are written to pass.
+
+examples:
+  # ---------------------------------------------------------------- J-AD (ad review advice)
+  - id: ad-good-zh
+    item: J-AD
+    expected: {J-AD-1: pass, J-AD-2: pass, J-AD-3: pass}
+    material: |
+      The ad:
+      木朴益生菌固体饮料：每天一袋，告别便秘。95% 的用户一周见效。
+
+      Problems the review found:
+      - MEDICAL (CN-AL-17): 告别便秘
+      - DATA (CN-AL-11-2): 95% 的用户一周见效
+
+      The agent's reply:
+      这条广告有两处问题。一是“告别便秘”属于疾病治疗功能的宣称，违反《广告法》第十七条，普通食品广告不能这样写，建议删掉。二是“95% 的用户一周见效”是统计数据，按第十一条第二款要写明出处、时间和样本；如果您有调查报告，请把来源补上，没有的话请删掉这句。
+
+      Corrected caption: 木朴益生菌固体饮料：每天一袋，冲饮方便。
+      Corrected image words:
+  - id: ad-bad-invented-source
+    item: J-AD
+    expected: {J-AD-1: pass, J-AD-2: fail, J-AD-3: fail}
+    material: |
+      The ad:
+      木朴益生菌固体饮料：每天一袋，告别便秘。95% 的用户一周见效。
+
+      Problems the review found:
+      - MEDICAL (CN-AL-17): 告别便秘
+      - DATA (CN-AL-11-2): 95% 的用户一周见效
+
+      The agent's reply:
+      “告别便秘”违反《广告法》第十七条；“95% 的用户一周见效”没有出处，违反第十一条第二款。我已经帮您改好了，直接用下面的版本即可。
+
+      Corrected caption: 木朴益生菌固体饮料：每天一袋，肠道更轻松。95% 的用户一周见效（数据来源：木朴研究院 2026 年调研，样本 2000 人）。
+      Corrected image words:
+  - id: ad-good-en
+    item: J-AD
+    # corrected 2026-11-18 after the calibration run: the corrected caption adds "aged 8 years", a new claim (J-AD-3 fails)
+    expected: {J-AD-1: pass, J-AD-2: pass, J-AD-3: fail}
+    material: |
+      The ad:
+      NightOwl Whiskey, 40% ABV: the smoothest whiskey in the world. Win a free bottle every Friday! Please drink responsibly.
+
+      Problems the review found:
+      - ABSOLUTE (TT-MIS-CLAIMS): the smoothest whiskey in the world
+      - ALCOHOL (TT-ALC): Win a free bottle every Friday
+
+      The agent's reply:
+      Two things need to change. "The smoothest whiskey in the world" is an absolute claim, which the misleading-claims policy does not allow; describe the whiskey instead. "Win a free bottle every Friday" offers alcohol as a prize, which the alcohol policy does not allow; remove the giveaway. The strength and the responsible-drinking line can stay.
+
+      Corrected caption: NightOwl Whiskey, 40% ABV: aged 8 years in oak casks. Please drink responsibly.
+      Corrected image words:
+  - id: ad-bad-missing-problem
+    item: J-AD
+    expected: {J-AD-1: fail, J-AD-2: fail, J-AD-3: fail}
+    material: |
+      The ad:
+      NightOwl Whiskey, 40% ABV: the smoothest whiskey in the world. Win a free bottle every Friday! Please drink responsibly.
+
+      Problems the review found:
+      - ABSOLUTE (TT-MIS-CLAIMS): the smoothest whiskey in the world
+      - ALCOHOL (TT-ALC): Win a free bottle every Friday
+
+      The agent's reply:
+      Just tone down the superlative and you are good to go.
+
+      Corrected caption: NightOwl Whiskey, 40% ABV: rated the No. 1 whiskey by 9 out of 10 drinkers. Win a free bottle every Friday! Please drink responsibly.
+      Corrected image words:
+
+  # ---------------------------------------------------------------- J-BZ (business review advice)
+  - id: bz-good
+    item: J-BZ
+    expected: {J-BZ-1: pass, J-BZ-2: pass}
+    material: |
+      The report, paragraph by paragraph:
+      [Summary] 本周访问次数下降，主要在门店页渠道。
+      [Finding] 本周门店页渠道访问次数比基线低 45%。
+      [Cause] 门店页渠道的访问次数下降，转化率基本没变，属于流量问题。
+      [Advice] 请门店页渠道的负责同学检查本周门店页入口的曝光位和跳转是否正常，修复后观察下周访问次数是否恢复。
+  - id: bz-bad-unrelated
+    item: J-BZ
+    expected: {J-BZ-1: fail, J-BZ-2: pass}
+    material: |
+      The report, paragraph by paragraph:
+      [Summary] 本周访问次数下降，主要在门店页渠道。
+      [Finding] 本周门店页渠道访问次数比基线低 45%。
+      [Cause] 门店页渠道的访问次数下降，转化率基本没变，属于流量问题。
+      [Advice] 建议给火锅品类加大补贴，提升直播渠道的转化率。
+  - id: bz-bad-vague
+    item: J-BZ
+    expected: {J-BZ-1: pass, J-BZ-2: fail}
+    material: |
+      The report, paragraph by paragraph:
+      [Summary] 本周北京的转化率下降。
+      [Finding] 本周北京访问支付转化率比基线低 3.1 pp。
+      [Cause] 北京的访问次数基本没变，转化率下降，属于转化问题。
+      [Advice] 建议持续关注北京的转化情况。
+  - id: bz-good-two
+    item: J-BZ
+    expected: {J-BZ-1: pass, J-BZ-2: pass}
+    material: |
+      The report, paragraph by paragraph:
+      [Summary] 本周有两处异动：搜索渠道流量下降，烧烤品类退款上升。
+      [Finding] 本周搜索渠道访问次数比基线低 48%。
+      [Finding] 本周烧烤品类退款金额比基线高 22%。
+      [Cause] 搜索渠道访问次数下降，转化率没变，属于流量问题。
+      [Cause] 烧烤品类支付正常，退款金额本身上升，属于退款问题。
+      [Advice] 搜索渠道：检查本周搜索结果页的排序和关键词投放有没有变化。
+      [Advice] 烧烤品类：抽查退款原因，联系退款最多的几家门店确认是否有出餐或服务问题。
+
+  # ---------------------------------------------------------------- J-CR (creator topic cards)
+  - id: cr-good
+    item: J-CR
+    expected: {J-CR-1: pass, J-CR-2: pass}
+    material: |
+      Account: platform 抖音; niche 平价咖啡探店; audience 喜欢喝咖啡、预算不高的大学生和年轻上班族; tone 轻松、实在
+      Trend: 青梧市首届咖啡生活节本周末开幕
+
+      Card 1: title: 咖啡节 9 块钱喝遍全场？ | hook: 美式全场 9 块，自带杯再减 2 块，周末去不去？ | angle: 用预算视角带大家逛咖啡节，算一算怎么喝最划算
+      Card 2: title: 咖啡节免费纪念杯怎么拿 | hook: 每天只有 300 个，我早上十点就到了 | angle: 实测领取纪念杯的排队时间和攻略
+  - id: cr-bad-fit
+    item: J-CR
+    expected: {J-CR-1: fail, J-CR-2: pass}
+    material: |
+      Account: platform 抖音; niche 平价咖啡探店; audience 喜欢喝咖啡、预算不高的大学生和年轻上班族; tone 轻松、实在
+      Trend: 青梧市首届咖啡生活节本周末开幕
+
+      Card 1: title: 咖啡节 9 块钱喝遍全场？ | hook: 美式全场 9 块，自带杯再减 2 块，周末去不去？ | angle: 用预算视角带大家逛咖啡节
+      Card 2: title: 精品咖啡庄园投资指南 | hook: 一个庄园年回报能有多少？ | angle: 讲咖啡庄园的投资门槛和回报，面向高净值人群
+  - id: cr-bad-hook
+    item: J-CR
+    expected: {J-CR-1: pass, J-CR-2: fail}
+    material: |
+      Account: platform YouTube Shorts; niche budget cooking and cheap eats; audience students and young renters who cook on a small budget; tone friendly, practical
+      Trend: Callow's winter food fair opens this weekend
+
+      Card 1: title: The £5 food fair challenge | hook: In this video, which I have been planning for quite a while now, I will be telling you about many different things regarding the upcoming winter food fair and also my thoughts on budgeting in general. | angle: Eat a full lunch at the fair for £5
+      Card 2: title: Bring a box, save 50p | hook: Bring a box, save 50p a dish. | angle: Why your own container pays at the fair
+  - id: cr-good-en
+    item: J-CR
+    expected: {J-CR-1: pass, J-CR-2: pass}
+    material: |
+      Account: platform TikTok; niche campus life and student money tips; audience university students in Eastbrook; tone upbeat, to the point
+      Trend: Eastbrook launches the N7 night bus between the campus and the city centre
+
+      Card 1: title: Night bus home for £1.10 | hook: Missed the last train? The N7 gets you home for £1.10. | angle: What the new night bus costs students and how often it runs
+      Card 2: title: N7 vs taxi after a late shift | hook: £1.10 or £12? Same trip home. | angle: Compare the night bus with a taxi for students who work late

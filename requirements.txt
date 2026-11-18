@@ -1,0 +1,12 @@
+# Python 3.11 or later. The three agents are imported from their own repositories (see bench/config.py);
+# their requirements apply when running trials: grounded-review (rank-bm25, pillow; rapidocr for tasks/ad_review/build.py),
+# grounded-business-review (duckdb, pandas, numpy), creator-skills (standard library only).
+anthropic>=2.8
+pyyaml>=6.0
+inspect-ai==0.3.291
+agentevals==0.0.9
+rank-bm25>=0.2.2
+pillow>=10
+duckdb==1.5.6
+pandas>=2.2
+numpy>=2.0

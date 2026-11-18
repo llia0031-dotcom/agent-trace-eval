@@ -1,0 +1,11 @@
+# local credentials
+.env
+eval/paths.local.json
+# generated locally: databases, batch journals, per-trial work folders, Inspect logs
+/data/
+eval/results/*/journal.jsonl
+eval/results/*/judge-journal.jsonl
+eval/results/*/biz/
+eval/results/*/inspect/
+__pycache__/
+*.pyc

@@ -1,0 +1,512 @@
+{
+ "config": {
+  "description": "Ad review agent with two rules added to its instructions, aimed at the most frequent base failure whose cause is the prompt (one phrase listed under two categories) and the most frequent process fault (calling the advice tool in a review turn).",
+  "families": [
+   "ad_review"
+  ],
+  "model": "claude-haiku-5-5",
+  "ad_review_system_addition": "Two more rules:\n- List each problem once. When one phrase breaks more than one rule, give it a single violation, under the category whose description fits the problem most specifically. Use GUARANTEE or OTHER for a phrase only when no more specific category describes it.\n- Finish each request with the one tool it asks for: submit_review when you are asked to review an ad, submit_advice only when the advertiser asks what is wrong and how to fix it. Never call both in one request.",
+  "name": "fix-ad"
+ },
+ "sessions": [
+  {
+   "trials": "1-3",
+   "families": [
+    "ad_review"
+   ],
+   "batch": true,
+   "jobs": 60,
+   "batches": [
+    {
+     "requests": 60,
+     "minutes": 2.1,
+     "succeeded": 60,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 60,
+     "minutes": 1.8,
+     "succeeded": 60,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 48,
+     "minutes": 2.3,
+     "succeeded": 48,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 23,
+     "minutes": 2.1,
+     "succeeded": 23,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 21,
+     "minutes": 2.1,
+     "succeeded": 21,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 18,
+     "minutes": 2.3,
+     "succeeded": 18,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 16,
+     "minutes": 2.1,
+     "succeeded": 16,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 4,
+     "minutes": 2.1,
+     "succeeded": 4,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 1,
+     "minutes": 2.3,
+     "succeeded": 1,
+     "errored": 0,
+     "expired": 0
+    },
+    {
+     "requests": 1,
+     "minutes": 2.3,
+     "succeeded": 1,
+     "errored": 0,
+     "expired": 0
+    }
+   ],
+   "answers_reused": 0,
+   "spent_after_usd": 0.109656,
+   "ended": "2026-11-18T21:11:53+0800"
+  }
+ ],
+ "families": {
+  "ad_review": {
+   "agent_version": "v1.3",
+   "tools": {
+    "image": [
+     {
+      "name": "read_image_text",
+      "description": "OCR of the ad image: its words, line by line, top to bottom.",
+      "input_schema": {
+       "type": "object",
+       "properties": {},
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "search_policy",
+      "description": "Search the policy library of this ad's jurisdiction. Returns up to 4 clauses with id, title, kind and full text.",
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "query": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "query"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "get_clause",
+      "description": "Get the full text of one clause by id.",
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "clause_id": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "clause_id"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "check_quotes",
+      "description": "Check quotes character for character. source is \"ad\" for words of the ad (caption or image text) or a clause id for words of that clause. Returns supported / quote_not_found / quote_too_short per quote.",
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "quotes": {
+         "type": "array",
+         "items": {
+          "type": "object",
+          "properties": {
+           "source": {
+            "type": "string"
+           },
+           "quote": {
+            "type": "string"
+           }
+          },
+          "required": [
+           "source",
+           "quote"
+          ],
+          "additionalProperties": false
+         }
+        }
+       },
+       "required": [
+        "quotes"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "check_revision",
+      "description": "Check a corrected version before you give it: lists unfilled template text (brackets, blanks, XX) and any words from your review's ad quotes that are still in it.",
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "caption": {
+         "type": "string"
+        },
+        "image_lines": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        }
+       },
+       "required": [
+        "caption",
+        "image_lines"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "submit_review",
+      "description": "Submit the final review of the ad.",
+      "strict": true,
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "decision": {
+         "type": "string",
+         "enum": [
+          "approve",
+          "reject"
+         ]
+        },
+        "violations": {
+         "type": "array",
+         "items": {
+          "type": "object",
+          "properties": {
+           "category": {
+            "type": "string",
+            "enum": [
+             "ABSOLUTE",
+             "MEDICAL",
+             "GUARANTEE",
+             "DISPARAGE",
+             "DATA",
+             "ALCOHOL",
+             "WEIGHT",
+             "BEFORE_AFTER",
+             "FLAG",
+             "OTHER"
+            ]
+           },
+           "clause_id": {
+            "type": "string",
+            "description": "id of the clause broken, e.g. CN-AL-9-3 or TT-MIS-CLAIMS"
+           },
+           "ad_quote": {
+            "type": "string",
+            "description": "the exact words of the ad that break the rule, copied character for character; empty if the problem is only in the picture or is something missing"
+           },
+           "visual_evidence": {
+            "type": "string",
+            "description": "what in the picture, or what missing element, breaks the rule; empty if ad_quote covers it"
+           },
+           "policy_quote": {
+            "type": "string",
+            "description": "the exact words of the clause that the ad breaks, copied character for character from the clause text"
+           },
+           "explanation": {
+            "type": "string",
+            "description": "one or two sentences, in the language of the ad"
+           }
+          },
+          "required": [
+           "category",
+           "clause_id",
+           "ad_quote",
+           "visual_evidence",
+           "policy_quote",
+           "explanation"
+          ],
+          "additionalProperties": false
+         }
+        },
+        "notes": {
+         "type": "string",
+         "description": "optional: words that look risky but are allowed, and why"
+        }
+       },
+       "required": [
+        "decision",
+        "violations",
+        "notes"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "submit_advice",
+      "description": "Answer the advertiser's question about what is wrong and how to fix it, with a corrected version.",
+      "strict": true,
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "revised_caption": {
+         "type": "string",
+         "description": "a corrected caption that keeps the product facts"
+        },
+        "revised_image_lines": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         },
+         "description": "corrected words for the image, one line per item, in the same order as now; empty if the ad has no image"
+        },
+        "answer": {
+         "type": "string",
+         "description": "to the advertiser, in the language of the ad: what breaks which clause, and how to fix it"
+        }
+       },
+       "required": [
+        "revised_caption",
+        "revised_image_lines",
+        "answer"
+       ],
+       "additionalProperties": false
+      }
+     }
+    ],
+    "text": [
+     {
+      "name": "search_policy",
+      "description": "Search the policy library of this ad's jurisdiction. Returns up to 4 clauses with id, title, kind and full text.",
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "query": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "query"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "get_clause",
+      "description": "Get the full text of one clause by id.",
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "clause_id": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "clause_id"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "check_quotes",
+      "description": "Check quotes character for character. source is \"ad\" for words of the ad (caption or image text) or a clause id for words of that clause. Returns supported / quote_not_found / quote_too_short per quote.",
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "quotes": {
+         "type": "array",
+         "items": {
+          "type": "object",
+          "properties": {
+           "source": {
+            "type": "string"
+           },
+           "quote": {
+            "type": "string"
+           }
+          },
+          "required": [
+           "source",
+           "quote"
+          ],
+          "additionalProperties": false
+         }
+        }
+       },
+       "required": [
+        "quotes"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "check_revision",
+      "description": "Check a corrected version before you give it: lists unfilled template text (brackets, blanks, XX) and any words from your review's ad quotes that are still in it.",
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "caption": {
+         "type": "string"
+        },
+        "image_lines": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        }
+       },
+       "required": [
+        "caption",
+        "image_lines"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "submit_review",
+      "description": "Submit the final review of the ad.",
+      "strict": true,
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "decision": {
+         "type": "string",
+         "enum": [
+          "approve",
+          "reject"
+         ]
+        },
+        "violations": {
+         "type": "array",
+         "items": {
+          "type": "object",
+          "properties": {
+           "category": {
+            "type": "string",
+            "enum": [
+             "ABSOLUTE",
+             "MEDICAL",
+             "GUARANTEE",
+             "DISPARAGE",
+             "DATA",
+             "ALCOHOL",
+             "WEIGHT",
+             "BEFORE_AFTER",
+             "FLAG",
+             "OTHER"
+            ]
+           },
+           "clause_id": {
+            "type": "string",
+            "description": "id of the clause broken, e.g. CN-AL-9-3 or TT-MIS-CLAIMS"
+           },
+           "ad_quote": {
+            "type": "string",
+            "description": "the exact words of the ad that break the rule, copied character for character; empty if the problem is only in the picture or is something missing"
+           },
+           "visual_evidence": {
+            "type": "string",
+            "description": "what in the picture, or what missing element, breaks the rule; empty if ad_quote covers it"
+           },
+           "policy_quote": {
+            "type": "string",
+            "description": "the exact words of the clause that the ad breaks, copied character for character from the clause text"
+           },
+           "explanation": {
+            "type": "string",
+            "description": "one or two sentences, in the language of the ad"
+           }
+          },
+          "required": [
+           "category",
+           "clause_id",
+           "ad_quote",
+           "visual_evidence",
+           "policy_quote",
+           "explanation"
+          ],
+          "additionalProperties": false
+         }
+        },
+        "notes": {
+         "type": "string",
+         "description": "optional: words that look risky but are allowed, and why"
+        }
+       },
+       "required": [
+        "decision",
+        "violations",
+        "notes"
+       ],
+       "additionalProperties": false
+      }
+     },
+     {
+      "name": "submit_advice",
+      "description": "Answer the advertiser's question about what is wrong and how to fix it, with a corrected version.",
+      "strict": true,
+      "input_schema": {
+       "type": "object",
+       "properties": {
+        "revised_caption": {
+         "type": "string",
+         "description": "a corrected caption that keeps the product facts"
+        },
+        "revised_image_lines": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         },
+         "description": "corrected words for the image, one line per item, in the same order as now; empty if the ad has no image"
+        },
+        "answer": {
+         "type": "string",
+         "description": "to the advertiser, in the language of the ad: what breaks which clause, and how to fix it"
+        }
+       },
+       "required": [
+        "revised_caption",
+        "revised_image_lines",
+        "answer"
+       ],
+       "additionalProperties": false
+      }
+     }
+    ]
+   },
+   "system_template_sha": "9917c10019e5",
+   "system_addition": "Two more rules:\n- List each problem once. When one phrase breaks more than one rule, give it a single violation, under the category whose description fits the problem most specifically. Use GUARANTEE or OTHER for a phrase only when no more specific category describes it.\n- Finish each request with the one tool it asks for: submit_review when you are asked to review an ad, submit_advice only when the advertiser asks what is wrong and how to fix it. Never call both in one request."
+  }
+ }
+}
