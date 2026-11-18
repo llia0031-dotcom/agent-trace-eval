@@ -90,7 +90,7 @@ through (the residual risk), and successes they held (the review load they add).
 
 ## Judged items: what rules cannot check
 
-Judged twice per answer by `claude-haiku-5-5` against the guide in `bench/judge.py`; a criterion passes
+Judged twice per answer against the guide in `bench/judge.py` (the calls use `claude-haiku-5-5`, the agents' model); a criterion passes
 only when both passes say pass. Agreement between the passes and accuracy on the calibration set
 (`rubric/judge_calibration.yaml`, answers written with a known verdict) are reported. Judged items never
 change task success.

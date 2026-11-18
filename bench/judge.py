@@ -1,4 +1,4 @@
-"""The rubric items that rules cannot check, judged by a model against a written scoring guide.
+"""The rubric items that rules cannot check, judged against a written scoring guide.
 
 Three items (rubric/RUBRIC.md, section "Judged items"):
   J-AD  ad review, advice turn: does the answer explain each problem and its fix, without making up facts
@@ -10,7 +10,7 @@ Each answer is judged twice, in two independent requests with the same prompt; a
 passes is reported per item. Before judging the runs, the judge is run on a calibration set of answers
 written with a known verdict (rubric/judge_calibration.yaml); its accuracy there is reported too.
 A criterion counts as passed only when both passes say pass; a split verdict counts as "uncertain".
-The judge is claude-haiku-5-5 (the model of the agents being judged), through the Message Batches API.
+The calls use claude-haiku-5-5 (the model of the agents), through the Message Batches API.
 Judged items are reported next to the rule-based results and never change task success.
 """
 from __future__ import annotations

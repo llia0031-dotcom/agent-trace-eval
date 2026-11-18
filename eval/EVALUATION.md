@@ -54,7 +54,7 @@ were fixed when the tasks were written, with the agent projects' own validators 
 - **Gates** are the checks a deployment runs before release; a trial a gate holds needs human confirmation.
 - **Attribution**: the earliest failing core check gives the stage; the cause comes from a rule per check or
   from a note written after reading the transcript (`eval/attribution_notes.yaml`).
-- **Judged items**: what rules cannot check, judged twice per answer by the model against a written guide.
+- **Judged items**: what rules cannot check, judged twice per answer against a written guide.
 
 ## Base results
 
@@ -284,7 +284,7 @@ All in the pre-registration's change log, with times:
   95% CI 76%–94%), and per-task comparisons rest on three trials each.
 - The tasks are synthetic or fictional and come from the same project that runs them; two have a problem in the
   task or the key (C06, B02), kept in the scores.
-- The judge is the model under evaluation, and its guide has a gap on quiet weeks; judged items do not change
+- The judged items use the same model as the agents under evaluation, and the guide has a gap on quiet weeks; judged items do not change
   task success. No human ratings were collected.
 - The fixes were checked on the tasks they were written for; new tasks are needed to show they generalise.
 - Latency comes from the base standard-API trials, one per task; batch trials have no latency.

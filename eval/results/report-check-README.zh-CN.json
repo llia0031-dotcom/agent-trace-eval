@@ -1,7 +1,7 @@
 {
  "report": "README.zh-CN.md",
- "checked": 27,
- "supported": 19,
+ "checked": 28,
+ "supported": 20,
  "problems": [
   {
    "line": 5,
@@ -353,7 +353,19 @@
   },
   {
    "line": 37,
-   "text": "**模型判的三项**：规则查不了的三件事（给广告主的建议是否讲清、经营建议是否从原因出发、选题是否贴合账号），由模型按写好的评分表判，每条判两遍，报两遍的一致率和在校准题上的准确率。",
+   "text": "**按评分表判的三项**：规则查不了的三件事（给广告主的建议是否讲清、经营建议是否从原因出发、选题是否贴合账号），按写好的评分表判，每个答案判两遍，报两遍的一致率和在校准题上的准确率；",
+   "status": "supported",
+   "missing": [],
+   "evidence": [
+    {
+     "source": "eval__results__summary.md",
+     "quote": "| L2 | 3/12 (25%) |"
+    }
+   ]
+  },
+  {
+   "line": 37,
+   "text": "调用的是和三个 Agent 相同的模型。",
    "status": "supported",
    "missing": [],
    "evidence": [

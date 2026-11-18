@@ -74,8 +74,9 @@ the agent project's own scorer ──► outcome per turn          rubric checks
   the skills' checking scripts). A trial that a gate holds needs human confirmation. Failures the gates
   let through are the residual risk.
 - **Judged items.** Three things rules cannot check (is the advice to the advertiser complete and honest,
-  does business advice follow from a cause, does a topic card fit the account) are judged by a model
-  against a written guide, twice, with agreement and accuracy on a calibration set reported.
+  does business advice follow from a cause, does a topic card fit the account) are judged against a
+  written guide, twice per answer, with agreement and accuracy on a calibration set reported; the calls use
+  the agents' own model.
 - **Attribution.** A failed trial's stage is its earliest failing check; its cause is one of knowledge,
   tool, prompt, model, interaction or task, from a rule per check or from a note written after reading
   the transcript ([eval/attribution_notes.yaml](eval/attribution_notes.yaml)).

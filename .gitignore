@@ -8,5 +8,5 @@ eval/results/*/judge-journal.jsonl
 eval/results/*/biz/
 eval/results/*/inspect/
 __pycache__/
-*.pyc
 .made-by-make-public
+*.pyc

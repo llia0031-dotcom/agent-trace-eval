@@ -262,7 +262,7 @@
   },
   {
    "line": 62,
-   "text": "**Judged items.** Three things rules cannot check (is the advice to the advertiser complete and honest, does business advice follow from a cause, does a topic card fit the account) are judged by a model against a written guide, twice, with agreement and accuracy on a calibration set reported.",
+   "text": "**Judged items.** Three things rules cannot check (is the advice to the advertiser complete and honest, does business advice follow from a cause, does a topic card fit the account) are judged against a written guide, twice per answer, with agreement and accuracy on a calibration set reported; the calls use the agents' own model.",
    "status": "supported",
    "missing": [],
    "evidence": [
@@ -273,7 +273,7 @@
    ]
   },
   {
-   "line": 95,
+   "line": 96,
    "text": "Running trials needs the three agent repositories next to this one (or `APE_AD_REVIEW_DIR`, `APE_BIZ_DIR`, `APE_CREATOR_DIR`) and an API key in `eval/.env` (`ANTHROPIC_API_KEY=...`, or point `EVAL_ENV_FILE` at another file):",
    "status": "supported",
    "missing": [],
@@ -285,7 +285,7 @@
    ]
   },
   {
-   "line": 109,
+   "line": 110,
    "text": "The three agents it evaluates each have their own pre-registered evaluation of the final answer: [grounded-review], [grounded-business-review], [creator-skills].",
    "status": "supported",
    "missing": [],
