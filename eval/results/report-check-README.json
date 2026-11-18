@@ -1,8 +1,18 @@
 {
  "report": "README.md",
- "checked": 23,
+ "checked": 24,
  "supported": 23,
- "problems": [],
+ "problems": [
+  {
+   "line": 62,
+   "text": "**Viewer.** Every stored trial, step by step, with its failed checks, in [Inspect AI]'s log viewer: [llia0031-dotcom.github.io/agent-trace-eval] (built from the stored records by `tools/make_viewer.py`; locally, `python -m bench inspect-log --run base`, then `inspect view`).",
+   "status": "no_evidence",
+   "missing": [
+    "31"
+   ],
+   "evidence": []
+  }
+ ],
  "claims": [
   {
    "line": 5,
@@ -273,7 +283,16 @@
    ]
   },
   {
-   "line": 96,
+   "line": 62,
+   "text": "**Viewer.** Every stored trial, step by step, with its failed checks, in [Inspect AI]'s log viewer: [llia0031-dotcom.github.io/agent-trace-eval] (built from the stored records by `tools/make_viewer.py`; locally, `python -m bench inspect-log --run base`, then `inspect view`).",
+   "status": "no_evidence",
+   "missing": [
+    "31"
+   ],
+   "evidence": []
+  },
+  {
+   "line": 97,
    "text": "Running trials needs the three agent repositories next to this one (or `APE_AD_REVIEW_DIR`, `APE_BIZ_DIR`, `APE_CREATOR_DIR`) and an API key in `eval/.env` (`ANTHROPIC_API_KEY=...`, or point `EVAL_ENV_FILE` at another file):",
    "status": "supported",
    "missing": [],
@@ -285,7 +304,7 @@
    ]
   },
   {
-   "line": 110,
+   "line": 111,
    "text": "The three agents it evaluates each have their own pre-registered evaluation of the final answer: [grounded-review], [grounded-business-review], [creator-skills].",
    "status": "supported",
    "missing": [],
