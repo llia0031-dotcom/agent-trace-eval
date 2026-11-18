@@ -6,7 +6,10 @@
 
 Nothing is re-run: a replay solver turns each stored trace into Inspect messages (user requests, model
 text and tool calls, tool results), and a scorer copies the stored rubric verdicts into Inspect scores
-(one per stage, plus task success). Inspect's `mockllm/model` stands in for the model, which is never called.
+(one per stage, plus task success). The log names no model (`none`): nothing is generated, and the durations Inspect
+shows are those of the replay, not of the original runs (their latency is in the traces and the report).
+
+`tools/make_viewer.py` turns these logs, built from the public records, into a static site for GitHub Pages.
 """
 from __future__ import annotations
 
@@ -28,7 +31,7 @@ def write_log(run: str) -> str:
     scores = {f"{r['family']}/{r['task']}/t{r['trial']}": r
               for r in map(json.loads, (folder / "scores.jsonl").read_text(encoding="utf-8").splitlines())}
     samples = [Sample(id=k, input=k, metadata={"family": t["family"], "task": t["task"], "tier": t["tier"], "lang": t["lang"],
-                                               "trial": t["trial"], "gate": t["gate"], "usage": t["usage"]})
+                                               "trial": t["trial"], "gate": t["gate"], "run": run})
                for k, t in sorted(traces.items())]
 
     @solver
@@ -67,6 +70,6 @@ def write_log(run: str) -> str:
                          metadata={"first_failure": r.get("first_failure"), "attribution": r.get("attribution")})
         return score
 
-    logs = inspect_eval(Task(name=f"agent-trace-eval-{run}", dataset=samples, solver=replay(), scorer=rubric()),
-                        model="mockllm/model", log_dir=str(folder / "inspect"), display="none")
+    logs = inspect_eval(Task(name=f"{run} (recorded traces)", dataset=samples, solver=replay(), scorer=rubric()),
+                        model="none", log_dir=str(folder / "inspect"), display="none")
     return logs[0].location
