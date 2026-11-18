@@ -123,7 +123,8 @@ tasks/        ad_review/ (items, images, OCR), biz/ (cases), creator/ (pages, sc
 bench/        adapters/ (one per agent), trace, checks (the rubric), metrics, attribution, judge, report, run, inspect_log
 rubric/       RUBRIC.md, judge_calibration.yaml
 eval/         PREREGISTRATION.md, EVALUATION.md, configs.yaml, frozen.json, attribution_notes.yaml,
-              results/<run>/ traces.jsonl, scores.jsonl, summary.json; results/summary.md, attribution.md, checks.md
+              results/<run>/ traces.jsonl, scores.jsonl, summary.json; results/summary.md, attribution.md, checks.md;
+              results/replay/replay.json (step-by-step replays of a few trials, chosen by fixed rules: tools/make_replay.py)
 tests/        offline tests and the stand-in model
 ```
 

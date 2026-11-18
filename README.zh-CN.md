@@ -77,7 +77,8 @@ tasks/        ad_review/（题目、图片、OCR）、biz/（题目）、creator
 bench/        adapters/（每个 Agent 一个连接）、trace、checks（评分表）、metrics、attribution、judge、report、run、inspect_log
 rubric/       RUBRIC.md、judge_calibration.yaml
 eval/         PREREGISTRATION.md、EVALUATION.md、configs.yaml、frozen.json、attribution_notes.yaml、
-              results/<运行名>/ traces.jsonl、scores.jsonl、summary.json；results/summary.md、attribution.md、checks.md
+              results/<运行名>/ traces.jsonl、scores.jsonl、summary.json；results/summary.md、attribution.md、checks.md；
+              results/replay/replay.json（按固定规则挑几次试验做的逐步回放，由 tools/make_replay.py 生成）
 tests/        离线测试和假模型
 ```
 

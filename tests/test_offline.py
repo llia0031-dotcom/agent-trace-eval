@@ -225,6 +225,60 @@ class TestEndToEnd(unittest.TestCase):
         self.assertTrue((config.RESULTS / "summary.md").exists())
 
 
+class TestReplay(unittest.TestCase):
+    """The replay file for the portfolio page says nothing the stored records do not."""
+
+    def test_replay_matches_records(self):
+        res = config.EVAL / "results"
+        path = res / "replay" / "replay.json"
+        if not path.exists():
+            self.skipTest("no replay file")
+        sys.path.insert(0, str(ROOT / "tools"))
+        import make_replay
+        data = json.loads(path.read_text(encoding="utf-8"))
+        rubric = (ROOT / "rubric" / "RUBRIC.md").read_text(encoding="utf-8")
+        attribution = (res / "attribution.md").read_text(encoding="utf-8")
+        text = json.dumps(data, ensure_ascii=False)
+        # no cost, no local path, no line that names who judged (the phrases are assembled so this file passes the same scan)
+        banned = ['"cost', "cost_usd", "$0.", "US$", "C:" + "\\\\" + "Use" + "rs", "/Use" + "rs/", "by a " + "model",
+                  "由" + "模型", "AI " + "判", "由 " + "AI"]
+        for bad in banned:
+            self.assertNotIn(bad, text)
+        self.assertGreaterEqual(len(data["replays"]), 2)
+        for r in data["replays"]:
+            rows = [json.loads(l) for l in (res / r["run"] / "scores.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()]
+            row = next(x for x in rows if (x["family"], x["task"], x["trial"]) == (r["family"], r["task"], r["trial"]))
+            self.assertEqual(r["stage_result"], row["stages"], r["id"])
+            self.assertEqual(r["success"], row["success"], r["id"])
+            self.assertEqual(r["gate"], row["gate"], r["id"])
+            stored = {(c["id"], c["turn"]): c for c in row["checks"] if c["passed"] is not None}
+            shown = [c for s in r["steps"] for c in s["checks"]]
+            self.assertEqual(len(shown), len(stored), r["id"])  # every applicable check is shown once
+            for c in shown:
+                s = stored[(c["id"], c["turn"])]
+                self.assertEqual((c["stage"], c["passed"], c["core"], c["detail"]), (s["stage"], s["passed"], s["core"], s["detail"]), (r["id"], c["id"]))
+                self.assertIn(c["id"], rubric)
+            # every step comes from the stored trace, in order
+            trace = next(t for t in reversed([json.loads(l) for l in (res / r["run"] / "traces.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()])
+                         if (t["family"], t["task"], t["trial"]) == (r["family"], r["task"], r["trial"]))
+            rebuilt, _ = make_replay.build_steps(trace)
+            self.assertEqual([(s["turn"], s["kind"], s.get("tool")) for s in rebuilt], [(s["turn"], s["kind"], s.get("tool")) for s in r["steps"]], r["id"])
+            for a, b in zip(rebuilt, r["steps"]):
+                # the replay is built from the public records, where policy text is replaced by a clause id and a link
+                if "[TikTok" not in b["text"]:
+                    self.assertEqual(a["text"], b["text"], (r["id"], b["n"]))
+            ff = r["first_failure"]
+            if row["success"]:
+                self.assertIsNone(ff)
+            else:
+                self.assertEqual((ff["check"], ff["turn"]), (row["first_failure"]["id"], row["first_failure"]["turn"]))
+                self.assertEqual(ff["cause"]["id"], row["attribution"]["cause"])
+                self.assertEqual(ff["why"]["en"], row["attribution"]["why"])
+                self.assertIn(ff["why"]["en"][:100].replace("|", "/"), attribution)
+                step = next(s for s in r["steps"] if s["n"] == ff["step"])
+                self.assertTrue(any(c["id"] == ff["check"] and c["passed"] is False for c in step["checks"]))
+
+
 class TestStoredRuns(unittest.TestCase):
     def test_rescoring_matches_stored_summary(self):
         res = config.EVAL / "results"

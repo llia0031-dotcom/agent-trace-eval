@@ -1,0 +1,3076 @@
+{
+ "schema": 1,
+ "schema_notes": "Step kinds: user, instruction (an operator note added in a turn), harness (a message from the harness inside a turn), model (the agent's own text), tool_call, tool_result, final (the turn's answer, summarised). Each step has turn and n; checks sit on the step they check, with passed, core and detail exactly as in scores.jsonl; report-only checks have core false. first_failure comes from scores.jsonl and the attribution; why.en is the attribution's text. No cost fields.",
+ "selection_rule": {
+  "gate-missed": {
+   "zh": "基线运行里，该语言的试验中任务没成功、自动关卡却放行的；按 Agent（广告审核、经营分析、创作流程）、题号、试验号排序，取第一条。",
+   "en": "In the base run, trials in this language whose task failed while every automatic gate let them through; ordered by agent (ad review, business review, creator workflow), task id and trial number, the first one."
+  },
+  "full-pass": {
+   "zh": "基线运行里，该语言的试验中任务成功、五个阶段没有一项没过的，先取轮数最多的，再按 Agent、题号、试验号排序，取第一条。",
+   "en": "In the base run, trials in this language that succeeded with no stage failed; those with the most turns first, then ordered by agent, task id and trial number, the first one."
+  },
+  "after-fix": {
+   "zh": "第一条所在 Agent 有修复运行（fix-ad 或 fix-biz）时，同一道题在修复运行里成功的试验，按试验号取第一条；没有就不放。",
+   "en": "If the agent of the first replay has a fix run (fix-ad or fix-biz): the same task's successful trials in that run, the one with the lowest trial number; otherwise none."
+  }
+ },
+ "source": {
+  "repo": "https://github.com/llia0031-dotcom/agent-trace-eval",
+  "commit": "352d3e8",
+  "scores": "eval/results/<run>/scores.jsonl",
+  "traces": "eval/results/<run>/traces.jsonl",
+  "attribution": "eval/results/attribution.md"
+ },
+ "stages": [
+  {
+   "id": "U",
+   "zh": "理解意图",
+   "en": "Understanding"
+  },
+  {
+   "id": "P",
+   "zh": "规划",
+   "en": "Planning"
+  },
+  {
+   "id": "T",
+   "zh": "工具调用",
+   "en": "Tool calls"
+  },
+  {
+   "id": "K",
+   "zh": "知识引用",
+   "en": "Knowledge and citation"
+  },
+  {
+   "id": "R",
+   "zh": "结果质量",
+   "en": "Result quality"
+  }
+ ],
+ "links": {
+  "viewer": null
+ },
+ "replays": [
+  {
+   "id": "zh-gate-missed",
+   "lang": "zh",
+   "label": {
+    "zh": "关卡放过的一次失败",
+    "en": "A failure the gates let through"
+   },
+   "selection": "gate-missed",
+   "agent": {
+    "zh": "广告审核 Agent",
+    "en": "Ad review agent"
+   },
+   "run": "base",
+   "family": "ad_review",
+   "task": "zh-L2-01",
+   "tier": "L2",
+   "trial": 2,
+   "turns": 1,
+   "steps": [
+    {
+     "turn": 1,
+     "kind": "user",
+     "title": {
+      "zh": "请求",
+      "en": "Request"
+     },
+     "text": "Review this ad. The ad is in Chinese; write explanations in Chinese. Caption: 木朴益生菌固体饮料：每天一袋，告别便秘。95% 的用户一周见效。 (Text ad, no image.)",
+     "n": 1,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "search_policy",
+     "title": {
+      "zh": "调用 search_policy",
+      "en": "Calls search_policy"
+     },
+     "text": "{\"query\": \"非医疗广告不得涉及疾病治疗功能\"}",
+     "n": 2,
+     "checks": [
+      {
+       "id": "P-AD-2",
+       "stage": "P",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "查过政策条款",
+        "en": "The policy library was searched or a clause fetched"
+       },
+       "detail": "policy looked up"
+      }
+     ]
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "search_policy",
+     "title": {
+      "zh": "search_policy 返回",
+      "en": "search_policy returns"
+     },
+     "text": "[CN-AL-17] 广告法第十七条：非医疗广告不得涉及疾病治疗功能 (source file: cn-advertising-law-2021.md; rule) 第十七条 除医疗、药品、医疗器械广告外，禁止其他任何广告涉及疾病治疗功能，并不得使用医疗用语或者易使推销的商品与药品、医疗器械相混淆的用语。 [CN-AL-18] 广告法第十八条：保健食品广告 (source file: cn-advertising-law-2021.md; rule) 第十八条 保健食品广告不得含有下列内容： （一）表示功效、安全性的断言或者保证； （二）涉及疾病预防、…",
+     "error": false,
+     "n": 3,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "search_policy",
+     "title": {
+      "zh": "调用 search_policy",
+      "en": "Calls search_policy"
+     },
+     "text": "{\"query\": \"引证内容表明出处 数据 调查结果\"}",
+     "n": 4,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "search_policy",
+     "title": {
+      "zh": "search_policy 返回",
+      "en": "search_policy returns"
+     },
+     "text": "[CN-AL-11-2] 广告法第十一条第二款：引证内容表明出处 (source file: cn-advertising-law-2021.md; rule) 广告使用数据、统计资料、调查结果、文摘、引用语等引证内容的，应当真实、准确，并表明出处。引证内容有适用范围和有效期限的，应当明确表示。 [CN-AL-28] 广告法第二十八条：虚假广告 (source file: cn-advertising-law-2021.md; rule) 第二十八条 广告以虚假或者引人误解的内容欺骗、误导消费者的，构成虚假广告。 广告有下列情形之一的，为虚假广告： （…",
+     "error": false,
+     "n": 5,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "search_policy",
+     "title": {
+      "zh": "调用 search_policy",
+      "en": "Calls search_policy"
+     },
+     "text": "{\"query\": \"保健食品广告 功效 疾病\"}",
+     "n": 6,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "search_policy",
+     "title": {
+      "zh": "search_policy 返回",
+      "en": "search_policy returns"
+     },
+     "text": "[CN-AL-18] 广告法第十八条：保健食品广告 (source file: cn-advertising-law-2021.md; rule) 第十八条 保健食品广告不得含有下列内容： （一）表示功效、安全性的断言或者保证； （二）涉及疾病预防、治疗功能； （三）声称或者暗示广告商品为保障健康所必需； （四）与药品、其他保健食品进行比较； （五）利用广告代言人作推荐、证明； （六）法律、行政法规规定禁止的其他内容。 保健食品广告应当显著标明“本品不能代替药物”。 [CN-SAMR-11] 执法指南第十一条：医疗、投资、教育类绝对化用语从严 (sou…",
+     "error": false,
+     "n": 7,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "check_quotes",
+     "title": {
+      "zh": "调用 check_quotes",
+      "en": "Calls check_quotes"
+     },
+     "text": "{\"quotes\": [{\"source\": \"ad\", \"quote\": \"告别便秘\"}, {\"source\": \"ad\", \"quote\": \"95% 的用户一周见效\"}, {\"source\": \"CN-AL-17\", \"quote\": \"禁止其他任何广告涉及疾病治疗功能\"}, {\"source\": \"CN-AL-11-2\", \"quote\": \"应当真实、准确，并表明出处\"}, {\"source\": \"CN-AL-28\", \"quote\": \"虚构使用商品或者接受服务的效果的\"}]}",
+     "n": 8,
+     "checks": [
+      {
+       "id": "P-AD-3",
+       "stage": "P",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "给出违规前先核对了引文",
+        "en": "Quotes were checked before a violation was named"
+       },
+       "detail": "quotes checked before the decision (agentevals superset match)"
+      }
+     ]
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "check_quotes",
+     "title": {
+      "zh": "check_quotes 返回",
+      "en": "check_quotes returns"
+     },
+     "text": "[{\"source\": \"ad\", \"quote\": \"告别便秘\", \"result\": \"supported\"}, {\"source\": \"ad\", \"quote\": \"95% 的用户一周见效\", \"result\": \"supported\"}, {\"source\": \"CN-AL-17\", \"quote\": \"禁止其他任何广告涉及疾病治疗功能\", \"result\": \"supported\"}, {\"source\": \"CN-AL-11-2\", \"quote\": \"应当真实、准确，并表明出处\", \"result\": \"supported\"}, {\"so…",
+     "error": false,
+     "n": 9,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "submit_review",
+     "title": {
+      "zh": "调用 submit_review",
+      "en": "Calls submit_review"
+     },
+     "text": "{\"decision\": \"reject\", \"violations\": [{\"category\": \"MEDICAL\", \"clause_id\": \"CN-AL-17\", \"ad_quote\": \"告别便秘\", \"visual_evidence\": \"\", \"policy_quote\": \"禁止其他任何广告涉及疾病治疗功能\", \"explanation\": \"益生菌固体饮料不是医疗、药品或医疗器械，“告别便秘”将便秘（一种疾病症状）与产品直接挂钩，暗示产品有治疗功能，属于涉及疾病治疗功能的宣传。\"}, {\"category\": \"DATA\", \"cl…",
+     "n": 10,
+     "checks": [
+      {
+       "id": "T-1",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "没有失败后没再成功的工具调用",
+        "en": "No tool call failed without a later successful call of the same tool"
+       },
+       "detail": ""
+      },
+      {
+       "id": "T-2",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "这一轮每次工具调用都正确（只报告）",
+        "en": "Every tool call in the turn was correct (report only)"
+       },
+       "detail": "5/5 calls correct"
+      },
+      {
+       "id": "T-3",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "没有完全重复的工具调用（只报告）",
+        "en": "No call repeats an earlier one with the same input (report only)"
+       },
+       "detail": "0 exact repeats"
+      },
+      {
+       "id": "T-4",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "没有调用另一类请求的收尾工具（只报告）",
+        "en": "No call of the other request's finishing tool (report only)"
+       },
+       "detail": ""
+      }
+     ]
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "submit_review",
+     "title": {
+      "zh": "submit_review 返回",
+      "en": "submit_review returns"
+     },
+     "text": "Received.",
+     "error": false,
+     "n": 11,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "final",
+     "title": {
+      "zh": "本轮答案",
+      "en": "Answer of this turn"
+     },
+     "text": "decision: reject; MEDICAL CN-AL-17: 告别便秘; DATA CN-AL-11-2: 95% 的用户一周见效; GUARANTEE CN-AL-28: 95% 的用户一周见效",
+     "request": "review",
+     "n": 12,
+     "checks": [
+      {
+       "id": "U-0",
+       "stage": "U",
+       "turn": 0,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "每个请求都按要求的形式给了最终答案",
+        "en": "Every request got a final answer in the required form"
+       },
+       "detail": "1/1 requests answered"
+      },
+      {
+       "id": "P-0",
+       "stage": "P",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "在步数上限内给出答案",
+        "en": "The turn ended with an answer within the step limit"
+       },
+       "detail": ""
+      },
+      {
+       "id": "U-AD-2",
+       "stage": "U",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "说明和回答用的是广告的语言",
+        "en": "Explanations and the answer are in the ad's language"
+       },
+       "detail": "explanations in the ad's language"
+      },
+      {
+       "id": "K-AD-1",
+       "stage": "K",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "引的广告原话逐字在广告里",
+        "en": "Every quote of the ad is word for word in the ad"
+       },
+       "detail": ""
+      },
+      {
+       "id": "K-AD-2",
+       "stage": "K",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "引的条款原文逐字在所引条款里",
+        "en": "Every policy quote is word for word in the clause it cites"
+       },
+       "detail": ""
+      },
+      {
+       "id": "K-AD-3",
+       "stage": "K",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "找到的违规引用的是答案接受的条款",
+        "en": "For each violation found, the cited clause is one the answer key accepts"
+       },
+       "detail": ""
+      },
+      {
+       "id": "R-AD-1",
+       "stage": "R",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "放行还是拒绝判对了",
+        "en": "Approve or reject is right"
+       },
+       "detail": "answer reject, agent reject"
+      },
+      {
+       "id": "R-AD-2",
+       "stage": "R",
+       "turn": 1,
+       "passed": false,
+       "core": true,
+       "what": {
+        "zh": "答案里的违规类别都找到了，没有多出的类别",
+        "en": "Every labelled category found, none the key does not have"
+       },
+       "detail": "missed [], extra ['GUARANTEE']"
+      }
+     ]
+    }
+   ],
+   "stage_result": {
+    "U": true,
+    "P": true,
+    "T": true,
+    "K": true,
+    "R": false
+   },
+   "success": false,
+   "first_failure": {
+    "step": 12,
+    "check": "R-AD-2",
+    "stage": "R",
+    "turn": 1,
+    "detail": "missed [], extra ['GUARANTEE']",
+    "why": {
+     "zh": "“95% 的用户一周见效”被列成 DATA（和答案一样），又按虚假广告条款 CN-AL-28 列成 GUARANTEE。和 en-L2-01 是同一种问题：一句话，两个类别。",
+     "en": "“95% 的用户一周见效” is listed as DATA (as the key has it) and again as GUARANTEE under the false-advertising article CN-AL-28. Same pattern as en-L2-01: one phrase, two categories."
+    },
+    "cause": {
+     "zh": "提示词",
+     "en": "Prompt",
+     "id": "prompt"
+    },
+    "fix": {
+     "zh": "和 en-L2-01 一样：一句话只列一次，用最具体的类别。",
+     "en": "As for en-L2-01: one phrase, one violation, the most specific category."
+    },
+    "source": "note"
+   },
+   "gate": {
+    "complete": true,
+    "quotes_verified": true,
+    "decision_consistent": true,
+    "advice_ready": true,
+    "auto_release": true
+   },
+   "links": {
+    "record": "https://github.com/llia0031-dotcom/agent-trace-eval/blob/352d3e8/eval/results/base/traces.jsonl",
+    "record_file": "eval/results/base/traces.jsonl",
+    "record_line": 80
+   }
+  },
+  {
+   "id": "zh-full-pass",
+   "lang": "zh",
+   "label": {
+    "zh": "全部通过的一次",
+    "en": "A trial that passed every stage"
+   },
+   "selection": "full-pass",
+   "agent": {
+    "zh": "广告审核 Agent",
+    "en": "Ad review agent"
+   },
+   "run": "base",
+   "family": "ad_review",
+   "task": "zh-L3-01",
+   "tier": "L3",
+   "trial": 1,
+   "turns": 3,
+   "steps": [
+    {
+     "turn": 1,
+     "kind": "user",
+     "title": {
+      "zh": "请求",
+      "en": "Request"
+     },
+     "text": "Review this ad. The ad is in Chinese; write explanations in Chinese. Caption: 启明考研暑期班：包过国家线，不过全额退费。¥4980。 (Text ad, no image.)",
+     "n": 1,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "search_policy",
+     "title": {
+      "zh": "调用 search_policy",
+      "en": "Calls search_policy"
+     },
+     "text": "{\"query\": \"教育培训广告 保证 通过 考试 结果\"}",
+     "n": 2,
+     "checks": [
+      {
+       "id": "P-AD-2",
+       "stage": "P",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "查过政策条款",
+        "en": "The policy library was searched or a clause fetched"
+       },
+       "detail": "policy looked up"
+      }
+     ]
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "search_policy",
+     "title": {
+      "zh": "search_policy 返回",
+      "en": "search_policy returns"
+     },
+     "text": "[CN-AL-24] 广告法第二十四条：教育、培训广告 (source file: cn-advertising-law-2021.md; rule) 第二十四条 教育、培训广告不得含有下列内容： （一）对升学、通过考试、获得学位学历或者合格证书，或者对教育、培训的效果作出明示或者暗示的保证性承诺； （二）明示或者暗示有相关考试机构或者其工作人员、考试命题人员参与教育、培训； （三）利用科研单位、学术机构、教育机构、行业协会、专业人士、受益者的名义或者形象作推荐、证明。 [CN-SAMR-11] 执法指南第十一条：医疗、投资、教育类绝对化用语从严 (s…",
+     "error": false,
+     "n": 3,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "search_policy",
+     "title": {
+      "zh": "调用 search_policy",
+      "en": "Calls search_policy"
+     },
+     "text": "{\"query\": \"绝对化用语 包过\"}",
+     "n": 4,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "search_policy",
+     "title": {
+      "zh": "search_policy 返回",
+      "en": "search_policy returns"
+     },
+     "text": "[CN-SAMR-11] 执法指南第十一条：医疗、投资、教育类绝对化用语从严 (source file: cn-samr-absolute-terms-guide-2023.md; guidance) 十一、有下列情形之一的，一般不认为属于违法行为轻微或者社会危害性较小： （一）医疗、医疗美容、药品、医疗器械、保健食品、特殊医学用途配方食品广告中出现与疗效、治愈率、有效率等相关的绝对化用语的； （二）招商等有投资回报预期的商品广告中出现与投资收益率、投资安全性等相关的绝对化用语的； （三）教育、培训广告中出现与教育、培训机构或者教育、培训效果相关的绝对…",
+     "error": false,
+     "n": 5,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "check_quotes",
+     "title": {
+      "zh": "调用 check_quotes",
+      "en": "Calls check_quotes"
+     },
+     "text": "{\"quotes\": [{\"source\": \"ad\", \"quote\": \"包过国家线，不过全额退费\"}]}",
+     "n": 6,
+     "checks": [
+      {
+       "id": "P-AD-3",
+       "stage": "P",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "给出违规前先核对了引文",
+        "en": "Quotes were checked before a violation was named"
+       },
+       "detail": "quotes checked before the decision (agentevals superset match)"
+      }
+     ]
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "check_quotes",
+     "title": {
+      "zh": "check_quotes 返回",
+      "en": "check_quotes returns"
+     },
+     "text": "[{\"source\": \"ad\", \"quote\": \"包过国家线，不过全额退费\", \"result\": \"supported\"}]",
+     "error": false,
+     "n": 7,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "check_quotes",
+     "title": {
+      "zh": "调用 check_quotes",
+      "en": "Calls check_quotes"
+     },
+     "text": "{\"quotes\": [{\"source\": \"CN-AL-24\", \"quote\": \"对升学、通过考试、获得学位学历或者合格证书，或者对教育、培训的效果作出明示或者暗示的保证性承诺\"}]}",
+     "n": 8,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "check_quotes",
+     "title": {
+      "zh": "check_quotes 返回",
+      "en": "check_quotes returns"
+     },
+     "text": "[{\"source\": \"CN-AL-24\", \"quote\": \"对升学、通过考试、获得学位学历或者合格证书，或者对教育、培训的效果作出明示或者暗示的保证性承诺\", \"result\": \"supported\"}]",
+     "error": false,
+     "n": 9,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "submit_review",
+     "title": {
+      "zh": "调用 submit_review",
+      "en": "Calls submit_review"
+     },
+     "text": "{\"decision\": \"reject\", \"violations\": [{\"category\": \"GUARANTEE\", \"clause_id\": \"CN-AL-24\", \"ad_quote\": \"包过国家线，不过全额退费\", \"visual_evidence\": \"\", \"policy_quote\": \"对升学、通过考试、获得学位学历或者合格证书，或者对教育、培训的效果作出明示或者暗示的保证性承诺\", \"explanation\": \"广告以“包过国家线”对考研通过考试作出保证性承诺，并以“不过全额退费”作为保证兑现方式，违反教育、培训广告不得作…",
+     "n": 10,
+     "checks": [
+      {
+       "id": "T-1",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "没有失败后没再成功的工具调用",
+        "en": "No tool call failed without a later successful call of the same tool"
+       },
+       "detail": ""
+      },
+      {
+       "id": "T-2",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "这一轮每次工具调用都正确（只报告）",
+        "en": "Every tool call in the turn was correct (report only)"
+       },
+       "detail": "5/5 calls correct"
+      },
+      {
+       "id": "T-3",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "没有完全重复的工具调用（只报告）",
+        "en": "No call repeats an earlier one with the same input (report only)"
+       },
+       "detail": "0 exact repeats"
+      },
+      {
+       "id": "T-4",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "没有调用另一类请求的收尾工具（只报告）",
+        "en": "No call of the other request's finishing tool (report only)"
+       },
+       "detail": ""
+      }
+     ]
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "submit_review",
+     "title": {
+      "zh": "submit_review 返回",
+      "en": "submit_review returns"
+     },
+     "text": "Received.",
+     "error": false,
+     "n": 11,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "final",
+     "title": {
+      "zh": "本轮答案",
+      "en": "Answer of this turn"
+     },
+     "text": "decision: reject; GUARANTEE CN-AL-24: 包过国家线，不过全额退费",
+     "request": "review",
+     "n": 12,
+     "checks": [
+      {
+       "id": "P-0",
+       "stage": "P",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "在步数上限内给出答案",
+        "en": "The turn ended with an answer within the step limit"
+       },
+       "detail": ""
+      },
+      {
+       "id": "U-AD-2",
+       "stage": "U",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "说明和回答用的是广告的语言",
+        "en": "Explanations and the answer are in the ad's language"
+       },
+       "detail": "explanations in the ad's language"
+      },
+      {
+       "id": "K-AD-1",
+       "stage": "K",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "引的广告原话逐字在广告里",
+        "en": "Every quote of the ad is word for word in the ad"
+       },
+       "detail": ""
+      },
+      {
+       "id": "K-AD-2",
+       "stage": "K",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "引的条款原文逐字在所引条款里",
+        "en": "Every policy quote is word for word in the clause it cites"
+       },
+       "detail": ""
+      },
+      {
+       "id": "K-AD-3",
+       "stage": "K",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "找到的违规引用的是答案接受的条款",
+        "en": "For each violation found, the cited clause is one the answer key accepts"
+       },
+       "detail": ""
+      },
+      {
+       "id": "R-AD-1",
+       "stage": "R",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "放行还是拒绝判对了",
+        "en": "Approve or reject is right"
+       },
+       "detail": "answer reject, agent reject"
+      },
+      {
+       "id": "R-AD-2",
+       "stage": "R",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "答案里的违规类别都找到了，没有多出的类别",
+        "en": "Every labelled category found, none the key does not have"
+       },
+       "detail": ""
+      }
+     ]
+    },
+    {
+     "turn": 2,
+     "kind": "user",
+     "title": {
+      "zh": "请求",
+      "en": "Request"
+     },
+     "text": "我是广告主。请告诉我哪里违规、怎么改，并给一版修改后的文案（图片里的文字也一起给出）。",
+     "n": 13,
+     "checks": []
+    },
+    {
+     "turn": 2,
+     "kind": "instruction",
+     "title": {
+      "zh": "本轮说明",
+      "en": "Instruction for this turn"
+     },
+     "text": "When you write the corrected version: it must be ready to run as it is. Never leave blanks or template text such as [licence number], [X]% ABV or 【数据来源】. If a fix needs a fact the advertiser has not given (a strength, a source, a licence), leave that statement out of the correct…",
+     "n": 14,
+     "checks": []
+    },
+    {
+     "turn": 2,
+     "kind": "tool_call",
+     "tool": "check_revision",
+     "title": {
+      "zh": "调用 check_revision",
+      "en": "Calls check_revision"
+     },
+     "text": "{\"caption\": \"启明考研暑期班：系统课程安排，专业老师带领备考。¥4980。\", \"image_lines\": []}",
+     "n": 15,
+     "checks": [
+      {
+       "id": "P-AD-4",
+       "stage": "P",
+       "turn": 2,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "给出修改稿前先检查了修改稿",
+        "en": "The corrected version was checked before the advice was given"
+       },
+       "detail": "check_revision before submit_advice"
+      }
+     ]
+    },
+    {
+     "turn": 2,
+     "kind": "tool_result",
+     "tool": "check_revision",
+     "title": {
+      "zh": "check_revision 返回",
+      "en": "check_revision returns"
+     },
+     "text": "{\"placeholders\": [], \"still_present_from_review\": []}",
+     "error": false,
+     "n": 16,
+     "checks": []
+    },
+    {
+     "turn": 2,
+     "kind": "tool_call",
+     "tool": "submit_advice",
+     "title": {
+      "zh": "调用 submit_advice",
+      "en": "Calls submit_advice"
+     },
+     "text": "{\"revised_caption\": \"启明考研暑期班：系统课程安排，专业老师带领备考。¥4980。\", \"revised_image_lines\": [], \"answer\": \"违规点：文案“包过国家线，不过全额退费”对考研通过考试作出了保证性承诺，并以全额退费作为保证的兑现方式。这违反《广告法》第二十四条第一项（CN-AL-24）：教育、培训广告不得对通过考试、教育培训效果作出明示或暗示的保证性承诺。本广告为纯文字，没有图片问题。\\n\\n修改建议：删除“包过国家线”和“不过全额退费”等所有与考试结果挂钩的保证或退费承诺，不要用“包过”“必过”“…",
+     "n": 17,
+     "checks": [
+      {
+       "id": "T-1",
+       "stage": "T",
+       "turn": 2,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "没有失败后没再成功的工具调用",
+        "en": "No tool call failed without a later successful call of the same tool"
+       },
+       "detail": ""
+      },
+      {
+       "id": "T-2",
+       "stage": "T",
+       "turn": 2,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "这一轮每次工具调用都正确（只报告）",
+        "en": "Every tool call in the turn was correct (report only)"
+       },
+       "detail": "2/2 calls correct"
+      },
+      {
+       "id": "T-3",
+       "stage": "T",
+       "turn": 2,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "没有完全重复的工具调用（只报告）",
+        "en": "No call repeats an earlier one with the same input (report only)"
+       },
+       "detail": "0 exact repeats"
+      },
+      {
+       "id": "T-4",
+       "stage": "T",
+       "turn": 2,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "没有调用另一类请求的收尾工具（只报告）",
+        "en": "No call of the other request's finishing tool (report only)"
+       },
+       "detail": ""
+      }
+     ]
+    },
+    {
+     "turn": 2,
+     "kind": "tool_result",
+     "tool": "submit_advice",
+     "title": {
+      "zh": "submit_advice 返回",
+      "en": "submit_advice returns"
+     },
+     "text": "Received.",
+     "error": false,
+     "n": 18,
+     "checks": []
+    },
+    {
+     "turn": 2,
+     "kind": "final",
+     "title": {
+      "zh": "本轮答案",
+      "en": "Answer of this turn"
+     },
+     "text": "revised caption: 启明考研暑期班：系统课程安排，专业老师带领备考。¥4980。; answer: 违规点：文案“包过国家线，不过全额退费”对考研通过考试作出了保证性承诺，并以全额退费作为保证的兑现方式。这违反《广告法》第二十四条第一项（CN-AL-24）：教育、培训广告不得对通过考试、教育培训效果作出明示或暗示的保证性承诺。本广告为纯文字，没有图片问题。 修改建议：删除“包过国家线”和“不过全额退费”等所有与考试结果挂钩的保证或退费承诺，不要用“包过”“必过”“保过”之类的说法。 修改后文案（可直接使用，无需补充内容）： 启明考研暑期班…",
+     "request": "advice",
+     "n": 19,
+     "checks": [
+      {
+       "id": "P-0",
+       "stage": "P",
+       "turn": 2,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "在步数上限内给出答案",
+        "en": "The turn ended with an answer within the step limit"
+       },
+       "detail": ""
+      },
+      {
+       "id": "U-AD-2",
+       "stage": "U",
+       "turn": 2,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "说明和回答用的是广告的语言",
+        "en": "Explanations and the answer are in the ad's language"
+       },
+       "detail": "answer in the ad's language"
+      },
+      {
+       "id": "R-AD-3",
+       "stage": "R",
+       "turn": 2,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "修改稿里没有违规原话了",
+        "en": "The offending words are gone from the corrected version"
+       },
+       "detail": "offending words removed from the corrected version"
+      },
+      {
+       "id": "R-AD-4",
+       "stage": "R",
+       "turn": 2,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "品牌和价格保留了",
+        "en": "The brand and the price are kept"
+       },
+       "detail": "brand and price kept"
+      },
+      {
+       "id": "R-AD-5",
+       "stage": "R",
+       "turn": 2,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "修改稿没有占位符、字段没填错",
+        "en": "No unfilled template text, no field filled wrongly"
+       },
+       "detail": ""
+      }
+     ]
+    },
+    {
+     "turn": 3,
+     "kind": "user",
+     "title": {
+      "zh": "请求",
+      "en": "Request"
+     },
+     "text": "The advertiser submits a new version of the ad. Review this version. The ad is in Chinese; write explanations in Chinese. Caption: 启明考研暑期班：每周 6 次直播课，配套真题讲义，可免费试听一节。¥4980。 (Text ad, no image.)",
+     "n": 20,
+     "checks": []
+    },
+    {
+     "turn": 3,
+     "kind": "tool_call",
+     "tool": "submit_review",
+     "title": {
+      "zh": "调用 submit_review",
+      "en": "Calls submit_review"
+     },
+     "text": "{\"decision\": \"approve\", \"violations\": [], \"notes\": \"新版文案删除了“包过国家线”和“全额退费”等保证性承诺，改为描述课程内容（每周6次直播课、配套真题讲义、免费试听一节）和价格（¥4980）。这些都是对课程本身的客观描述，不涉及升学、通过考试或培训效果的保证，也没有绝对化用语、数据引证或贬低他人的内容，未发现违规。“每周6次直播课”属于课程安排的描述，不是统计数据，无需标注出处。\"}",
+     "n": 21,
+     "checks": [
+      {
+       "id": "T-1",
+       "stage": "T",
+       "turn": 3,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "没有失败后没再成功的工具调用",
+        "en": "No tool call failed without a later successful call of the same tool"
+       },
+       "detail": ""
+      },
+      {
+       "id": "T-2",
+       "stage": "T",
+       "turn": 3,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "这一轮每次工具调用都正确（只报告）",
+        "en": "Every tool call in the turn was correct (report only)"
+       },
+       "detail": "1/1 calls correct"
+      },
+      {
+       "id": "T-3",
+       "stage": "T",
+       "turn": 3,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "没有完全重复的工具调用（只报告）",
+        "en": "No call repeats an earlier one with the same input (report only)"
+       },
+       "detail": "0 exact repeats"
+      },
+      {
+       "id": "T-4",
+       "stage": "T",
+       "turn": 3,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "没有调用另一类请求的收尾工具（只报告）",
+        "en": "No call of the other request's finishing tool (report only)"
+       },
+       "detail": ""
+      }
+     ]
+    },
+    {
+     "turn": 3,
+     "kind": "tool_result",
+     "tool": "submit_review",
+     "title": {
+      "zh": "submit_review 返回",
+      "en": "submit_review returns"
+     },
+     "text": "Received.",
+     "error": false,
+     "n": 22,
+     "checks": []
+    },
+    {
+     "turn": 3,
+     "kind": "final",
+     "title": {
+      "zh": "本轮答案",
+      "en": "Answer of this turn"
+     },
+     "text": "decision: approve",
+     "request": "rereview",
+     "n": 23,
+     "checks": [
+      {
+       "id": "U-0",
+       "stage": "U",
+       "turn": 0,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "每个请求都按要求的形式给了最终答案",
+        "en": "Every request got a final answer in the required form"
+       },
+       "detail": "3/3 requests answered"
+      },
+      {
+       "id": "P-0",
+       "stage": "P",
+       "turn": 3,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "在步数上限内给出答案",
+        "en": "The turn ended with an answer within the step limit"
+       },
+       "detail": ""
+      },
+      {
+       "id": "R-AD-1",
+       "stage": "R",
+       "turn": 3,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "放行还是拒绝判对了",
+        "en": "Approve or reject is right"
+       },
+       "detail": "answer approve, agent approve"
+      },
+      {
+       "id": "R-AD-2",
+       "stage": "R",
+       "turn": 3,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "答案里的违规类别都找到了，没有多出的类别",
+        "en": "Every labelled category found, none the key does not have"
+       },
+       "detail": ""
+      }
+     ]
+    }
+   ],
+   "stage_result": {
+    "U": true,
+    "P": true,
+    "T": true,
+    "K": true,
+    "R": true
+   },
+   "success": true,
+   "first_failure": null,
+   "gate": {
+    "complete": true,
+    "quotes_verified": true,
+    "decision_consistent": true,
+    "advice_ready": true,
+    "auto_release": true
+   },
+   "links": {
+    "record": "https://github.com/llia0031-dotcom/agent-trace-eval/blob/352d3e8/eval/results/base/traces.jsonl",
+    "record_file": "eval/results/base/traces.jsonl",
+    "record_line": 9
+   }
+  },
+  {
+   "id": "zh-after-fix",
+   "lang": "zh",
+   "label": {
+    "zh": "修复之后的同一道题",
+    "en": "The same task after the fix"
+   },
+   "selection": "after-fix",
+   "agent": {
+    "zh": "广告审核 Agent",
+    "en": "Ad review agent"
+   },
+   "run": "fix-ad",
+   "family": "ad_review",
+   "task": "zh-L2-01",
+   "tier": "L2",
+   "trial": 1,
+   "turns": 1,
+   "steps": [
+    {
+     "turn": 1,
+     "kind": "user",
+     "title": {
+      "zh": "请求",
+      "en": "Request"
+     },
+     "text": "Review this ad. The ad is in Chinese; write explanations in Chinese. Caption: 木朴益生菌固体饮料：每天一袋，告别便秘。95% 的用户一周见效。 (Text ad, no image.)",
+     "n": 1,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "search_policy",
+     "title": {
+      "zh": "调用 search_policy",
+      "en": "Calls search_policy"
+     },
+     "text": "{\"query\": \"非医疗广告不得涉及疾病治疗功能\"}",
+     "n": 2,
+     "checks": [
+      {
+       "id": "P-AD-2",
+       "stage": "P",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "查过政策条款",
+        "en": "The policy library was searched or a clause fetched"
+       },
+       "detail": "policy looked up"
+      }
+     ]
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "search_policy",
+     "title": {
+      "zh": "search_policy 返回",
+      "en": "search_policy returns"
+     },
+     "text": "[CN-AL-17] 广告法第十七条：非医疗广告不得涉及疾病治疗功能 (source file: cn-advertising-law-2021.md; rule) 第十七条 除医疗、药品、医疗器械广告外，禁止其他任何广告涉及疾病治疗功能，并不得使用医疗用语或者易使推销的商品与药品、医疗器械相混淆的用语。 [CN-AL-18] 广告法第十八条：保健食品广告 (source file: cn-advertising-law-2021.md; rule) 第十八条 保健食品广告不得含有下列内容： （一）表示功效、安全性的断言或者保证； （二）涉及疾病预防、…",
+     "error": false,
+     "n": 3,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "search_policy",
+     "title": {
+      "zh": "调用 search_policy",
+      "en": "Calls search_policy"
+     },
+     "text": "{\"query\": \"数据统计调查结果未表明出处\"}",
+     "n": 4,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "search_policy",
+     "title": {
+      "zh": "search_policy 返回",
+      "en": "search_policy returns"
+     },
+     "text": "[CN-AL-11-2] 广告法第十一条第二款：引证内容表明出处 (source file: cn-advertising-law-2021.md; rule) 广告使用数据、统计资料、调查结果、文摘、引用语等引证内容的，应当真实、准确，并表明出处。引证内容有适用范围和有效期限的，应当明确表示。 [CN-AL-28] 广告法第二十八条：虚假广告 (source file: cn-advertising-law-2021.md; rule) 第二十八条 广告以虚假或者引人误解的内容欺骗、误导消费者的，构成虚假广告。 广告有下列情形之一的，为虚假广告： （…",
+     "error": false,
+     "n": 5,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "search_policy",
+     "title": {
+      "zh": "调用 search_policy",
+      "en": "Calls search_policy"
+     },
+     "text": "{\"query\": \"保证效果承诺\"}",
+     "n": 6,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "search_policy",
+     "title": {
+      "zh": "search_policy 返回",
+      "en": "search_policy returns"
+     },
+     "text": "[CN-AL-24] 广告法第二十四条：教育、培训广告 (source file: cn-advertising-law-2021.md; rule) 第二十四条 教育、培训广告不得含有下列内容： （一）对升学、通过考试、获得学位学历或者合格证书，或者对教育、培训的效果作出明示或者暗示的保证性承诺； （二）明示或者暗示有相关考试机构或者其工作人员、考试命题人员参与教育、培训； （三）利用科研单位、学术机构、教育机构、行业协会、专业人士、受益者的名义或者形象作推荐、证明。 [CN-AL-25] 广告法第二十五条：招商等投资回报类广告 (source fi…",
+     "error": false,
+     "n": 7,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "check_quotes",
+     "title": {
+      "zh": "调用 check_quotes",
+      "en": "Calls check_quotes"
+     },
+     "text": "{\"quotes\": [{\"source\": \"ad\", \"quote\": \"告别便秘\"}, {\"source\": \"ad\", \"quote\": \"95% 的用户一周见效\"}, {\"source\": \"CN-AL-17\", \"quote\": \"禁止其他任何广告涉及疾病治疗功能\"}, {\"source\": \"CN-AL-11-2\", \"quote\": \"应当真实、准确，并表明出处\"}]}",
+     "n": 8,
+     "checks": [
+      {
+       "id": "P-AD-3",
+       "stage": "P",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "给出违规前先核对了引文",
+        "en": "Quotes were checked before a violation was named"
+       },
+       "detail": "quotes checked before the decision (agentevals superset match)"
+      }
+     ]
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "check_quotes",
+     "title": {
+      "zh": "check_quotes 返回",
+      "en": "check_quotes returns"
+     },
+     "text": "[{\"source\": \"ad\", \"quote\": \"告别便秘\", \"result\": \"supported\"}, {\"source\": \"ad\", \"quote\": \"95% 的用户一周见效\", \"result\": \"supported\"}, {\"source\": \"CN-AL-17\", \"quote\": \"禁止其他任何广告涉及疾病治疗功能\", \"result\": \"supported\"}, {\"source\": \"CN-AL-11-2\", \"quote\": \"应当真实、准确，并表明出处\", \"result\": \"supported\"}]",
+     "error": false,
+     "n": 9,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "submit_review",
+     "title": {
+      "zh": "调用 submit_review",
+      "en": "Calls submit_review"
+     },
+     "text": "{\"decision\": \"reject\", \"violations\": [{\"category\": \"MEDICAL\", \"clause_id\": \"CN-AL-17\", \"ad_quote\": \"告别便秘\", \"visual_evidence\": \"\", \"policy_quote\": \"禁止其他任何广告涉及疾病治疗功能\", \"explanation\": \"木朴益生菌固体饮料是非医疗商品，广告以“告别便秘”暗示其可治疗便秘这一疾病，涉及疾病治疗功能，违反广告法第十七条。\"}, {\"category\": \"DATA\", \"clause_id\": \"C…",
+     "n": 10,
+     "checks": [
+      {
+       "id": "T-1",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "没有失败后没再成功的工具调用",
+        "en": "No tool call failed without a later successful call of the same tool"
+       },
+       "detail": ""
+      },
+      {
+       "id": "T-2",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "这一轮每次工具调用都正确（只报告）",
+        "en": "Every tool call in the turn was correct (report only)"
+       },
+       "detail": "5/5 calls correct"
+      },
+      {
+       "id": "T-3",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "没有完全重复的工具调用（只报告）",
+        "en": "No call repeats an earlier one with the same input (report only)"
+       },
+       "detail": "0 exact repeats"
+      },
+      {
+       "id": "T-4",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "没有调用另一类请求的收尾工具（只报告）",
+        "en": "No call of the other request's finishing tool (report only)"
+       },
+       "detail": ""
+      }
+     ]
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "submit_review",
+     "title": {
+      "zh": "submit_review 返回",
+      "en": "submit_review returns"
+     },
+     "text": "Received.",
+     "error": false,
+     "n": 11,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "final",
+     "title": {
+      "zh": "本轮答案",
+      "en": "Answer of this turn"
+     },
+     "text": "decision: reject; MEDICAL CN-AL-17: 告别便秘; DATA CN-AL-11-2: 95% 的用户一周见效",
+     "request": "review",
+     "n": 12,
+     "checks": [
+      {
+       "id": "U-0",
+       "stage": "U",
+       "turn": 0,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "每个请求都按要求的形式给了最终答案",
+        "en": "Every request got a final answer in the required form"
+       },
+       "detail": "1/1 requests answered"
+      },
+      {
+       "id": "P-0",
+       "stage": "P",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "在步数上限内给出答案",
+        "en": "The turn ended with an answer within the step limit"
+       },
+       "detail": ""
+      },
+      {
+       "id": "U-AD-2",
+       "stage": "U",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "说明和回答用的是广告的语言",
+        "en": "Explanations and the answer are in the ad's language"
+       },
+       "detail": "explanations in the ad's language"
+      },
+      {
+       "id": "K-AD-1",
+       "stage": "K",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "引的广告原话逐字在广告里",
+        "en": "Every quote of the ad is word for word in the ad"
+       },
+       "detail": ""
+      },
+      {
+       "id": "K-AD-2",
+       "stage": "K",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "引的条款原文逐字在所引条款里",
+        "en": "Every policy quote is word for word in the clause it cites"
+       },
+       "detail": ""
+      },
+      {
+       "id": "K-AD-3",
+       "stage": "K",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "找到的违规引用的是答案接受的条款",
+        "en": "For each violation found, the cited clause is one the answer key accepts"
+       },
+       "detail": ""
+      },
+      {
+       "id": "R-AD-1",
+       "stage": "R",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "放行还是拒绝判对了",
+        "en": "Approve or reject is right"
+       },
+       "detail": "answer reject, agent reject"
+      },
+      {
+       "id": "R-AD-2",
+       "stage": "R",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "答案里的违规类别都找到了，没有多出的类别",
+        "en": "Every labelled category found, none the key does not have"
+       },
+       "detail": ""
+      }
+     ]
+    }
+   ],
+   "stage_result": {
+    "U": true,
+    "P": true,
+    "T": true,
+    "K": true,
+    "R": true
+   },
+   "success": true,
+   "first_failure": null,
+   "gate": {
+    "complete": true,
+    "quotes_verified": true,
+    "decision_consistent": true,
+    "advice_ready": true,
+    "auto_release": true
+   },
+   "links": {
+    "record": "https://github.com/llia0031-dotcom/agent-trace-eval/blob/352d3e8/eval/results/fix-ad/traces.jsonl",
+    "record_file": "eval/results/fix-ad/traces.jsonl",
+    "record_line": 33
+   }
+  },
+  {
+   "id": "en-gate-missed",
+   "lang": "en",
+   "label": {
+    "zh": "关卡放过的一次失败",
+    "en": "A failure the gates let through"
+   },
+   "selection": "gate-missed",
+   "agent": {
+    "zh": "广告审核 Agent",
+    "en": "Ad review agent"
+   },
+   "run": "base",
+   "family": "ad_review",
+   "task": "en-L2-01",
+   "tier": "L2",
+   "trial": 1,
+   "turns": 1,
+   "steps": [
+    {
+     "turn": 1,
+     "kind": "user",
+     "title": {
+      "zh": "请求",
+      "en": "Request"
+     },
+     "text": "Review this ad. The ad is in English; write explanations in English. Caption: Leanbrew Tea: drop 10 lbs in a week with no diet or exercise. Unlike FitLeaf's useless tea, ours actually works. (Text ad, no image.)",
+     "n": 1,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "search_policy",
+     "title": {
+      "zh": "调用 search_policy",
+      "en": "Calls search_policy"
+     },
+     "text": "{\"query\": \"weight loss claims lbs in a week no diet or exercise\"}",
+     "n": 2,
+     "checks": [
+      {
+       "id": "P-AD-2",
+       "stage": "P",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "查过政策条款",
+        "en": "The policy library was searched or a clause fetched"
+       },
+       "detail": "policy looked up"
+      }
+     ]
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "search_policy",
+     "title": {
+      "zh": "search_policy 返回",
+      "en": "search_policy returns"
+     },
+     "text": "[TT-WM-WEIGHT] TikTok Weight Management: Weight Management (source file: tiktok-weight-management.md; rule)[TikTok policy text of TT-MIS-CLAIMS, not reproduced; see https://ads.tiktok.com/help/article/tiktok-ads-policy-misleading-and-false-content][TikTok policy text of TT-WM-WE…",
+     "error": false,
+     "n": 3,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "search_policy",
+     "title": {
+      "zh": "调用 search_policy",
+      "en": "Calls search_policy"
+     },
+     "text": "{\"query\": \"disparage competitor products useless\"}",
+     "n": 4,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "search_policy",
+     "title": {
+      "zh": "search_policy 返回",
+      "en": "search_policy returns"
+     },
+     "text": "[TT-MIS-COMPARE] TikTok Misleading and false content: Malicious, Subjective and Before-and-after Comparisons (source file: tiktok-misleading-and-false-content.md; rule) [TikTok policy text of TT-MIS-COMPARE, not reproduced; see https://ads.tiktok.com/help/article/tiktok-ads-poli…",
+     "error": false,
+     "n": 5,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "search_policy",
+     "title": {
+      "zh": "调用 search_policy",
+      "en": "Calls search_policy"
+     },
+     "text": "{\"query\": \"guaranteed product effects results promise\"}",
+     "n": 6,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "search_policy",
+     "title": {
+      "zh": "search_policy 返回",
+      "en": "search_policy returns"
+     },
+     "text": "[TT-MIS-CLAIMS] TikTok Misleading and false content: Misleading claims (source file: tiktok-misleading-and-false-content.md; rule) [TikTok policy text of TT-MIS-CLAIMS, not reproduced; see https://ads.tiktok.com/help/article/tiktok-ads-policy-misleading-and-false-content] [TT-DE…",
+     "error": false,
+     "n": 7,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "check_quotes",
+     "title": {
+      "zh": "调用 check_quotes",
+      "en": "Calls check_quotes"
+     },
+     "text": "{\"quotes\": [{\"source\": \"ad\", \"quote\": \"drop 10 lbs in a week with no diet or exercise\"}, {\"source\": \"ad\", \"quote\": \"Unlike FitLeaf's useless tea, ours actually works.\"}, {\"source\": \"TT-WM-WEIGHT\", \"quote\": \"[TikTok policy text of TT-WM-WEIGHT, not reproduced; see https://ads.tik…",
+     "n": 8,
+     "checks": [
+      {
+       "id": "P-AD-3",
+       "stage": "P",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "给出违规前先核对了引文",
+        "en": "Quotes were checked before a violation was named"
+       },
+       "detail": "quotes checked before the decision (agentevals superset match)"
+      }
+     ]
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "check_quotes",
+     "title": {
+      "zh": "check_quotes 返回",
+      "en": "check_quotes returns"
+     },
+     "text": "[{\"source\": \"ad\", \"quote\": \"drop 10 lbs in a week with no diet or exercise\", \"result\": \"supported\"}, {\"source\": \"ad\", \"quote\": \"Unlike FitLeaf's useless tea, ours actually works.\", \"result\": \"supported\"}, {\"source\": \"TT-WM-WEIGHT\", \"quote\": \"[TikTok policy text of TT-WM-WEIGHT,…",
+     "error": false,
+     "n": 9,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "check_quotes",
+     "title": {
+      "zh": "调用 check_quotes",
+      "en": "Calls check_quotes"
+     },
+     "text": "{\"quotes\": [{\"source\": \"ad\", \"quote\": \"ours actually works\"}, {\"source\": \"ad\", \"quote\": \"useless tea\"}]}",
+     "n": 10,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "check_quotes",
+     "title": {
+      "zh": "check_quotes 返回",
+      "en": "check_quotes returns"
+     },
+     "text": "[{\"source\": \"ad\", \"quote\": \"ours actually works\", \"result\": \"supported\"}, {\"source\": \"ad\", \"quote\": \"useless tea\", \"result\": \"supported\"}]",
+     "error": false,
+     "n": 11,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "submit_review",
+     "title": {
+      "zh": "调用 submit_review",
+      "en": "Calls submit_review"
+     },
+     "text": "{\"decision\": \"reject\", \"violations\": [{\"category\": \"WEIGHT\", \"clause_id\": \"TT-WM-WEIGHT\", \"ad_quote\": \"drop 10 lbs in a week with no diet or exercise\", \"visual_evidence\": \"\", \"policy_quote\": \"[TikTok policy text of TT-WM-WEIGHT, not reproduced; see https://ads.tiktok.com/help/ar…",
+     "n": 12,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "submit_review",
+     "title": {
+      "zh": "submit_review 返回",
+      "en": "submit_review returns"
+     },
+     "text": "Received.",
+     "error": false,
+     "n": 13,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "submit_advice",
+     "title": {
+      "zh": "调用 submit_advice",
+      "en": "Calls submit_advice"
+     },
+     "text": "{\"revised_caption\": \"Leanbrew Tea: a daily cup to enjoy as part of a healthy diet and an active lifestyle. Taste the difference.\", \"revised_image_lines\": [], \"answer\": \"This ad is rejected for three reasons. (1) Weight management: the claim that the tea alone can make you lose 1…",
+     "n": 14,
+     "checks": [
+      {
+       "id": "T-1",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "没有失败后没再成功的工具调用",
+        "en": "No tool call failed without a later successful call of the same tool"
+       },
+       "detail": ""
+      },
+      {
+       "id": "T-2",
+       "stage": "T",
+       "turn": 1,
+       "passed": false,
+       "core": false,
+       "what": {
+        "zh": "这一轮每次工具调用都正确（只报告）",
+        "en": "Every tool call in the turn was correct (report only)"
+       },
+       "detail": "6/7 calls correct"
+      },
+      {
+       "id": "T-3",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "没有完全重复的工具调用（只报告）",
+        "en": "No call repeats an earlier one with the same input (report only)"
+       },
+       "detail": "0 exact repeats"
+      },
+      {
+       "id": "T-4",
+       "stage": "T",
+       "turn": 1,
+       "passed": false,
+       "core": false,
+       "what": {
+        "zh": "没有调用另一类请求的收尾工具（只报告）",
+        "en": "No call of the other request's finishing tool (report only)"
+       },
+       "detail": "called submit_advice, which is for another kind of request"
+      }
+     ]
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "submit_advice",
+     "title": {
+      "zh": "submit_advice 返回",
+      "en": "submit_advice returns"
+     },
+     "text": "Use submit_review for this turn.",
+     "error": true,
+     "n": 15,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "final",
+     "title": {
+      "zh": "本轮答案",
+      "en": "Answer of this turn"
+     },
+     "text": "decision: reject; WEIGHT TT-WM-WEIGHT: drop 10 lbs in a week with no diet or exercise; GUARANTEE TT-MIS-CLAIMS: drop 10 lbs in a week with no diet or exercise; DISPARAGE TT-MIS-COMPARE: Unlike FitLeaf's useless tea, ours actually works.",
+     "request": "review",
+     "n": 16,
+     "checks": [
+      {
+       "id": "U-0",
+       "stage": "U",
+       "turn": 0,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "每个请求都按要求的形式给了最终答案",
+        "en": "Every request got a final answer in the required form"
+       },
+       "detail": "1/1 requests answered"
+      },
+      {
+       "id": "P-0",
+       "stage": "P",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "在步数上限内给出答案",
+        "en": "The turn ended with an answer within the step limit"
+       },
+       "detail": ""
+      },
+      {
+       "id": "U-AD-2",
+       "stage": "U",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "说明和回答用的是广告的语言",
+        "en": "Explanations and the answer are in the ad's language"
+       },
+       "detail": "explanations in the ad's language"
+      },
+      {
+       "id": "K-AD-1",
+       "stage": "K",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "引的广告原话逐字在广告里",
+        "en": "Every quote of the ad is word for word in the ad"
+       },
+       "detail": ""
+      },
+      {
+       "id": "K-AD-2",
+       "stage": "K",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "引的条款原文逐字在所引条款里",
+        "en": "Every policy quote is word for word in the clause it cites"
+       },
+       "detail": ""
+      },
+      {
+       "id": "K-AD-3",
+       "stage": "K",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "找到的违规引用的是答案接受的条款",
+        "en": "For each violation found, the cited clause is one the answer key accepts"
+       },
+       "detail": ""
+      },
+      {
+       "id": "R-AD-1",
+       "stage": "R",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "放行还是拒绝判对了",
+        "en": "Approve or reject is right"
+       },
+       "detail": "answer reject, agent reject"
+      },
+      {
+       "id": "R-AD-2",
+       "stage": "R",
+       "turn": 1,
+       "passed": false,
+       "core": true,
+       "what": {
+        "zh": "答案里的违规类别都找到了，没有多出的类别",
+        "en": "Every labelled category found, none the key does not have"
+       },
+       "detail": "missed [], extra ['GUARANTEE']"
+      }
+     ]
+    }
+   ],
+   "stage_result": {
+    "U": true,
+    "P": true,
+    "T": true,
+    "K": true,
+    "R": false
+   },
+   "success": false,
+   "first_failure": {
+    "step": 16,
+    "check": "R-AD-2",
+    "stage": "R",
+    "turn": 1,
+    "detail": "missed [], extra ['GUARANTEE']",
+    "why": {
+     "zh": "减重那句话被列了两次：一次是 WEIGHT（TT-WM-WEIGHT，和答案一样），一次是 TT-MIS-CLAIMS 下的 GUARANTEE。引文都是原话，结论也对。Agent 的说明只写了“一个问题列一次”，没说一句话同时碰到两条规则时该选哪个类别；答案照分类表一句话一个标签。",
+     "en": "The weight-loss phrase is listed twice: WEIGHT (TT-WM-WEIGHT, as the key has it) and again as GUARANTEE under TT-MIS-CLAIMS. The quotes are verbatim and the decision is right. The agent's instruction says 'one violation per problem' but not which category wins when one phrase fits two; the key follows the taxonomy's one label per phrase."
+    },
+    "cause": {
+     "zh": "提示词",
+     "en": "Prompt",
+     "id": "prompt"
+    },
+    "fix": {
+     "zh": "在说明里写清：一句话同时违反多条规则时，只列一次，放在最具体的类别下（减重说法归 WEIGHT，健康功效归 MEDICAL，数据没有出处归 DATA）。",
+     "en": "Say in the instructions: when one phrase breaks more than one rule, list it once, under the category that names the problem most specifically (weight-loss claim: WEIGHT; health claim: MEDICAL; missing source: DATA)."
+    },
+    "source": "note"
+   },
+   "gate": {
+    "complete": true,
+    "quotes_verified": true,
+    "decision_consistent": true,
+    "advice_ready": true,
+    "auto_release": true
+   },
+   "links": {
+    "record": "https://github.com/llia0031-dotcom/agent-trace-eval/blob/352d3e8/eval/results/base/traces.jsonl",
+    "record_file": "eval/results/base/traces.jsonl",
+    "record_line": 14
+   }
+  },
+  {
+   "id": "en-full-pass",
+   "lang": "en",
+   "label": {
+    "zh": "全部通过的一次",
+    "en": "A trial that passed every stage"
+   },
+   "selection": "full-pass",
+   "agent": {
+    "zh": "广告审核 Agent",
+    "en": "Ad review agent"
+   },
+   "run": "base",
+   "family": "ad_review",
+   "task": "en-L3-01",
+   "tier": "L3",
+   "trial": 1,
+   "turns": 3,
+   "steps": [
+    {
+     "turn": 1,
+     "kind": "user",
+     "title": {
+      "zh": "请求",
+      "en": "Request"
+     },
+     "text": "Review this ad. The ad is in English; write explanations in English. Caption: Apexa Trading Course: turn $100 into $10,000 in 30 days, guaranteed. Enroll for $49. (Text ad, no image.)",
+     "n": 1,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "search_policy",
+     "title": {
+      "zh": "调用 search_policy",
+      "en": "Calls search_policy"
+     },
+     "text": "{\"query\": \"guaranteed investment returns trading course\"}",
+     "n": 2,
+     "checks": [
+      {
+       "id": "P-AD-2",
+       "stage": "P",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "查过政策条款",
+        "en": "The policy library was searched or a clause fetched"
+       },
+       "detail": "policy looked up"
+      }
+     ]
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "search_policy",
+     "title": {
+      "zh": "search_policy 返回",
+      "en": "search_policy returns"
+     },
+     "text": "[TT-DEC-FINREP] TikTok Deceptive Practices: Financial misrepresentation (source file: tiktok-deceptive-practices.md; rule) [TikTok policy text of TT-DEC-FINREP, not reproduced; see https://ads.tiktok.com/help/article/tiktok-ads-policy-deceptive-practices][TikTok policy text of T…",
+     "error": false,
+     "n": 3,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "search_policy",
+     "title": {
+      "zh": "调用 search_policy",
+      "en": "Calls search_policy"
+     },
+     "text": "{\"query\": \"financial misrepresentation guaranteed profit\"}",
+     "n": 4,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "search_policy",
+     "title": {
+      "zh": "search_policy 返回",
+      "en": "search_policy returns"
+     },
+     "text": "[TT-DEC-FINREP] TikTok Deceptive Practices: Financial misrepresentation (source file: tiktok-deceptive-practices.md; rule) [TikTok policy text of TT-DEC-FINREP, not reproduced; see https://ads.tiktok.com/help/article/tiktok-ads-policy-deceptive-practices][TikTok policy text of T…",
+     "error": false,
+     "n": 5,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "check_quotes",
+     "title": {
+      "zh": "调用 check_quotes",
+      "en": "Calls check_quotes"
+     },
+     "text": "{\"quotes\": [{\"source\": \"ad\", \"quote\": \"turn $100 into $10,000 in 30 days, guaranteed\"}, {\"source\": \"TT-MIS-CLAIMS\", \"quote\": \"[TikTok policy text of TT-MIS-CLAIMS, not reproduced; see https://ads.tiktok.com/help/article/tiktok-ads-policy-misleading-and-false-content]\"}, {\"source…",
+     "n": 6,
+     "checks": [
+      {
+       "id": "P-AD-3",
+       "stage": "P",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "给出违规前先核对了引文",
+        "en": "Quotes were checked before a violation was named"
+       },
+       "detail": "quotes checked before the decision (agentevals superset match)"
+      }
+     ]
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "check_quotes",
+     "title": {
+      "zh": "check_quotes 返回",
+      "en": "check_quotes returns"
+     },
+     "text": "[{\"source\": \"ad\", \"quote\": \"turn $100 into $10,000 in 30 days, guaranteed\", \"result\": \"supported\"}, {\"source\": \"TT-MIS-CLAIMS\", \"quote\": \"Financial product: \\[TikTok policy text of TT-MIS-CLAIMS, not reproduced; see https://ads.tiktok.com/help/article/tiktok-ads-policy-misleadin…",
+     "error": false,
+     "n": 7,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "check_revision",
+     "title": {
+      "zh": "调用 check_revision",
+      "en": "Calls check_revision"
+     },
+     "text": "{\"caption\": \"Apexa Trading Course: learn the basics of trading and how markets work. Enroll for $49. Trading involves risk of loss; no returns are guaranteed.\", \"image_lines\": []}",
+     "n": 8,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "check_revision",
+     "title": {
+      "zh": "check_revision 返回",
+      "en": "check_revision returns"
+     },
+     "text": "{\"placeholders\": [], \"still_present_from_review\": []}",
+     "error": false,
+     "n": 9,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "submit_review",
+     "title": {
+      "zh": "调用 submit_review",
+      "en": "Calls submit_review"
+     },
+     "text": "{\"decision\": \"reject\", \"violations\": [{\"category\": \"GUARANTEE\", \"clause_id\": \"TT-DEC-FINREP\", \"ad_quote\": \"turn $100 into $10,000 in 30 days, guaranteed\", \"visual_evidence\": \"\", \"policy_quote\": \"[TikTok policy text of TT-DEC-FINREP, not reproduced; see https://ads.tiktok.com/hel…",
+     "n": 10,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "submit_review",
+     "title": {
+      "zh": "submit_review 返回",
+      "en": "submit_review returns"
+     },
+     "text": "Received.",
+     "error": false,
+     "n": 11,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "submit_advice",
+     "title": {
+      "zh": "调用 submit_advice",
+      "en": "Calls submit_advice"
+     },
+     "text": "{\"revised_caption\": \"Apexa Trading Course: learn the basics of trading and how markets work. Enroll for $49. Trading involves risk of loss; no returns are guaranteed.\", \"revised_image_lines\": [], \"answer\": \"Your ad is rejected because it guarantees a return of $100 to $10,000 in…",
+     "n": 12,
+     "checks": [
+      {
+       "id": "T-1",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "没有失败后没再成功的工具调用",
+        "en": "No tool call failed without a later successful call of the same tool"
+       },
+       "detail": ""
+      },
+      {
+       "id": "T-2",
+       "stage": "T",
+       "turn": 1,
+       "passed": false,
+       "core": false,
+       "what": {
+        "zh": "这一轮每次工具调用都正确（只报告）",
+        "en": "Every tool call in the turn was correct (report only)"
+       },
+       "detail": "5/6 calls correct"
+      },
+      {
+       "id": "T-3",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "没有完全重复的工具调用（只报告）",
+        "en": "No call repeats an earlier one with the same input (report only)"
+       },
+       "detail": "0 exact repeats"
+      },
+      {
+       "id": "T-4",
+       "stage": "T",
+       "turn": 1,
+       "passed": false,
+       "core": false,
+       "what": {
+        "zh": "没有调用另一类请求的收尾工具（只报告）",
+        "en": "No call of the other request's finishing tool (report only)"
+       },
+       "detail": "called submit_advice, which is for another kind of request"
+      }
+     ]
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "submit_advice",
+     "title": {
+      "zh": "submit_advice 返回",
+      "en": "submit_advice returns"
+     },
+     "text": "Use submit_review for this turn.",
+     "error": true,
+     "n": 13,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "final",
+     "title": {
+      "zh": "本轮答案",
+      "en": "Answer of this turn"
+     },
+     "text": "decision: reject; GUARANTEE TT-DEC-FINREP: turn $100 into $10,000 in 30 days, guaranteed; GUARANTEE TT-MIS-CLAIMS: turn $100 into $10,000 in 30 days, guaranteed; OTHER TT-FIN: turn $100 into $10,000 in 30 days, guaranteed",
+     "request": "review",
+     "n": 14,
+     "checks": [
+      {
+       "id": "P-0",
+       "stage": "P",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "在步数上限内给出答案",
+        "en": "The turn ended with an answer within the step limit"
+       },
+       "detail": ""
+      },
+      {
+       "id": "U-AD-2",
+       "stage": "U",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "说明和回答用的是广告的语言",
+        "en": "Explanations and the answer are in the ad's language"
+       },
+       "detail": "explanations in the ad's language"
+      },
+      {
+       "id": "K-AD-1",
+       "stage": "K",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "引的广告原话逐字在广告里",
+        "en": "Every quote of the ad is word for word in the ad"
+       },
+       "detail": ""
+      },
+      {
+       "id": "K-AD-2",
+       "stage": "K",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "引的条款原文逐字在所引条款里",
+        "en": "Every policy quote is word for word in the clause it cites"
+       },
+       "detail": ""
+      },
+      {
+       "id": "K-AD-3",
+       "stage": "K",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "找到的违规引用的是答案接受的条款",
+        "en": "For each violation found, the cited clause is one the answer key accepts"
+       },
+       "detail": ""
+      },
+      {
+       "id": "R-AD-1",
+       "stage": "R",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "放行还是拒绝判对了",
+        "en": "Approve or reject is right"
+       },
+       "detail": "answer reject, agent reject"
+      },
+      {
+       "id": "R-AD-2",
+       "stage": "R",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "答案里的违规类别都找到了，没有多出的类别",
+        "en": "Every labelled category found, none the key does not have"
+       },
+       "detail": ""
+      }
+     ]
+    },
+    {
+     "turn": 2,
+     "kind": "user",
+     "title": {
+      "zh": "请求",
+      "en": "Request"
+     },
+     "text": "I'm the advertiser. What exactly is wrong, and how do I fix it? Please give me a corrected version, including the words in the image.",
+     "n": 15,
+     "checks": []
+    },
+    {
+     "turn": 2,
+     "kind": "instruction",
+     "title": {
+      "zh": "本轮说明",
+      "en": "Instruction for this turn"
+     },
+     "text": "When you write the corrected version: it must be ready to run as it is. Never leave blanks or template text such as [licence number], [X]% ABV or 【数据来源】. If a fix needs a fact the advertiser has not given (a strength, a source, a licence), leave that statement out of the correct…",
+     "n": 16,
+     "checks": []
+    },
+    {
+     "turn": 2,
+     "kind": "tool_call",
+     "tool": "check_revision",
+     "title": {
+      "zh": "调用 check_revision",
+      "en": "Calls check_revision"
+     },
+     "text": "{\"caption\": \"Apexa Trading Course. Enroll for $49. Trading involves risk of loss, and no returns are guaranteed.\", \"image_lines\": []}",
+     "n": 17,
+     "checks": [
+      {
+       "id": "P-AD-4",
+       "stage": "P",
+       "turn": 2,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "给出修改稿前先检查了修改稿",
+        "en": "The corrected version was checked before the advice was given"
+       },
+       "detail": "check_revision before submit_advice"
+      }
+     ]
+    },
+    {
+     "turn": 2,
+     "kind": "tool_result",
+     "tool": "check_revision",
+     "title": {
+      "zh": "check_revision 返回",
+      "en": "check_revision returns"
+     },
+     "text": "{\"placeholders\": [], \"still_present_from_review\": []}",
+     "error": false,
+     "n": 18,
+     "checks": []
+    },
+    {
+     "turn": 2,
+     "kind": "tool_call",
+     "tool": "submit_advice",
+     "title": {
+      "zh": "调用 submit_advice",
+      "en": "Calls submit_advice"
+     },
+     "text": "{\"revised_caption\": \"Apexa Trading Course. Enroll for $49. Trading involves risk of loss, and no returns are guaranteed.\", \"revised_image_lines\": [], \"answer\": \"What is wrong: the caption promises that $100 becomes $10,000 in 30 days, and calls it \\\"guaranteed\\\". This breaks the…",
+     "n": 19,
+     "checks": [
+      {
+       "id": "T-1",
+       "stage": "T",
+       "turn": 2,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "没有失败后没再成功的工具调用",
+        "en": "No tool call failed without a later successful call of the same tool"
+       },
+       "detail": ""
+      },
+      {
+       "id": "T-2",
+       "stage": "T",
+       "turn": 2,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "这一轮每次工具调用都正确（只报告）",
+        "en": "Every tool call in the turn was correct (report only)"
+       },
+       "detail": "2/2 calls correct"
+      },
+      {
+       "id": "T-3",
+       "stage": "T",
+       "turn": 2,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "没有完全重复的工具调用（只报告）",
+        "en": "No call repeats an earlier one with the same input (report only)"
+       },
+       "detail": "0 exact repeats"
+      },
+      {
+       "id": "T-4",
+       "stage": "T",
+       "turn": 2,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "没有调用另一类请求的收尾工具（只报告）",
+        "en": "No call of the other request's finishing tool (report only)"
+       },
+       "detail": ""
+      }
+     ]
+    },
+    {
+     "turn": 2,
+     "kind": "tool_result",
+     "tool": "submit_advice",
+     "title": {
+      "zh": "submit_advice 返回",
+      "en": "submit_advice returns"
+     },
+     "text": "Received.",
+     "error": false,
+     "n": 20,
+     "checks": []
+    },
+    {
+     "turn": 2,
+     "kind": "final",
+     "title": {
+      "zh": "本轮答案",
+      "en": "Answer of this turn"
+     },
+     "text": "revised caption: Apexa Trading Course. Enroll for $49. Trading involves risk of loss, and no returns are guaranteed.; answer: What is wrong: the caption promises that $100 becomes $10,000 in 30 days, and calls it \"guaranteed\". This breaks the rules on financial misrepresentation…",
+     "request": "advice",
+     "n": 21,
+     "checks": [
+      {
+       "id": "P-0",
+       "stage": "P",
+       "turn": 2,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "在步数上限内给出答案",
+        "en": "The turn ended with an answer within the step limit"
+       },
+       "detail": ""
+      },
+      {
+       "id": "U-AD-2",
+       "stage": "U",
+       "turn": 2,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "说明和回答用的是广告的语言",
+        "en": "Explanations and the answer are in the ad's language"
+       },
+       "detail": "answer in the ad's language"
+      },
+      {
+       "id": "R-AD-3",
+       "stage": "R",
+       "turn": 2,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "修改稿里没有违规原话了",
+        "en": "The offending words are gone from the corrected version"
+       },
+       "detail": "offending words removed from the corrected version"
+      },
+      {
+       "id": "R-AD-4",
+       "stage": "R",
+       "turn": 2,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "品牌和价格保留了",
+        "en": "The brand and the price are kept"
+       },
+       "detail": "brand and price kept"
+      },
+      {
+       "id": "R-AD-5",
+       "stage": "R",
+       "turn": 2,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "修改稿没有占位符、字段没填错",
+        "en": "No unfilled template text, no field filled wrongly"
+       },
+       "detail": ""
+      }
+     ]
+    },
+    {
+     "turn": 3,
+     "kind": "user",
+     "title": {
+      "zh": "请求",
+      "en": "Request"
+     },
+     "text": "The advertiser submits a new version of the ad. Review this version. The ad is in English; write explanations in English. Caption: Apexa Trading Course: learn chart reading and risk management in 12 video lessons. Trading involves risk and no returns are promised. Enroll for $49…",
+     "n": 22,
+     "checks": []
+    },
+    {
+     "turn": 3,
+     "kind": "tool_call",
+     "tool": "search_policy",
+     "title": {
+      "zh": "调用 search_policy",
+      "en": "Calls search_policy"
+     },
+     "text": "{\"query\": \"financial education course risk disclaimer\"}",
+     "n": 23,
+     "checks": []
+    },
+    {
+     "turn": 3,
+     "kind": "tool_result",
+     "tool": "search_policy",
+     "title": {
+      "zh": "search_policy 返回",
+      "en": "search_policy returns"
+     },
+     "text": "[TT-DEC-FINREP] TikTok Deceptive Practices: Financial misrepresentation (source file: tiktok-deceptive-practices.md; rule) [TikTok policy text of TT-DEC-FINREP, not reproduced; see https://ads.tiktok.com/help/article/tiktok-ads-policy-deceptive-practices][TikTok policy text of T…",
+     "error": false,
+     "n": 24,
+     "checks": []
+    },
+    {
+     "turn": 3,
+     "kind": "tool_call",
+     "tool": "check_quotes",
+     "title": {
+      "zh": "调用 check_quotes",
+      "en": "Calls check_quotes"
+     },
+     "text": "{\"quotes\": [{\"source\": \"ad\", \"quote\": \"Trading involves risk and no returns are promised.\"}, {\"source\": \"ad\", \"quote\": \"learn chart reading and risk management in 12 video lessons\"}]}",
+     "n": 25,
+     "checks": []
+    },
+    {
+     "turn": 3,
+     "kind": "tool_result",
+     "tool": "check_quotes",
+     "title": {
+      "zh": "check_quotes 返回",
+      "en": "check_quotes returns"
+     },
+     "text": "[{\"source\": \"ad\", \"quote\": \"Trading involves risk and no returns are promised.\", \"result\": \"supported\"}, {\"source\": \"ad\", \"quote\": \"learn chart reading and risk management in 12 video lessons\", \"result\": \"supported\"}]",
+     "error": false,
+     "n": 26,
+     "checks": []
+    },
+    {
+     "turn": 3,
+     "kind": "tool_call",
+     "tool": "submit_review",
+     "title": {
+      "zh": "调用 submit_review",
+      "en": "Calls submit_review"
+     },
+     "text": "{\"decision\": \"approve\", \"violations\": [], \"notes\": \"The revised ad describes a trading education course (chart reading and risk management in 12 video lessons). It makes no return promise, no guarantee, and no get-rich claim, and it includes a risk disclosure (\\\"Trading involves…",
+     "n": 27,
+     "checks": [
+      {
+       "id": "T-1",
+       "stage": "T",
+       "turn": 3,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "没有失败后没再成功的工具调用",
+        "en": "No tool call failed without a later successful call of the same tool"
+       },
+       "detail": ""
+      },
+      {
+       "id": "T-2",
+       "stage": "T",
+       "turn": 3,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "这一轮每次工具调用都正确（只报告）",
+        "en": "Every tool call in the turn was correct (report only)"
+       },
+       "detail": "3/3 calls correct"
+      },
+      {
+       "id": "T-3",
+       "stage": "T",
+       "turn": 3,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "没有完全重复的工具调用（只报告）",
+        "en": "No call repeats an earlier one with the same input (report only)"
+       },
+       "detail": "0 exact repeats"
+      },
+      {
+       "id": "T-4",
+       "stage": "T",
+       "turn": 3,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "没有调用另一类请求的收尾工具（只报告）",
+        "en": "No call of the other request's finishing tool (report only)"
+       },
+       "detail": ""
+      }
+     ]
+    },
+    {
+     "turn": 3,
+     "kind": "tool_result",
+     "tool": "submit_review",
+     "title": {
+      "zh": "submit_review 返回",
+      "en": "submit_review returns"
+     },
+     "text": "Received.",
+     "error": false,
+     "n": 28,
+     "checks": []
+    },
+    {
+     "turn": 3,
+     "kind": "final",
+     "title": {
+      "zh": "本轮答案",
+      "en": "Answer of this turn"
+     },
+     "text": "decision: approve",
+     "request": "rereview",
+     "n": 29,
+     "checks": [
+      {
+       "id": "U-0",
+       "stage": "U",
+       "turn": 0,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "每个请求都按要求的形式给了最终答案",
+        "en": "Every request got a final answer in the required form"
+       },
+       "detail": "3/3 requests answered"
+      },
+      {
+       "id": "P-0",
+       "stage": "P",
+       "turn": 3,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "在步数上限内给出答案",
+        "en": "The turn ended with an answer within the step limit"
+       },
+       "detail": ""
+      },
+      {
+       "id": "R-AD-1",
+       "stage": "R",
+       "turn": 3,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "放行还是拒绝判对了",
+        "en": "Approve or reject is right"
+       },
+       "detail": "answer approve, agent approve"
+      },
+      {
+       "id": "R-AD-2",
+       "stage": "R",
+       "turn": 3,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "答案里的违规类别都找到了，没有多出的类别",
+        "en": "Every labelled category found, none the key does not have"
+       },
+       "detail": ""
+      }
+     ]
+    }
+   ],
+   "stage_result": {
+    "U": true,
+    "P": true,
+    "T": true,
+    "K": true,
+    "R": true
+   },
+   "success": true,
+   "first_failure": null,
+   "gate": {
+    "complete": true,
+    "quotes_verified": true,
+    "decision_consistent": true,
+    "advice_ready": true,
+    "auto_release": true
+   },
+   "links": {
+    "record": "https://github.com/llia0031-dotcom/agent-trace-eval/blob/352d3e8/eval/results/base/traces.jsonl",
+    "record_file": "eval/results/base/traces.jsonl",
+    "record_line": 19
+   }
+  },
+  {
+   "id": "en-after-fix",
+   "lang": "en",
+   "label": {
+    "zh": "修复之后的同一道题",
+    "en": "The same task after the fix"
+   },
+   "selection": "after-fix",
+   "agent": {
+    "zh": "广告审核 Agent",
+    "en": "Ad review agent"
+   },
+   "run": "fix-ad",
+   "family": "ad_review",
+   "task": "en-L2-01",
+   "tier": "L2",
+   "trial": 1,
+   "turns": 1,
+   "steps": [
+    {
+     "turn": 1,
+     "kind": "user",
+     "title": {
+      "zh": "请求",
+      "en": "Request"
+     },
+     "text": "Review this ad. The ad is in English; write explanations in English. Caption: Leanbrew Tea: drop 10 lbs in a week with no diet or exercise. Unlike FitLeaf's useless tea, ours actually works. (Text ad, no image.)",
+     "n": 1,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "search_policy",
+     "title": {
+      "zh": "调用 search_policy",
+      "en": "Calls search_policy"
+     },
+     "text": "{\"query\": \"weight loss claims lbs in a week\"}",
+     "n": 2,
+     "checks": [
+      {
+       "id": "P-AD-2",
+       "stage": "P",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "查过政策条款",
+        "en": "The policy library was searched or a clause fetched"
+       },
+       "detail": "policy looked up"
+      }
+     ]
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "search_policy",
+     "title": {
+      "zh": "search_policy 返回",
+      "en": "search_policy returns"
+     },
+     "text": "[TT-WM-WEIGHT] TikTok Weight Management: Weight Management (source file: tiktok-weight-management.md; rule)[TikTok policy text of TT-MIS-CLAIMS, not reproduced; see https://ads.tiktok.com/help/article/tiktok-ads-policy-misleading-and-false-content][TikTok policy text of TT-WM-WE…",
+     "error": false,
+     "n": 3,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "search_policy",
+     "title": {
+      "zh": "调用 search_policy",
+      "en": "Calls search_policy"
+     },
+     "text": "{\"query\": \"disparage competitor products useless\"}",
+     "n": 4,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "search_policy",
+     "title": {
+      "zh": "search_policy 返回",
+      "en": "search_policy returns"
+     },
+     "text": "[TT-MIS-COMPARE] TikTok Misleading and false content: Malicious, Subjective and Before-and-after Comparisons (source file: tiktok-misleading-and-false-content.md; rule) [TikTok policy text of TT-MIS-COMPARE, not reproduced; see https://ads.tiktok.com/help/article/tiktok-ads-poli…",
+     "error": false,
+     "n": 5,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "search_policy",
+     "title": {
+      "zh": "调用 search_policy",
+      "en": "Calls search_policy"
+     },
+     "text": "{\"query\": \"guaranteed product results effects\"}",
+     "n": 6,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "search_policy",
+     "title": {
+      "zh": "search_policy 返回",
+      "en": "search_policy returns"
+     },
+     "text": "[TT-MIS-CLAIMS] TikTok Misleading and false content: Misleading claims (source file: tiktok-misleading-and-false-content.md; rule) [TikTok policy text of TT-MIS-CLAIMS, not reproduced; see https://ads.tiktok.com/help/article/tiktok-ads-policy-misleading-and-false-content] [TT-MI…",
+     "error": false,
+     "n": 7,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "check_quotes",
+     "title": {
+      "zh": "调用 check_quotes",
+      "en": "Calls check_quotes"
+     },
+     "text": "{\"quotes\": [{\"source\": \"ad\", \"quote\": \"drop 10 lbs in a week with no diet or exercise\"}, {\"source\": \"ad\", \"quote\": \"Unlike FitLeaf's useless tea, ours actually works.\"}, {\"source\": \"TT-WM-WEIGHT\", \"quote\": \"[TikTok policy text of TT-WM-WEIGHT, not reproduced; see https://ads.tik…",
+     "n": 8,
+     "checks": [
+      {
+       "id": "P-AD-3",
+       "stage": "P",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "给出违规前先核对了引文",
+        "en": "Quotes were checked before a violation was named"
+       },
+       "detail": "quotes checked before the decision (agentevals superset match)"
+      }
+     ]
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "check_quotes",
+     "title": {
+      "zh": "check_quotes 返回",
+      "en": "check_quotes returns"
+     },
+     "text": "[{\"source\": \"ad\", \"quote\": \"drop 10 lbs in a week with no diet or exercise\", \"result\": \"supported\"}, {\"source\": \"ad\", \"quote\": \"Unlike FitLeaf's useless tea, ours actually works.\", \"result\": \"supported\"}, {\"source\": \"TT-WM-WEIGHT\", \"quote\": \"[TikTok policy text of TT-WM-WEIGHT,…",
+     "error": false,
+     "n": 9,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "tool_call",
+     "tool": "submit_review",
+     "title": {
+      "zh": "调用 submit_review",
+      "en": "Calls submit_review"
+     },
+     "text": "{\"decision\": \"reject\", \"violations\": [{\"category\": \"WEIGHT\", \"clause_id\": \"TT-WM-WEIGHT\", \"ad_quote\": \"drop 10 lbs in a week with no diet or exercise\", \"visual_evidence\": \"\", \"policy_quote\": \"[TikTok policy text of TT-WM-WEIGHT, not reproduced; see https://ads.tiktok.com/help/ar…",
+     "n": 10,
+     "checks": [
+      {
+       "id": "T-1",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "没有失败后没再成功的工具调用",
+        "en": "No tool call failed without a later successful call of the same tool"
+       },
+       "detail": ""
+      },
+      {
+       "id": "T-2",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "这一轮每次工具调用都正确（只报告）",
+        "en": "Every tool call in the turn was correct (report only)"
+       },
+       "detail": "5/5 calls correct"
+      },
+      {
+       "id": "T-3",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "没有完全重复的工具调用（只报告）",
+        "en": "No call repeats an earlier one with the same input (report only)"
+       },
+       "detail": "0 exact repeats"
+      },
+      {
+       "id": "T-4",
+       "stage": "T",
+       "turn": 1,
+       "passed": true,
+       "core": false,
+       "what": {
+        "zh": "没有调用另一类请求的收尾工具（只报告）",
+        "en": "No call of the other request's finishing tool (report only)"
+       },
+       "detail": ""
+      }
+     ]
+    },
+    {
+     "turn": 1,
+     "kind": "tool_result",
+     "tool": "submit_review",
+     "title": {
+      "zh": "submit_review 返回",
+      "en": "submit_review returns"
+     },
+     "text": "Received.",
+     "error": false,
+     "n": 11,
+     "checks": []
+    },
+    {
+     "turn": 1,
+     "kind": "final",
+     "title": {
+      "zh": "本轮答案",
+      "en": "Answer of this turn"
+     },
+     "text": "decision: reject; WEIGHT TT-WM-WEIGHT: drop 10 lbs in a week with no diet or exercise; DISPARAGE TT-MIS-COMPARE: Unlike FitLeaf's useless tea, ours actually works.",
+     "request": "review",
+     "n": 12,
+     "checks": [
+      {
+       "id": "U-0",
+       "stage": "U",
+       "turn": 0,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "每个请求都按要求的形式给了最终答案",
+        "en": "Every request got a final answer in the required form"
+       },
+       "detail": "1/1 requests answered"
+      },
+      {
+       "id": "P-0",
+       "stage": "P",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "在步数上限内给出答案",
+        "en": "The turn ended with an answer within the step limit"
+       },
+       "detail": ""
+      },
+      {
+       "id": "U-AD-2",
+       "stage": "U",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "说明和回答用的是广告的语言",
+        "en": "Explanations and the answer are in the ad's language"
+       },
+       "detail": "explanations in the ad's language"
+      },
+      {
+       "id": "K-AD-1",
+       "stage": "K",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "引的广告原话逐字在广告里",
+        "en": "Every quote of the ad is word for word in the ad"
+       },
+       "detail": ""
+      },
+      {
+       "id": "K-AD-2",
+       "stage": "K",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "引的条款原文逐字在所引条款里",
+        "en": "Every policy quote is word for word in the clause it cites"
+       },
+       "detail": ""
+      },
+      {
+       "id": "K-AD-3",
+       "stage": "K",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "找到的违规引用的是答案接受的条款",
+        "en": "For each violation found, the cited clause is one the answer key accepts"
+       },
+       "detail": ""
+      },
+      {
+       "id": "R-AD-1",
+       "stage": "R",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "放行还是拒绝判对了",
+        "en": "Approve or reject is right"
+       },
+       "detail": "answer reject, agent reject"
+      },
+      {
+       "id": "R-AD-2",
+       "stage": "R",
+       "turn": 1,
+       "passed": true,
+       "core": true,
+       "what": {
+        "zh": "答案里的违规类别都找到了，没有多出的类别",
+        "en": "Every labelled category found, none the key does not have"
+       },
+       "detail": ""
+      }
+     ]
+    }
+   ],
+   "stage_result": {
+    "U": true,
+    "P": true,
+    "T": true,
+    "K": true,
+    "R": true
+   },
+   "success": true,
+   "first_failure": null,
+   "gate": {
+    "complete": true,
+    "quotes_verified": true,
+    "decision_consistent": true,
+    "advice_ready": true,
+    "auto_release": true
+   },
+   "links": {
+    "record": "https://github.com/llia0031-dotcom/agent-trace-eval/blob/352d3e8/eval/results/fix-ad/traces.jsonl",
+    "record_file": "eval/results/fix-ad/traces.jsonl",
+    "record_line": 30
+   }
+  }
+ ]
+}
