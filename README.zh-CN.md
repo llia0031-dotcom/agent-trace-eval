@@ -41,7 +41,7 @@
 - **按评分表判的三项**：规则查不了的三件事（给广告主的建议是否讲清、经营建议是否从原因出发、选题是否贴合账号），按写好的评分表判，每个答案判两遍，报两遍的一致率和在校准题上的准确率；调用的是和三个 Agent 相同的模型。
 - **归因**：失败试验的阶段 = 最早没过的那条检查；原因分六类（知识缺失、工具调用、提示词、模型能力、交互设计、评测题本身），来自每条检查的规则，或读完过程后写的说明（[eval/attribution_notes.yaml](eval/attribution_notes.yaml)）。
 - **预注册**：题目、答案、评分代码和配置在第一次调用模型前记下指纹，并写好预测（[eval/PREREGISTRATION.md](eval/PREREGISTRATION.md)）；之后的每处改动都记在它的变更记录里。
-- **查看器**：每次试验的每一步和没过的检查，都能在 [Inspect AI](https://inspect.aisi.org.uk/) 的日志查看器里逐条看：[llia0031-dotcom.github.io/agent-trace-eval](https://llia0031-dotcom.github.io/agent-trace-eval/)（由 `tools/make_viewer.py` 从存下的记录生成；在本机可以 `python -m bench inspect-log --run base`，再 `inspect view`）。
+- **查看器**：每次试验的每一步和没过的检查，都能在 [Inspect AI](https://inspect.aisi.org.uk/) 的日志查看器里逐条看：[打开过程查看器](https://llia0031-dotcom.github.io/agent-trace-eval/)（由 `tools/make_viewer.py` 从存下的记录生成；在本机可以 `python -m bench inspect-log --run base`，再 `inspect view`）。
 
 ## 怎么跑
 

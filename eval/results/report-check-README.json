@@ -1,18 +1,8 @@
 {
  "report": "README.md",
- "checked": 24,
+ "checked": 23,
  "supported": 23,
- "problems": [
-  {
-   "line": 62,
-   "text": "**Viewer.** Every stored trial, step by step, with its failed checks, in [Inspect AI]'s log viewer: [llia0031-dotcom.github.io/agent-trace-eval] (built from the stored records by `tools/make_viewer.py`; locally, `python -m bench inspect-log --run base`, then `inspect view`).",
-   "status": "no_evidence",
-   "missing": [
-    "31"
-   ],
-   "evidence": []
-  }
- ],
+ "problems": [],
  "claims": [
   {
    "line": 5,
@@ -281,15 +271,6 @@
      "quote": "| Business review | B12 | K-BZ-1 (Knowledge and citation) | 1 | model (模型能力) | The report is not released by the number check (a paragraph states a number not in the rows it quotes), and the store-closure cause stops at 火锅 × 连锁 instead of  | As for B03; the number check already holds the report for a person. | note |"
     }
    ]
-  },
-  {
-   "line": 62,
-   "text": "**Viewer.** Every stored trial, step by step, with its failed checks, in [Inspect AI]'s log viewer: [llia0031-dotcom.github.io/agent-trace-eval] (built from the stored records by `tools/make_viewer.py`; locally, `python -m bench inspect-log --run base`, then `inspect view`).",
-   "status": "no_evidence",
-   "missing": [
-    "31"
-   ],
-   "evidence": []
   },
   {
    "line": 97,

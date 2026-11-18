@@ -1,6 +1,6 @@
 {
  "report": "README.zh-CN.md",
- "checked": 29,
+ "checked": 28,
  "supported": 20,
  "problems": [
   {
@@ -83,15 +83,6 @@
     "4",
     "40",
     "5"
-   ],
-   "evidence": []
-  },
-  {
-   "line": 37,
-   "text": "**查看器**：每次试验的每一步和没过的检查，都能在 [Inspect AI] 的日志查看器里逐条看：[llia0031-dotcom.github.io/agent-trace-eval]（由 `tools/make_viewer.py` 从存下的记录生成；",
-   "status": "no_evidence",
-   "missing": [
-    "31"
    ],
    "evidence": []
   }
@@ -395,15 +386,6 @@
      "quote": "| Creator workflow | C06 | K-CR-1 (Knowledge and citation) | 3 | task (评测题本身) | Every fact is right, and the skill's own checking script passes the cards. The scorer used as the answer key reads the bus route name 'N7' in the claim as a num | Rename the route in the task (or have the scorer skip digits inside names) and re-run C06; until then C06 is counted as failed and reported as a task problem. | note |"
     }
    ]
-  },
-  {
-   "line": 37,
-   "text": "**查看器**：每次试验的每一步和没过的检查，都能在 [Inspect AI] 的日志查看器里逐条看：[llia0031-dotcom.github.io/agent-trace-eval]（由 `tools/make_viewer.py` 从存下的记录生成；",
-   "status": "no_evidence",
-   "missing": [
-    "31"
-   ],
-   "evidence": []
   },
   {
    "line": 54,

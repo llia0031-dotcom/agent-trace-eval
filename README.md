@@ -83,7 +83,7 @@ the agent project's own scorer ──► outcome per turn          rubric checks
 - **Pre-registered.** Tasks, answer keys, rubric code and configurations were hashed before the first
   model call, with predictions ([eval/PREREGISTRATION.md](eval/PREREGISTRATION.md)).
 - **Viewer.** Every stored trial, step by step, with its failed checks, in [Inspect AI](https://inspect.aisi.org.uk/)'s
-  log viewer: [llia0031-dotcom.github.io/agent-trace-eval](https://llia0031-dotcom.github.io/agent-trace-eval/)
+  log viewer: [open the trace viewer](https://llia0031-dotcom.github.io/agent-trace-eval/)
   (built from the stored records by `tools/make_viewer.py`; locally, `python -m bench inspect-log --run base`, then `inspect view`).
 
 ## Run it
