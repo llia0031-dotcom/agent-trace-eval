@@ -1,0 +1,74 @@
+{
+  "fix-biz.eval": {
+    "eval_id": "MYTunnAHngbTZkLy6aE9b4",
+    "run_id": "a2Wk9k6ZwnxdvZx5gdNhzK",
+    "task": "fix-biz (recorded traces)",
+    "task_id": "ZfSr8XM66XQ6UH3r3tFQyM",
+    "task_version": 0,
+    "version": 2,
+    "status": "success",
+    "invalidated": false,
+    "model": "none/none",
+    "started_at": "2026-11-18T21:24:42+00:00",
+    "completed_at": "2026-11-18T21:24:42+00:00",
+    "primary_metric": {
+      "name": "mean",
+      "value": 0.8888888888888888,
+      "params": {}
+    }
+  },
+  "fix-ad.eval": {
+    "eval_id": "Gjwi45M6c56rmznAEiF2ZP",
+    "run_id": "MhqZ79RC4DCN68eHDrkbWG",
+    "task": "fix-ad (recorded traces)",
+    "task_id": "Kj43e3VnxFmayPbWLWq22m",
+    "task_version": 0,
+    "version": 2,
+    "status": "success",
+    "invalidated": false,
+    "model": "none/none",
+    "started_at": "2026-11-18T21:24:41+00:00",
+    "completed_at": "2026-11-18T21:24:42+00:00",
+    "primary_metric": {
+      "name": "mean",
+      "value": 0.9,
+      "params": {}
+    }
+  },
+  "no-skills.eval": {
+    "eval_id": "VWnfTfgFzwK39v4qxQWCLC",
+    "run_id": "2P5UxTyqdgt6EZFyJzjpzz",
+    "task": "no-skills (recorded traces)",
+    "task_id": "HyikjjCLFv6aqtJvi35di6",
+    "task_version": 0,
+    "version": 2,
+    "status": "success",
+    "invalidated": false,
+    "model": "none/none",
+    "started_at": "2026-11-18T21:24:41+00:00",
+    "completed_at": "2026-11-18T21:24:41+00:00",
+    "primary_metric": {
+      "name": "mean",
+      "value": 0.3333333333333333,
+      "params": {}
+    }
+  },
+  "base.eval": {
+    "eval_id": "L7wr4TCHhpma4ehKszjYAG",
+    "run_id": "FyUEnLVr7So5UJ8Qq7Twuw",
+    "task": "base (recorded traces)",
+    "task_id": "7GNQmoKbuPZ9SB6pnWG9mr",
+    "task_version": 0,
+    "version": 2,
+    "status": "success",
+    "invalidated": false,
+    "model": "none/none",
+    "started_at": "2026-11-18T21:24:36+00:00",
+    "completed_at": "2026-11-18T21:24:41+00:00",
+    "primary_metric": {
+      "name": "mean",
+      "value": 0.8768115942028986,
+      "params": {}
+    }
+  }
+}
